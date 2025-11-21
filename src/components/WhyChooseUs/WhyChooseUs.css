@@ -1,0 +1,11 @@
+.rating-card {
+  width: 260px;
+  height: 220px;
+  backdrop-filter: blur(4px) saturate(110%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.text-brand-green {
+  color: #00ff73;
+}

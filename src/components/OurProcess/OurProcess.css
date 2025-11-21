@@ -1,0 +1,16 @@
+.process-line {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.process-card {
+  background: rgba(255, 255, 255, 0.02);
+  transition: 0.3s ease-in-out;
+}
+
+.process-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 28px rgba(255, 0, 150, 0.3);
+  /* box-shadow: 0 10px 28px rgba(0, 255, 120, 0.15); */
+}

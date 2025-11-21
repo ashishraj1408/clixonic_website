@@ -1,0 +1,3 @@
+background: linear-gradient(90deg, #ff007abf, #7a00ff94, #3df41ca1, #0077ffab);
+border: 1px solid #2b11e4;
+color: #c100ff;

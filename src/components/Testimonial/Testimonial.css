@@ -1,0 +1,120 @@
+/* container smoky background and card styling */
+
+/* smoky decorative background inside the section */
+.testimonial-section .smoke-bg {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  top: 15%;
+  bottom: 6%;
+  background:
+    radial-gradient(800px 200px at 10% 20%, rgba(0,255,120,0.06), transparent 8%),
+    radial-gradient(600px 180px at 80% 80%, rgba(0,200,255,0.03), transparent 10%),
+    linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.02));
+  filter: blur(28px) contrast(1.02);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 18px;
+}
+
+/* masonry-like grid using columns for a fluid random sequence */
+.testimonial-grid {
+  position: relative;
+  z-index: 10; /* above the smoky bg */
+  column-gap: 1.5rem;
+  column-width: 320px; /* desired card width; browser will create columns */
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .testimonial-grid {
+    column-width: 280px;
+  }
+}
+@media (max-width: 640px) {
+  .testimonial-grid {
+    column-width: 100%;
+  }
+}
+
+/* cards flow inside columns */
+.testimonial-card {
+  display: inline-block; /* required for column flow */
+  width: 100%;
+  margin: 0 0 1.25rem;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 1.25rem;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), box-shadow 220ms;
+  break-inside: avoid;
+  position: relative;
+  overflow: hidden;
+}
+
+/* small quote icon top-right */
+.testimonial-card .quote-icon {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  opacity: 0.07;
+  width: 26px;
+  height: 26px;
+  color: #ff00b9;
+}
+
+/* avatar */
+.testimonial-card .avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(0,255,115,0.14);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+}
+
+/* hover lift */
+.testimonial-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 10px 28px rgba(255, 0, 150, 0.3);
+}
+
+/* stagger offsets for visual 'random' layout */
+.testimonial-card.offset-up {
+  transform: translateY(-12px);
+}
+.testimonial-card.offset-down {
+  transform: translateY(10px);
+}
+.testimonial-card.offset-middle {
+  transform: translateY(0);
+}
+
+/* make sure offsets are subtle on small screens */
+@media (max-width: 768px) {
+  .testimonial-card.offset-up,
+  .testimonial-card.offset-down {
+    transform: translateY(0);
+  }
+}
+
+/* rating stars spacing */
+.testimonial-card .rating {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* text tweaks */
+.testimonial-card p {
+  margin-top: 0.25rem;
+}
+
+/* ensure the column container doesn't show weird overflow */
+.testimonial-grid::after {
+  content: "";
+  display: block;
+  height: 1px;
+  clear: both;
+}
