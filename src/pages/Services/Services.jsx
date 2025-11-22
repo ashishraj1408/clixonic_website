@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import "./Services.css";
-
 import centerPattern from "../../assets/hero/card_background.jpeg";
 import statsBg from "../../assets/hero/card_background.jpeg";
+import BackgroundImg from "../../assets/hero/main-background.png"; 
 
-import { FileText, Search, Share2, Users, BarChart2, ExternalLink } from "lucide-react";
+
+import {
+  FileText,
+  Search,
+  Share2,
+  Users,
+  BarChart2,
+  ExternalLink,
+  ArrowRight,
+} from "lucide-react";
+import OurProcess from "../../components/OurProcess/OurProcess";
+import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 
 const services = [
   { id: 1, title: "Content Marketing", icon: <FileText className="w-6 h-6 text-black" /> },
@@ -15,36 +27,130 @@ const services = [
   { id: 6, title: "Influencer Marketing", icon: <Users className="w-6 h-6 text-black" /> },
 ];
 
-export default function Services() {
-  return (
-    <section className="bg-[#0b0b0b] text-white py-16">
-      <div className="max-w-6xl mx-auto px-6">
+// small counter component that animates from 0 to target when visible
+function Counter({ to = 1000, duration = 1200, startWhen = false }) {
+  const [value, setValue] = useState(0);
+  const rafRef = useRef(null);
+  useEffect(() => {
+    if (!startWhen) return;
+    let start = null;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const progressRatio = Math.min(progress / duration, 1);
+      const current = Math.floor(progressRatio * to);
+      setValue(current);
+      if (progress < duration) {
+        rafRef.current = requestAnimationFrame(step);
+      } else {
+        setValue(to); // ensure final
+      }
+    };
+    rafRef.current = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(rafRef.current);
+  }, [startWhen, to, duration]);
+  return <span>{value.toLocaleString()}</span>;
+}
 
+export default function Services({ showHero = true }) {
+  // for stats visibility
+  const statsRef = useRef(null);
+  const [statsVisible, setStatsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!statsRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setStatsVisible(true);
+            obs.disconnect();
+          }
+        });
+      },
+      { threshold: 0.25 }
+    );
+    obs.observe(statsRef.current);
+    return () => obs.disconnect();
+  }, []);
+
+  // framer-motion variants
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.14,
+      },
+    },
+  };
+
+  const card = {
+    hidden: { opacity: 0, y: 28, scale: 0.98 },
+    show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
+  return (
+    <section className="bg-[#0b0b0b] text-white py-10">
+      {showHero && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.995 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-7xl py-4 flex items-center justify-center bg-center bg-cover rounded-xl mx-auto overflow-hidden"
+          style={{
+            backgroundImage: `url(${BackgroundImg})`,
+          }}
+        >
+          <div className="backdrop-blur-xl px-20 py-10 rounded-xl fontfamily-content text-center">
+            <h1 className="text-4xl font-bold">Services</h1>
+            <p className="mt-2 flex gap-4 items-center justify-center text-gray-200">
+              Home <ArrowRight size={16} /> Services
+            </p>
+          </div>
+        </motion.div>
+      )}
+
+      <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="text-center mb-6">
-          <span className="inline-flex items-center gap-2 text-2xl text-brand-pinks">
+          <span className="inline-flex items-center gap-2 text-2xl text-brand-pink">
             <span className="w-3 h-3 rounded-full border-2 border-pink-400 block" />
             Services
           </span>
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-3xl md:text-4xl font-extrabold text-center mb-10 fontfamily-content"
+        >
           Comprehensive Solutions for Your Digital Growth
-        </h2>
+        </motion.h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false, amount: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
           {services.map((s) => (
-            <article
+            <motion.article
               key={s.id}
+              variants={card}
+              whileHover={{ scale: 1.02, translateY: -6 }}
               className="relative overflow-hidden rounded-2xl border border-[rgba(255,255,255,0.05)] p-10 min-h-[220px] feature-card group"
             >
               {s.center && (
                 <div
-                  className="absolute inset-0 rounded-2xl opacity-90"
+                  className="absolute inset-0 rounded-2xl opacity-80"
                   style={{
                     backgroundImage: `url(${centerPattern})`,
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     zIndex: 0,
+                    transform: "scale(1.05)",
+                    filter: "brightness(0.95)",
                   }}
                 />
               )}
@@ -54,24 +160,28 @@ export default function Services() {
                   {s.icon}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-3">{s.title}</h3>
+                <h3 className="text-xl font-semibold mb-3 fontfamily-content">{s.title}</h3>
 
-                <p className="text-sm text-gray-300 max-w-[18rem]">
+                <p className="text-sm text-gray-300 max-w-[18rem] fontfamily-content">
                   Rhoncus magna curabitur pretium non arcu magnis vestibulum cursus.
                 </p>
 
                 <a
-                  className="mt-6 inline-flex items-center gap-2 text-md border p-2 rounded-full justify-center text-smokey  font-medium"
+                  className="mt-6 inline-flex fontfamily-content items-center gap-2 text-md border p-2 rounded-full justify-center text-smokey font-medium"
                   href="#"
                 >
-                  Learn More <ExternalLink className="w-4 h-4"/>
+                  Learn More <ExternalLink className="w-4 h-4" />
                 </a>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
+          ref={statsRef}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
           className="mt-12 rounded-2xl p-6 md:p-8 stats-wrapper"
           style={{
             backgroundImage: `url(${statsBg})`,
@@ -81,28 +191,42 @@ export default function Services() {
         >
           <div className="backdrop-overlay rounded-2xl p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center text-white">
             <div>
-              <div className="text-3xl md:text-4xl text-smokey font-extrabold">20+</div>
-              <div className="text-sm opacity-80">Years of Experience</div>
+              <div className="text-3xl md:text-4xl text-smokey font-extrabold">
+                <Counter to={20} startWhen={statsVisible} />
+                <span className="ml-1">+</span>
+              </div>
+              <div className="text-sm opacity-80 fontfamily-content">Years of Experience</div>
             </div>
 
             <div>
-              <div className="text-3xl md:text-4xl font-extrabold">173+</div>
-              <div className="text-sm opacity-80">Projects Done</div>
+              <div className="text-3xl md:text-4xl font-extrabold">
+                <Counter to={173} startWhen={statsVisible} />
+                <span className="ml-1">+</span>
+              </div>
+              <div className="text-sm opacity-80 fontfamily-content">Projects Done</div>
             </div>
 
             <div>
-              <div className="text-3xl md:text-4xl font-extrabold">1.5K+</div>
-              <div className="text-sm opacity-80">Trusted Clients</div>
+              <div className="text-3xl md:text-4xl font-extrabold">
+                <Counter to={1500} startWhen={statsVisible} />
+                <span className="ml-1">+</span>
+              </div>
+              <div className="text-sm opacity-80 fontfamily-content">Trusted Clients</div>
             </div>
 
             <div>
-              <div className="text-3xl md:text-4xl font-extrabold">52+</div>
-              <div className="text-sm opacity-80">Expert Team</div>
+              <div className="text-3xl md:text-4xl font-extrabold">
+                <Counter to={52} startWhen={statsVisible} />
+                <span className="ml-1">+</span>
+              </div>
+              <div className="text-sm opacity-80 fontfamily-content">Expert Team</div>
             </div>
           </div>
-        </div>
-
+        </motion.div>
       </div>
+
+      <OurProcess />
+      <WhyChooseUs />
     </section>
   );
 }

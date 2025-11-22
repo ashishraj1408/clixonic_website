@@ -1,107 +1,152 @@
 import React from "react";
+import { motion } from "framer-motion";
 import "./About.css";
 
 import heroTeam from "../../assets/hero/employee_images.webp";
-import { Lightbulb } from "lucide-react";
+import { Lightbulb, ArrowRight } from "lucide-react";
+import OurTeam from "../../components/OurTeam/OurTeam";
+import BackgroundImg from "../../assets/hero/main-background.png";
 
-export default function About() {
-    return (
-        <div className="bg-[#0b0b0b] min-h-screen text-white font-sans">
-            <div className="max-w-7xl mx-auto px-6 py-10">
+export default function About({ showHero = true, showTeam = true }) {
+  return (
+    <div className="bg-[#0b0b0b] text-white font-sans overflow-hidden">
 
-                {/* Top logos row */}
-                <div className="flex items-center justify-between py-6">
-                    <div className="flex gap-4 items-center">
-                        <div className="logo-placeholder text-white font-bold text-lg border p-2 shadow-md rounded-full">Logoipsum</div>
-                        <div className="logo-placeholder text-white font-bold text-lg border p-2 shadow-md rounded-full">Logoipsum</div>
-                        <div className="logo-placeholder text-white font-bold text-lg border p-2 shadow-md rounded-full">Logoipsum</div>
-                        <div className="logo-placeholder text-white font-bold text-lg border p-2 shadow-md rounded-full">Logoipsum</div>
-                        <div className="logo-placeholder text-white font-bold text-lg border p-2 shadow-md rounded-full">Logoipsum</div>
-                    </div>
+      {/* HERO */}
+      {showHero && (
+        <motion.div
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-7xl py-4 flex items-center justify-center 
+                     bg-center bg-cover rounded-xl mx-auto mt-10 overflow-hidden"
+          style={{ backgroundImage: `url(${BackgroundImg})` }}
+        >
+          <div className="backdrop-blur-xl px-20 py-10 rounded-xl text-center">
+            <h1 className="text-4xl font-bold">About Us</h1>
+            <p className="mt-2 flex items-center gap-4 justify-center text-gray-200">
+              Home <ArrowRight size={16} /> About Us
+            </p>
+          </div>
+        </motion.div>
+      )}
+
+      <div className="max-w-7xl mx-auto px-6 py-10">
+
+        {/* Logos row */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7 }}
+          viewport={{ once: false }}
+          className="flex items-center justify-between py-6"
+        >
+          <div className="flex gap-4 items-center fontfamily-content">
+            {Array(5)
+              .fill("Logoipsum")
+              .map((item, i) => (
+                <div
+                  key={i}
+                  className="logo-placeholder text-white font-bold text-lg border p-2 shadow-md rounded-full"
+                >
+                  {item}
                 </div>
+              ))}
+          </div>
+        </motion.div>
 
-                {/* Hero area: left text / right image */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-                    {/* left content */}
-                    <div className="lg:col-span-6">
-                        <div className="mb-4 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-brand-green inline-block" />
-                            <span className="text-brand-pinks text-md">About Us</span>
-                        </div>
+        {/* MAIN CONTENT */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-                        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
-                            Transforming Businesses with <br />
-                            Strategic Marketing
-                        </h1>
-
-                        <p className="text-gray-300 mb-6 max-w-xl">
-                            Massa habitant accumsan at hendrerit blandit tellus litora euismod justo. Pretium praesent pellentesque enim rhoncus laoreet natoque etiam pharetra. Purus primis pharetra maecenas a nunc feugiat accumsan.
-                        </p>
-
-                        <button className="inline-block bg-brand-green transition px-6 py-3 rounded-full text-black font-semibold">
-                            Learn More
-                        </button>
-                    </div>
-
-                    {/* right content */}
-                    <div className="lg:col-span-6 relative">
-                        <div className="relative mx-auto max-w-[720px] rounded-2xl overflow-hidden">
-                            <img
-                                src={heroTeam}
-                                alt="team"
-                                className="w-full h-[420px] object-cover rounded-2xl"
-                            />
-
-                        </div>
-                    </div>
-                </div>
-
-                {/* three cards row */}
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="feature-card">
-                        <div className="flex items-start gap-4">
-                            <div className=" p-2 rounded-full bg-brand-green flex items-center justify-center">
-                                <Lightbulb />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold">Our Philosophy</h3>
-                                <p className="text-gray-300 text-sm mt-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="feature-card">
-                        <div className="flex items-start gap-4">
-                            <div className=" p-2 rounded-full bg-brand-green flex items-center justify-center">
-                                <Lightbulb />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold">Our Vision</h3>
-                                <p className="text-gray-300 text-sm mt-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="feature-card">
-                        <div className="flex items-start gap-4">
-                            <div className=" p-2 rounded-full bg-brand-green flex items-center justify-center">
-                                <Lightbulb />
-                            </div>
-                            <div>
-                                <h3 className="text-xl font-semibold">Our Mission</h3>
-                                <p className="text-gray-300 text-sm mt-2">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+          {/* LEFT TEXT */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
+            className="lg:col-span-6"
+          >
+            <div className="mb-4 flex text-2xl items-center gap-2">
+              <span className="w-3 h-3 rounded-full border-2 border-pink-400 block" />
+              <span className="text-brand-pink text-md">About Us</span>
             </div>
+
+            <h1 className="text-4xl fontfamily-content md:text-5xl font-extrabold leading-tight mb-6">
+              Transforming Businesses with <br /> Strategic Marketing
+            </h1>
+
+            <p className="text-gray-300 fontfamily-content mb-6 max-w-xl">
+              Massa habitant accumsan at hendrerit blandit tellus litora euismod justo.
+              Pretium praesent pellentesque enim rhoncus laoreet natoque etiam pharetra.
+            </p>
+
+            <button className="inline-block fontfamily-content bg-brand-green transition px-6 py-3 rounded-full text-black font-semibold">
+              Learn More
+            </button>
+          </motion.div>
+
+          {/* RIGHT IMAGE */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: false }}
+            className="lg:col-span-6 relative"
+          >
+            <div className="relative mx-auto max-w-[720px] rounded-2xl overflow-hidden">
+              <img
+                src={heroTeam}
+                alt="team"
+                className="w-full h-[420px] object-cover rounded-2xl"
+              />
+            </div>
+          </motion.div>
+
         </div>
-    );
+
+        {/* THREE CARDS */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: false }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.25,
+              },
+            },
+          }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {["Our Philosophy", "Our Vision", "Our Mission"].map((title, i) => (
+            <motion.div
+              key={i}
+              variants={{
+                hidden: { opacity: 0, y: 40 },
+                show: { opacity: 1, y: 0 },
+              }}
+              className="feature-card p-6 rounded-2xl"
+            >
+              <div className="flex items-start gap-4">
+                <div className="p-2 rounded-full bg-brand-green flex items-center justify-center">
+                  <Lightbulb />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold fontfamily-content">{title}</h3>
+                  <p className="text-gray-300 text-sm mt-2 fontfamily-content">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+      </div>
+
+      {/* SHOW TEAM (conditional) */}
+      {showTeam && <OurTeam />}
+    </div>
+  );
 }
