@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Star, Quote } from "lucide-react";
+import { motion } from "framer-motion";
 import "./Testimonial.css";
 
-/* Use your uploaded image */
 const avatarUrl = "/mnt/data/Team4.webp";
 
 export default function Testimonial() {
@@ -83,59 +83,96 @@ export default function Testimonial() {
 
   const [testimonials, setTestimonials] = useState([]);
 
-  // 🔥 Safe shuffle - no Math.random inside render
   useEffect(() => {
     const arr = [...data];
-
     for (let i = arr.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-
     setTestimonials(arr);
   }, []);
 
+  /* Motion Variants */
+  const leftVariant = {
+    hidden: { opacity: 0, x: -80, y: 40, scale: 0.96 },
+    show: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
+
+  const rightVariant = {
+    hidden: { opacity: 0, x: 80, y: -40, scale: 0.96 },
+    show: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
+
+  const upVariant = {
+    hidden: { opacity: 0, y: 80, scale: 0.96 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" },
+    },
+  };
+
   return (
-    <section className="testimonial-section bg-[#0b0b0b] text-white py-20">
+    <section className="testimonial-section bg-[#0b0b0b] text-white py-10">
       <div className="max-w-7xl mx-auto px-6 relative">
 
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-sm text-brand-pinks">
-            <span className="w-2 h-2 rounded-full bg-brand-gradient block"></span>
+          <span className="inline-flex items-center text-2xl gap-2 fontfamily-content text-brand-pink">
+            <span className="w-2 h-2 rounded-full bg-pink-500 block"></span>
             Testimonials
           </span>
 
-          <h2 className="text-4xl font-extrabold mt-3">
+          <h2 className="text-4xl font-extrabold mt-3 fontfamily-content">
             What Clients Say About Us
           </h2>
 
-          <p className="text-gray-300 mt-3 max-w-xl mx-auto text-sm">
-            Every reload gives a fresh random order for natural variety.
+          <p className="text-gray-300 mt-3 max-w-xl mx-auto text-sm fontfamily-content">
+            Smooth animated zig-zag testimonial layout.
           </p>
         </div>
 
-        {/* Smokey background */}
+        {/* Smokey Background */}
         <div className="smoke-bg" aria-hidden />
 
-        {/* Masonry layout */}
+        {/* Masonry Grid */}
         <div className="testimonial-grid">
           {testimonials.map((t, i) => {
-            const offsetClass =
-              i % 3 === 0
-                ? "offset-up"
-                : i % 3 === 1
-                ? "offset-down"
-                : "offset-middle";
+            // Determine position → zig zag pattern
+            let variant = upVariant; // fallback
+
+            if (i % 3 === 0) variant = leftVariant; // left column
+            if (i % 3 === 1) variant = rightVariant; // right column
+            if (i % 3 === 2) variant = upVariant; // center vertical
 
             return (
-              <article key={i} className={`testimonial-card ${offsetClass}`}>
+              <motion.article
+                key={i}
+                variants={variant}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: false, amount: 0.2 }}
+                className="testimonial-card"
+              >
                 <Quote className="quote-icon" />
 
                 <div className="flex items-center gap-4 mb-4">
                   <img src={t.image} alt={t.name} className="avatar" />
                   <div>
-                    <div className="text-lg font-semibold">{t.name}</div>
-                    <div className="text-brand-pinks text-sm">{t.role}</div>
+                    <div className="text-lg font-semibold fontfamily-content">{t.name}</div>
+                    <div className="text-brand-pink text-sm fontfamily-content">{t.role}</div>
                   </div>
                 </div>
 
@@ -143,15 +180,15 @@ export default function Testimonial() {
                   {Array.from({ length: t.rating }).map((_, idx) => (
                     <Star
                       key={idx}
-                      className="w-4 h-4 text-brand-pinks fill-pink-400"
+                      className="w-4 h-4 text-brand-pink fontfamily-content fill-pink-400"
                     />
                   ))}
                 </div>
 
-                <p className="text-gray-300 text-sm leading-relaxed">
+                <p className="text-gray-300 text-sm fontfamily-content leading-relaxed">
                   {t.review}
                 </p>
-              </article>
+              </motion.article>
             );
           })}
         </div>

@@ -21,4 +21,6 @@
 @media (min-width: 768px) {
   .logo-mark { width: 48px; height: 48px; }
 }
-
+.header-logo{
+  /* display: none; */
+}
