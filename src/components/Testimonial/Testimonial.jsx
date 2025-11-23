@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Star, Quote } from "lucide-react";
 import { motion } from "framer-motion";
 import "./Testimonial.css";
+import avatarUrl from "../../assets/team/Team4.webp";
 
-const avatarUrl = "/mnt/data/Team4.webp";
 
 export default function Testimonial() {
   const data = [

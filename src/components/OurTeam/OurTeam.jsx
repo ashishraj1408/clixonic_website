@@ -2,10 +2,10 @@ import React from "react";
 import { Linkedin, X, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
-import team1 from "../../assets/team/team1.webp";
-import team2 from "../../assets/team/team2.webp";
-import team3 from "../../assets/team/team3.webp";
-import team4 from "../../assets/team/team4.webp";
+import team1 from "../../assets/team/Team1.webp";
+import team2 from "../../assets/team/Team2.webp";
+import team3 from "../../assets/team/Team3.webp";
+import team4 from "../../assets/team/Team4.webp";
 
 import "./OurTeam.css";
 import WhyChooseUs from "../WhyChooseUs/WhyChooseUs";
