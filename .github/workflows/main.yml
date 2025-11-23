@@ -5,45 +5,59 @@ on:
     branches:
       - main
 
-# give the workflow minimal permissions needed for Pages deployment
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+env:
+  CI: false
 
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: "22"
-          cache: "npm"
+          node-version: '22'
+          cache: 'npm'               # optional: enables setup-node caching integration
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build (Vite)
+      - name: Build project
         run: npm run build
 
-      - name: Show build output (debug)
-        run: |
-          echo "Listing dist folder contents:"
-          ls -la ./dist || (echo "dist folder not found — build probably failed" && exit 1)
-
-      # Upload the dist folder as the pages artifact (recommended flow for GitHub Pages)
-      - name: Upload pages artifact
-        uses: actions/upload-pages-artifact@v1
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v4
         with:
-          path: ./dist
+          name: production-files
+          path: ./build
 
   deploy:
-    runs-on: ubuntu-latest
+    name: Deploy
     needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
     steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: production-files
+          path: ./build
+
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.TOKEN }}
+          publish_dir: ./build
