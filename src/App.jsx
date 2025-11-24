@@ -11,12 +11,14 @@ import { Routes, Route } from "react-router-dom";
 import FloatingButtons from "./components/FloatingButton/FloatingButton";
 import Pages from "./pages/Pages/Pages";
 import ScrollToTop from "./utils/ScrollToTopComponent";
+import NotFound from "./components/NotFound/NotFound";
+import RefreshPopup from "./components/RefreshPopup/RefreshPopup";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#0b0b0b] text-white">
       <Header />
-      <ScrollToTop/>
+      <ScrollToTop />
 
       {/* Add padding-top so fixed header doesn't cover content.
           Adjust value to match header height (here 80px + extra spacing = 90px). */}
@@ -27,10 +29,14 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/pages" element={<Pages />} />
+          <Route path="*" element={<NotFound />} />
+
         </Routes>
       </main>
+      <RefreshPopup />
       <FloatingButtons />
       <Footer />
+
     </div>
   );
 }

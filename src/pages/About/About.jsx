@@ -40,7 +40,7 @@ export default function About({ showHero = true, showTeam = true }) {
           viewport={{ once: false }}
           className="flex items-center justify-between py-6"
         >
-          <div className="flex gap-4 items-center fontfamily-content">
+          <div className="flex gap-4 items-center fontfamily-content flex-wrap ">
             {Array(5)
               .fill("Logoipsum")
               .map((item, i) => (

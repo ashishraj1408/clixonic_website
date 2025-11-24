@@ -37,7 +37,7 @@ export default function Footer({
             </p>
 
             <ul className="contact-list fontfamily-content" aria-label="company contact information">
-              <li><strong>Address:</strong> Location, Upcoming</li>
+              <li><strong>Address:</strong> Delhi, India</li>
               <li><strong>Email:</strong> <a href="mailto:hello@clixonicmedia.com" className="muted-link">ClixonicMedia@dummy.com</a></li>
               <li><strong>Phone:</strong> <a href="tel:+123123123" className="muted-link">+123 123 123</a></li>
             </ul>

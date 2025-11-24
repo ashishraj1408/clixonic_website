@@ -47,8 +47,8 @@ export default function Contact() {
                     <div className="w-14 h-14 bg-[#2a2a2a] flex items-center justify-center rounded-full mb-4">
                         <MapPin size={28} color="#ff00b9" />
                     </div>
-                    <p className="text-gray-400 text-sm fontfamily-content">Location</p>
-                    <h4 className="text-lg mt-1 font-semibold fontfamily-content">Location, Earth</h4>
+                    <p className="text-gray-400 text-sm fontfamily-content">Delhi</p>
+                    <h4 className="text-lg mt-1 font-semibold fontfamily-content">Delhi, India</h4>
                 </div>
 
                 {/* Work Time */}

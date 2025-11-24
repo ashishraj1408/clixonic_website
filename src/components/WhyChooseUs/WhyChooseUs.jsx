@@ -4,7 +4,7 @@ import "./WhyChooseUs.css";
 import { Globe, Lightbulb, Users, Headphones } from "lucide-react";
 import { motion } from "framer-motion";
 
-import polygonBg from "../../assets/hero/card_background.jpeg";
+// import polygonBg from "../../assets/hero/card_background.jpeg";
 import teamImg from "../../assets/hero/employee_images.webp";
 import ctaBg from "../../assets/hero/main-background.png";
 
@@ -51,15 +51,15 @@ export default function WhyChooseUs() {
     show: { opacity: 1, x: 0, transition: { duration: 0.9, ease: "easeOut" } },
   };
 
-  const popUp = {
-    hidden: { opacity: 0, scale: 0.85, y: 30 },
-    show: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: { duration: 0.9, ease: "easeOut", delay: 0.2 },
-    },
-  };
+  // const popUp = {
+  //   hidden: { opacity: 0, scale: 0.85, y: 30 },
+  //   show: {
+  //     opacity: 1,
+  //     scale: 1,
+  //     y: 0,
+  //     transition: { duration: 0.9, ease: "easeOut", delay: 0.2 },
+  //   },
+  // };
 
   return (
     <>
@@ -82,7 +82,7 @@ export default function WhyChooseUs() {
             />
 
             {/* RATING CARD */}
-            <motion.div
+            {/* <motion.div
               variants={popUp}
               initial="hidden"
               whileInView="show"
@@ -107,7 +107,7 @@ export default function WhyChooseUs() {
                   Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.
                 </p>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
           {/* RIGHT SIDE CONTENT */}
