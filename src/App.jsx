@@ -10,11 +10,13 @@ import Contact from "./pages/Contact/Contact";
 import { Routes, Route } from "react-router-dom";
 import FloatingButtons from "./components/FloatingButton/FloatingButton";
 import Pages from "./pages/Pages/Pages";
+import ScrollToTop from "./utils/ScrollToTopComponent";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col bg-[#0b0b0b] text-white">
       <Header />
+      <ScrollToTop/>
 
       {/* Add padding-top so fixed header doesn't cover content.
           Adjust value to match header height (here 80px + extra spacing = 90px). */}
