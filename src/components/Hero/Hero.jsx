@@ -11,6 +11,7 @@ import {
 
 import heroBg from "../../assets/hero/main-background.png";
 import ImgAvatar from "../../assets/hero/Team4.webp";
+import "./Hero.css";
 
 function Hero() {
   // rotating words
@@ -120,7 +121,7 @@ function Hero() {
               transition={{ duration: 0.8 }}
               className="mt-10"
             >
-              <button className="px-8 py-3 bg-white text-black rounded-full font-semibold shadow hover:shadow-lg transition">
+              <button className="view-portfolio-btn px-8 py-3 bg-white text-black rounded-full font-semibold shadow hover:shadow-lg transition">
                 View Portfolio
               </button>
             </motion.div>
