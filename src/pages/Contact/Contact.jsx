@@ -17,7 +17,7 @@ export default function Contact() {
             >
                 <div className=" backdrop-blur-xl px-20 fontfamily-content py-10 rounded-xl text-center">
                     <h1 className="text-4xl font-bold">Contact Us</h1>
-                    <p className="mt-2 flex gap-4 items-center justify-center text-gray-200">Home <ArrowRight size={16} />  Contact Us</p>
+                    <p className="mt-2 flex gap-4 items-center justify-center text-gray-200">Home <ArrowRight size={16} />  Contact Uxs</p>
                 </div>
             </div>
 
@@ -100,7 +100,7 @@ export default function Contact() {
 
                         <textarea placeholder="Message/Question" rows="4" className="bg-transparent border border-[#2a2a2a] rounded-xl px-4 py-3 focus:border-[#ff00b9] outline-none"></textarea>
 
-                        <button className="mt-2 fontfamily-content bg-[#ff00b9] hover:bg-[#d900a3] transition text-black font-semibold py-3 rounded-full">
+                        <button className="mt-2 fontfamily-content common-button transition text-black font-semibold py-3 rounded-full">
                             Send Message
                         </button>
 

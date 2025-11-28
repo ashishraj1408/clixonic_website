@@ -129,7 +129,7 @@ export default function Footer({
             <form className="subscribe-form" onSubmit={handleSubscribe} aria-label="subscribe form">
               <label htmlFor="ft-email" className="sr-only">Email address</label>
               <input id="ft-email" type="email" placeholder="Enter your email" required className="subscribe-input" />
-              <button type="submit" className="subscribe-btn">Subscribe</button>
+              <button type="submit" className="common-button">Subscribe</button>
             </form>
 
             <div className="cta-block">
@@ -138,7 +138,7 @@ export default function Footer({
                 <p className="muted">Mon to Fri, 09:00 - 17:00</p>
               </div>
 
-              <a href="/contact" className="contact-cta">Contact Us</a>
+              <a href="/contact" className="common-button">Contact Us</a>
             </div>
           </div>
         </div>

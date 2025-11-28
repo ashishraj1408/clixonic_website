@@ -139,7 +139,7 @@ export default function Services({ showHero = true }) {
               key={s.id}
               variants={card}
               whileHover={{ scale: 1.02, translateY: -6 }}
-              className="relative overflow-hidden rounded-2xl border border-[rgba(255,255,255,0.05)] p-10 min-h-[220px] feature-card group"
+              className="relative overflow-hidden rounded-2xl border  p-10 min-h-[220px] service-feature-card group"
             >
               {s.center && (
                 <div
@@ -155,7 +155,7 @@ export default function Services({ showHero = true }) {
                 />
               )}
 
-              <div className="relative z-10 flex flex-col items-center text-center">
+              <div className="relative z-10 flex flex-col items-center text-center service-feature-content">
                 <div className="w-14 h-14 rounded-full bg-brand-green flex items-center justify-center mb-6">
                   {s.icon}
                 </div>
@@ -167,7 +167,7 @@ export default function Services({ showHero = true }) {
                 </p>
 
                 <a
-                  className="mt-6 inline-flex fontfamily-content items-center gap-2 text-md border p-2 rounded-full justify-center text-smokey font-medium"
+                  className="mt-6 inline-flex fontfamily-content items-center gap-2 text-md border p-2 rounded-full justify-center text-smokey learn-more-btn font-medium"
                   href="#"
                 >
                   Learn More <ExternalLink className="w-4 h-4" />

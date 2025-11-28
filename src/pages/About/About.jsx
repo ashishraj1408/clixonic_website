@@ -46,7 +46,7 @@ export default function About({ showHero = true, showTeam = true }) {
               .map((item, i) => (
                 <div
                   key={i}
-                  className="logo-placeholder text-white font-bold text-lg border p-2 shadow-md rounded-full"
+                  className="logo-placeholder text-[#aaaeb7] font-bold text-lg border p-2 shadow-md rounded-full"
                 >
                   {item}
                 </div>
@@ -79,7 +79,7 @@ export default function About({ showHero = true, showTeam = true }) {
               Pretium praesent pellentesque enim rhoncus laoreet natoque etiam pharetra.
             </p>
 
-            <button className="inline-block fontfamily-content bg-brand-green transition px-6 py-3 rounded-full text-black font-semibold">
+            <button className="inline-block common-button text-[#aaaeb7] fontfamily-content  font-semibold">
               Learn More
             </button>
           </motion.div>

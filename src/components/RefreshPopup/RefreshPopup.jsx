@@ -155,9 +155,11 @@ export default function RefreshPopup() {
             {errors.message && <p className="error">{errors.message}</p>}
           </div>
 
-          <button className="submit-btn" disabled={sending}>
+          <div className="justify-center flex">
+            <button className="common-button ustify-center items-center flex" disabled={sending}>
             {sending ? "Sending..." : "Submit"}
           </button>
+          </div>
         </form>
 
       </div>

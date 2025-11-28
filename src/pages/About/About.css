@@ -22,5 +22,10 @@
   transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
-
+.logo-placeholder{
+  padding: 10px 15px;
+  border-radius: 32px;
+  border: .5px solid var(--Border-Border-II, #26282c);
+  background: linear-gradient(0deg, #1a1c1e 60.76%, #27292b);
+}
 

@@ -189,7 +189,7 @@ export default function WhyChooseUs() {
               Efficitur interdum laoreet ullamcorper dis velit purus praesent conubia magna.
             </p>
 
-            <button className="bg-white text-black font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 transition fontfamily-content">
+            <button className="bg-black text-white font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 transition fontfamily-content">
               Contact Us
             </button>
           </div>
