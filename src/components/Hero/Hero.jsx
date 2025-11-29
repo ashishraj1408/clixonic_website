@@ -147,10 +147,10 @@ function Hero() {
             ))}
           </nav>
 
-          <div className="mt-4 md:mt-0 flex items-center justify-center gap-6 text-smokey text-sm flex-wrap">
-            <span>Proven Result</span>
-            <span>Experienced Team</span>
-            <span>Affordable Pricing</span>
+          <div className="mt-4 md:mt-0 flex items-center justify-center gap-2 text-smokey text-sm flex-wrap">
+            <span className="expert-container">Proven Result</span>
+            <span className="expert-container">Experienced Team</span>
+            <span className="expert-container">Affordable Pricing</span>
           </div>
         </motion.div>
       </div>
