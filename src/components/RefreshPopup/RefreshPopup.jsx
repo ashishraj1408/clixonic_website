@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import emailjs from "emailjs-com";
 import { X } from "lucide-react";
 import "./RefreshPopup.css";
 
@@ -56,30 +55,38 @@ export default function RefreshPopup() {
     setSending(true);
 
     try {
-      await emailjs.send(
-        "service_gwadzgd",        // ✔ Your SERVICE ID
-        "pxp23an",               // ✔ Your TEMPLATE ID
-        {
+      console.log("Submitting form with data:", form);
+
+      const res = await fetch("/api/send-contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
           name: form.name,
           email: form.email,
           phone: form.phone,
           message: form.message,
+        }),
+      });
 
-          // ✔ send to multiple emails
-          to_email:
-            "rajashishraj14@gmail.com, rajjashish1500@gmail.com",
-        },
-        "n8nX6o0PQI_tArd4Z"       // ✔ Your PUBLIC KEY
-      );
+      console.log("Response status:", res.status);
+
+      const data = await res.json().catch(() => ({}));
+      console.log("Response body:", data);
+
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to send email");
+      }
 
       alert("Form successfully sent!");
       setOpen(false);
     } catch (err) {
-      console.log(err);
-      alert("Failed to send email.");
+      console.error("Frontend error:", err);
+      alert(`Failed to send email: ${err.message}`);
+    } finally {
+      setSending(false);
     }
-
-    setSending(false);
   };
 
   if (!open) return null;
@@ -87,7 +94,6 @@ export default function RefreshPopup() {
   return (
     <div className="popup-overlay">
       <div className="popup-card animate-popup">
-
         <button className="close-btn" onClick={() => setOpen(false)}>
           <X size={24} />
         </button>
@@ -96,7 +102,6 @@ export default function RefreshPopup() {
         <p className="subtitle">Please fill your details</p>
 
         <form onSubmit={handleSubmit} className="form">
-          
           <div className="form-group">
             <label>
               Full Name <span className="text-red-600">*</span>
@@ -161,7 +166,6 @@ export default function RefreshPopup() {
               {sending ? "Sending..." : "Submit"}
             </button>
           </div>
-
         </form>
       </div>
     </div>
