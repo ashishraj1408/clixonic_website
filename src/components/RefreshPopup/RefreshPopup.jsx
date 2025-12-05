@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
+import { message } from "antd";              //  AntD message
 import "./RefreshPopup.css";
 
 import PhoneInput from "react-phone-number-input";
@@ -7,6 +8,7 @@ import "react-phone-number-input/style.css";
 
 export default function RefreshPopup() {
   const [open, setOpen] = useState(false);
+  const [messageApi, contextHolder] = message.useMessage(); //  AntD hook
 
   const [form, setForm] = useState({
     name: "",
@@ -38,7 +40,17 @@ export default function RefreshPopup() {
     if (!form.message.trim()) temp.message = "Message is required";
 
     setErrors(temp);
-    return Object.keys(temp).length === 0;
+    const isValid = Object.keys(temp).length === 0;
+
+    if (!isValid) {
+      //  show AntD error toast on validation fail
+      messageApi.open({
+        type: "error",
+        content: "Please fix the highlighted errors.",
+      });
+    }
+
+    return isValid;
   };
 
   const handleChange = (e) => {
@@ -79,11 +91,21 @@ export default function RefreshPopup() {
         throw new Error(data.error || "Failed to send email");
       }
 
-      alert("Form successfully sent!");
+      //  success toast instead of alert
+      messageApi.open({
+        type: "success",
+        content: "Form successfully sent!",
+      });
+
       setOpen(false);
     } catch (err) {
       console.error("Frontend error:", err);
-      alert(`Failed to send email: ${err.message}`);
+
+      //  error toast instead of alert
+      messageApi.open({
+        type: "error",
+        content: `Failed to send email: ${err.message}`,
+      });
     } finally {
       setSending(false);
     }
@@ -93,6 +115,7 @@ export default function RefreshPopup() {
 
   return (
     <div className="popup-overlay">
+      {contextHolder}
       <div className="popup-card animate-popup">
         <button className="close-btn" onClick={() => setOpen(false)}>
           <X size={24} />
