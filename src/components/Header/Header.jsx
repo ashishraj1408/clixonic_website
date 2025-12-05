@@ -1,7 +1,7 @@
 // src/components/Header/Header.jsx
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import HeaderLogo from "../../assets/logo/clixonic_media_logo.jpg";
+import HeaderLogo from "../../assets/logo/header_logo.png";
 import "./Header.css";
 
 export default function Header() {
@@ -16,9 +16,9 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 z-50 bg-[#0d0d0d]/95 backdrop-blur-md text-white w-full py-2">
-      <div className="max-w-[1400px] border-[#292222] border-1 mx-auto h-[80px] rounded-full flex items-center justify-between px-6">
+      <div className="max-w-[1400px] border-[#676767] border-1 mx-auto h-[80px] rounded-full flex items-center justify-between px-6">
         <NavLink to="/" className="flex items-center gap-3">
-          <div className="w-[100px] h-[46px] py-2 rounded-full flex items-center justify-center shadow">
+          <div className="w-[150px] header-logo-div py-2 rounded-full flex items-center justify-center shadow">
             <img src={HeaderLogo} alt="logo" className="rounded-full py-2 px-2 header-logo" />
           </div>
         </NavLink>

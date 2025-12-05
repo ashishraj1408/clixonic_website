@@ -24,3 +24,7 @@
 .header-logo{
   /* display: none; */
 }
+.header-logo-div {
+  background: rgba(255, 255, 255, 0.9); 
+  height: 50px;
+}

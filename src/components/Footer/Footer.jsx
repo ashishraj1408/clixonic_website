@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import HeaderLogo from "../../assets/logo/clixonic_media_logo.jpg";
+import HeaderLogo from "../../assets/logo/title_logo.png";
 import { Facebook, Instagram, Linkedin, MapPin, Twitter, Youtube } from "lucide-react";
 
 export default function Footer({
@@ -23,8 +23,8 @@ export default function Footer({
         <div className="footer-grid">
           {/* Brand + short about + contact */}
           <div className="col brand-col">
-            <div className="brand-row">
-              <img src={HeaderLogo} alt={`${companyName} logo`} className="footer-logo" />
+            <div className="brand-row ">
+              <img src={HeaderLogo} alt={`${companyName} logo`} className="footer-logo " />
               <div>
                 <h3 className="brand-title">{companyName}</h3>
                 <p className="brand-sub fontfamily-title">Digital growth & marketing studio</p>
