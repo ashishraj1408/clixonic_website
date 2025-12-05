@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
-import { message } from "antd";              //  AntD message
+import { message } from "antd";
 import "./RefreshPopup.css";
 
 import PhoneInput from "react-phone-number-input";
@@ -8,7 +8,7 @@ import "react-phone-number-input/style.css";
 
 export default function RefreshPopup() {
   const [open, setOpen] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage(); //  AntD hook
+  const [messageApi, contextHolder] = message.useMessage();
 
   const [form, setForm] = useState({
     name: "",
@@ -43,7 +43,6 @@ export default function RefreshPopup() {
     const isValid = Object.keys(temp).length === 0;
 
     if (!isValid) {
-      //  show AntD error toast on validation fail
       messageApi.open({
         type: "error",
         content: "Please fix the highlighted errors.",
@@ -91,17 +90,27 @@ export default function RefreshPopup() {
         throw new Error(data.error || "Failed to send email");
       }
 
-      //  success toast instead of alert
+      // success toast
       messageApi.open({
         type: "success",
-        content: "Form successfully sent!",
+        content: "Your details have been submitted successfully!",
       });
 
-      setOpen(false);
+      // optional: clear form
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+
+      // close popup after short delay so toast is visible
+      setTimeout(() => {
+        setOpen(false);
+      }, 800);
     } catch (err) {
       console.error("Frontend error:", err);
 
-      //  error toast instead of alert
       messageApi.open({
         type: "error",
         content: `Failed to send email: ${err.message}`,
@@ -111,86 +120,90 @@ export default function RefreshPopup() {
     }
   };
 
-  if (!open) return null;
-
   return (
-    <div className="popup-overlay">
+    <>
+      {/* AntD message holder (must be high in the tree so it survives popup close) */}
       {contextHolder}
-      <div className="popup-card animate-popup">
-        <button className="close-btn" onClick={() => setOpen(false)}>
-          <X size={24} />
-        </button>
 
-        <h2 className="title">Get In Touch!</h2>
-        <p className="subtitle">Please fill your details</p>
-
-        <form onSubmit={handleSubmit} className="form">
-          <div className="form-group">
-            <label>
-              Full Name <span className="text-red-600">*</span>
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="Your full name"
-            />
-            {errors.name && <p className="error">{errors.name}</p>}
-          </div>
-
-          <div className="form-group">
-            <label>
-              Email <span className="text-red-600">*</span>
-            </label>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="Your email"
-            />
-            {errors.email && <p className="error">{errors.email}</p>}
-          </div>
-
-          <div className="form-group">
-            <label>
-              Phone <span className="text-red-600">*</span>
-            </label>
-
-            <PhoneInput
-              defaultCountry="IN"
-              placeholder="Enter phone number"
-              value={form.phone}
-              onChange={(value) => {
-                setForm((prev) => ({ ...prev, phone: value }));
-                setErrors((prev) => ({ ...prev, phone: "" }));
-              }}
-            />
-            {errors.phone && <p className="error">{errors.phone}</p>}
-          </div>
-
-          <div className="form-group">
-            <label>
-              Message <span className="text-red-600">*</span>
-            </label>
-            <textarea
-              rows="4"
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              placeholder="Tell us about your project"
-            />
-            {errors.message && <p className="error">{errors.message}</p>}
-          </div>
-
-          <div className="flex justify-center">
-            <button className="common-button" disabled={sending}>
-              {sending ? "Sending..." : "Submit"}
+      {open && (
+        <div className="popup-overlay">
+          <div className="popup-card animate-popup">
+            <button className="close-btn" onClick={() => setOpen(false)}>
+              <X size={24} />
             </button>
+
+            <h2 className="title">Get In Touch!</h2>
+            <p className="subtitle">Please fill your details</p>
+
+            <form onSubmit={handleSubmit} className="form">
+              <div className="form-group">
+                <label>
+                  Full Name <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder="Your full name"
+                />
+                {errors.name && <p className="error">{errors.name}</p>}
+              </div>
+
+              <div className="form-group">
+                <label>
+                  Email <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder="Your email"
+                />
+                {errors.email && <p className="error">{errors.email}</p>}
+              </div>
+
+              <div className="form-group">
+                <label>
+                  Phone <span className="text-red-600">*</span>
+                </label>
+
+                <PhoneInput
+                  defaultCountry="IN"
+                  placeholder="Enter phone number"
+                  value={form.phone}
+                  onChange={(value) => {
+                    setForm((prev) => ({ ...prev, phone: value }));
+                    setErrors((prev) => ({ ...prev, phone: "" }));
+                  }}
+                />
+                {errors.phone && <p className="error">{errors.phone}</p>}
+              </div>
+
+              <div className="form-group">
+                <label>
+                  Message <span className="text-red-600">*</span>
+                </label>
+                <textarea
+                  rows="4"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  placeholder="Tell us about your project"
+                />
+                {errors.message && <p className="error">{errors.message}</p>}
+              </div>
+
+              <div className="flex justify-center">
+                <button className="common-button cursor-pointer" disabled={sending}>
+                  {sending ? "Sending..." : "Submit"}
+                </button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-    </div>
+        </div>
+      )}
+    </>
   );
 }

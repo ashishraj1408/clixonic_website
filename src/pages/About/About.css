@@ -26,4 +26,10 @@
   border: .5px solid var(--Border-Border-II, #26282c);
   background: linear-gradient(0deg, #1a1c1e 60.76%, #27292b);
 }
+@media (max-width: 500px) {
+  .mobile-screen-padding{
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+}
 

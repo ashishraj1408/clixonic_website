@@ -25,7 +25,8 @@
 
 /* Main button (gradient) */
 .btn-main {
-  background: linear-gradient(90deg, #ff007a, #00ff88);
+  /* background: linear-gradient(90deg, #ff007a, #00ff88); */
+   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 12px 24px;
   border-radius: 999px;
   font-weight: 600;
@@ -65,3 +66,4 @@
   transform: translateY(-4px) scale(1.03);
   background: rgba(255, 255, 255, 0.2);
 }
+

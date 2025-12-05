@@ -30,7 +30,7 @@ export default function About({ showHero = true, showTeam = true }) {
         </motion.div>
       )}
 
-      <div className="max-w-7xl mx-auto px-6 py-10">
+      <div className="max-w-7xl mx-auto px-6 py-10 mobile-screen-padding">
 
         {/* Logos row */}
         <motion.div

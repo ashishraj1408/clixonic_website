@@ -26,7 +26,7 @@ function Hero() {
   }, []);
 
   return (
-    <section className="w-full bg-[#0b0b0b] text-white pt-20 pb-16 overflow-hidden">
+    <section className="w-full bg-[#0b0b0b] text-white pt-20 pb-16 overflow-hidden mobile-screen-padding-hero">
       <div className="max-w-7xl mx-auto px-6">
         
         {/* TITLE */}
