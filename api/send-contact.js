@@ -1,7 +1,7 @@
 // api/send-contact.js
-const nodemailer = require("nodemailer");
+import nodemailer from "nodemailer";
 
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   console.log("API /api/send-contact called, method:", req.method);
 
   // Only allow POST
@@ -26,18 +26,18 @@ module.exports = async (req, res) => {
     console.log("LEADS_TO_EMAIL:", process.env.LEADS_TO_EMAIL);
 
     const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,         // e.g. "smtp.gmail.com"
+      host: process.env.SMTP_HOST,           // "smtp.gmail.com"
       port: Number(process.env.SMTP_PORT) || 587,
-      secure: false,                       // true for 465, false for 587
+      secure: false,                         // true for 465, false for 587
       auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
     });
 
-    // Optional: verify connection (good for debugging)
+    // Optional but very useful for debugging
     await transporter.verify();
-    console.log("SMTP connection successful");
+    console.log("SMTP connection OK");
 
     await transporter.sendMail({
       from: `"Website Lead" <${process.env.SMTP_USER}>`,
@@ -57,6 +57,6 @@ module.exports = async (req, res) => {
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error("Email error:", err);
-    return res.status(500).json({ error: "Failed to send email" });
+    return res.status(500).json({ error: err.message || "Failed to send email" });
   }
-};
+}
