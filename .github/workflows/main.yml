@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '22'
-          cache: 'npm'               # optional: enables setup-node caching integration
+          cache: 'npm'
 
       - name: Cache node modules
         uses: actions/cache@v4
