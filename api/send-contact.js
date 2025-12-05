@@ -40,12 +40,46 @@ export default async function handler(req, res) {
       to: process.env.LEADS_TO_EMAIL,
       subject: "New Lead from Clixonic Website",
       html: `
-        <h3>New Lead from Website</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Message:</strong></p>
-        <p>${String(message).replace(/\n/g, "<br/>")}</p>
+        <div style="font-family: Arial, sans-serif; background:#f5f5f5; padding:20px;">
+          <div style="max-width:600px; margin:0 auto; background:#ffffff; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.08);">
+            <div style="background:#111827; color:#ffffff; padding:16px 24px;">
+              <h2 style="margin:0; font-size:18px;">New Lead from Clixonic Website</h2>
+            </div>
+
+            <div style="padding:20px 24px;">
+              <p style="margin:0 0 16px 0; font-size:14px; color:#374151;">
+                You have received a new enquiry. Lead details are below:
+              </p>
+
+              <table style="width:100%; border-collapse:collapse; font-size:14px;">
+                <tbody>
+                  <tr>
+                    <td style="width:150px; padding:8px 12px; font-weight:600; background:#f9fafb; border:1px solid #e5e7eb;">Name</td>
+                    <td style="padding:8px 12px; border:1px solid #e5e7eb;">${name}</td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px; padding:8px 12px; font-weight:600; background:#f9fafb; border:1px solid #e5e7eb;">Email</td>
+                    <td style="padding:8px 12px; border:1px solid #e5e7eb;">${email}</td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px; padding:8px 12px; font-weight:600; background:#f9fafb; border:1px solid #e5e7eb;">Phone</td>
+                    <td style="padding:8px 12px; border:1px solid #e5e7eb;">${phone}</td>
+                  </tr>
+                  <tr>
+                    <td style="width:150px; padding:8px 12px; font-weight:600; background:#f9fafb; border:1px solid #e5e7eb; vertical-align:top;">Message</td>
+                    <td style="padding:8px 12px; border:1px solid #e5e7eb;">
+                      ${String(message).replace(/\n/g, "<br/>")}
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <p style="margin:16px 0 0 0; font-size:12px; color:#9ca3af;">
+                This email was generated automatically from the Clixonic contact form.
+              </p>
+            </div>
+          </div>
+        </div>
       `,
     });
 
