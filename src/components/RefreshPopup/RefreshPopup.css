@@ -96,7 +96,7 @@
     width: 90%;
     padding: 20px;
   }
-  ..popup-overlay{
+  .popup-overlay{
     padding: 0 10px;
   }
 }
