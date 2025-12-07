@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import "./Services.css";
 import centerPattern from "../../assets/hero/card_background.jpeg";
 import statsBg from "../../assets/hero/card_background.jpeg";
-import BackgroundImg from "../../assets/hero/main-background.png"; 
+import BackgroundImg from "../../assets/hero/main-background.png";
 
 
 import {
@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import OurProcess from "../../components/OurProcess/OurProcess";
 import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
+import SEO from "../../components/SEO/SEO";
 
 const services = [
   { id: 1, title: "Content Marketing", icon: <FileText className="w-6 h-6 text-black" /> },
@@ -91,6 +92,11 @@ export default function Services({ showHero = true }) {
 
   return (
     <section className="bg-[#0b0b0b] text-white py-10">
+      <SEO
+        title="SEO, Web Development & Social Media Services | Clixonic Media"
+        description="We offer SEO services, website design & development, content marketing, and social media management."
+        keywords="seo services, web design, content marketing, social media marketing agency"
+      />
       {showHero && (
         <motion.div
           initial={{ opacity: 0, scale: 0.995 }}

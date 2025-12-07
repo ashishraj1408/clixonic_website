@@ -1,11 +1,16 @@
 import React from "react";
 import { Phone, Mail, MapPin, Clock, ArrowRight } from "lucide-react";
 import BackgroundImg from "../../assets/hero/main-background.png";
+import SEO from "../../components/SEO/SEO";
 
 export default function Contact() {
     return (
         <div className="w-full bg-[#0b0b0b] text-white pb-20">
-
+            <SEO
+                title="Contact Clixonic Media | Book a Free Consultation"
+                description="Get in touch with Clixonic Media to discuss your website, SEO, and digital marketing requirements."
+                keywords="contact digital marketing agency, contact clixonic media, book free consultation"
+            />
 
             {/* Hero Section */}
             <div

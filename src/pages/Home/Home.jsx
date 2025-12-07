@@ -6,10 +6,25 @@ import OurProcess from '../../components/OurProcess/OurProcess';
 import WhyChooseUs from '../../components/WhyChooseUs/WhyChooseUs';
 import Testimonial from '../../components/Testimonial/Testimonial';
 import Insights from '../../components/Insights/Insights';
+import SEO from '../../components/SEO/SEO';
 
 function Home() {
   return (
     <div>
+      <SEO
+        title="Clixonic Media | Digital Marketing & Web Development for UK & US Brands"
+        description="We help startups & businesses in the UK & US with SEO, Web Development, Social Media Marketing & Branding."
+        keywords="digital marketing agency uk, seo agency usa, web development company, clixonic media"
+        type="website"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "Clixonic Media",
+          "url": "https://clixonic-website.vercel.app",
+          "logo": "https://clixonic-website.vercel.app/logo.png",
+          "description": "Digital marketing, SEO, web development & social media services for global brands.",
+        }}
+      />
       <Hero />
       <About showHero={false} showTeam={false} />
 

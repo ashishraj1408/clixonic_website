@@ -19,9 +19,6 @@ function App() {
     <div className="min-h-screen flex flex-col bg-[#0b0b0b] text-white">
       <Header />
       <ScrollToTop />
-
-      {/* Add padding-top so fixed header doesn't cover content.
-          Adjust value to match header height (here 80px + extra spacing = 90px). */}
       <main className="flex-grow pt-[90px]">
         <Routes>
           <Route path="/" element={<Home />} />

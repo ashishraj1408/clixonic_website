@@ -6,10 +6,16 @@ import heroTeam from "../../assets/hero/employee_images.webp";
 import { Lightbulb, ArrowRight } from "lucide-react";
 import OurTeam from "../../components/OurTeam/OurTeam";
 import BackgroundImg from "../../assets/hero/main-background.png";
+import SEO from "../../components/SEO/SEO";
 
 export default function About({ showHero = true, showTeam = true }) {
   return (
     <div className="bg-[#0b0b0b] text-white font-sans overflow-hidden">
+      <SEO
+        title="About Clixonic Media | Our Story & Team"
+        description="Learn more about Clixonic Media, a digital marketing & web development agency helping brands grow online."
+        keywords="about clixonic media, digital agency team, marketing experts"
+      />
 
       {/* HERO */}
       {showHero && (

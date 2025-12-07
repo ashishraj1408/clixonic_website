@@ -2,12 +2,18 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./NotFound.css";
 import { Home, ArrowLeft, LifeBuoy } from "lucide-react";
+import SEO from "../SEO/SEO";
 
 export default function NotFound() {
   const navigate = useNavigate();
 
   return (
     <section className="min-h-screen bg-[#0b0b0b] text-white flex items-center justify-center px-6">
+      <SEO
+        title="Page Not Found | Clixonic Media"
+        description="The page you are looking for does not exist."
+        noIndex={true}
+      />
       <div className="relative text-center max-w-lg">
 
         {/* Floating 404 */}
@@ -29,7 +35,7 @@ export default function NotFound() {
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
-          
+
           {/* Go Home */}
           <button
             onClick={() => navigate("/")}
