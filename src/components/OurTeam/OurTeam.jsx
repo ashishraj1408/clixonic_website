@@ -1,4 +1,5 @@
-import React from "react";
+// src/components/OurTeam/OurTeam.jsx
+import React, { useState } from "react";
 import { Linkedin, X, Instagram } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -27,6 +28,59 @@ const SocialIcon = ({ children }) => (
     {children}
   </div>
 );
+
+// ⬇️ Single team card with skeleton + lazy image
+const TeamCard = ({ member, index, cardVariant }) => {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <motion.div
+      variants={cardVariant}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.2 }}
+      transition={{ delay: index * 0.15 }}
+      className="bg-[#111] rounded-2xl overflow-hidden shadow-xl border border-[#1b1b1b] team-card transition hover:scale-[1.03]"
+    >
+      {/* Image */}
+      <div className="relative">
+        {/* Skeleton overlay while image loads */}
+        {!loaded && <div className="team-skeleton absolute inset-0" />}
+
+        <img
+          src={member.img}
+          alt={member.name}
+          loading="lazy"                    
+          onLoad={() => setLoaded(true)}    
+          className={`w-full h-64 object-cover transition-opacity duration-300 ${
+            loaded ? "opacity-100" : "opacity-0"
+          }`}
+        />
+
+        {/* Social Icons */}
+        <div className="absolute top-3 left-3 flex gap-2">
+          <SocialIcon>
+            <Linkedin size={20} color="#ff00b9" />
+          </SocialIcon>
+          <SocialIcon>
+            <X size={20} color="#ff00b9" />
+          </SocialIcon>
+          <SocialIcon>
+            <Instagram size={20} color="#ff00b9" />
+          </SocialIcon>
+        </div>
+      </div>
+
+      {/* Bottom Card */}
+      <div className="p-5 text-center bg-[#0f0f0f]/90 backdrop-blur">
+        <h3 className="text-xl font-bold fontfamily-content">{member.name}</h3>
+        <p className="text-sm text-gray-300 mt-1 fontfamily-content">
+          {member.role}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
 
 export default function OurTeam() {
   // Animation Variants
@@ -57,43 +111,12 @@ export default function OurTeam() {
         {/* Team Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {team.map((member, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariant}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: false, amount: 0.2 }}
-              transition={{ delay: index * 0.15 }}
-              className="bg-[#111] rounded-2xl overflow-hidden shadow-xl border border-[#1b1b1b] team-card transition hover:scale-[1.03] "
-            >
-              {/* Image */}
-              <div className="relative">
-                <img
-                  src={member.img}
-                  alt={member.name}
-                  className="w-full h-64 object-cover"
-                />
-
-                {/* Social Icons */}
-                <div className="absolute top-3 left-3 flex gap-2">
-                  <SocialIcon>
-                    <Linkedin size={20} color="#ff00b9" />
-                  </SocialIcon>
-                  <SocialIcon>
-                    <X size={20} color="#ff00b9" />
-                  </SocialIcon>
-                  <SocialIcon>
-                    <Instagram size={20} color="#ff00b9" />
-                  </SocialIcon>
-                </div>
-              </div>
-
-              {/* Bottom Card */}
-              <div className="p-5 text-center bg-[#0f0f0f]/90 backdrop-blur">
-                <h3 className="text-xl font-bold fontfamily-content">{member.name}</h3>
-                <p className="text-sm text-gray-300 mt-1 fontfamily-content">{member.role}</p>
-              </div>
-            </motion.div>
+            <TeamCard
+              key={member.name + index}
+              member={member}
+              index={index}
+              cardVariant={cardVariant}
+            />
           ))}
         </div>
       </div>

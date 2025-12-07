@@ -1,3 +1,4 @@
+// src/components/RefreshPopup/RefreshPopup.jsx
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { message } from "antd";
@@ -6,8 +7,9 @@ import "./RefreshPopup.css";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
-export default function RefreshPopup() {
-  const [open, setOpen] = useState(false);
+export default function RefreshPopup({ inline = false }) {
+  const [open, setOpen] = useState(!inline); // inline = always visible
+
   const [messageApi, contextHolder] = message.useMessage();
 
   const [form, setForm] = useState({
@@ -20,9 +22,20 @@ export default function RefreshPopup() {
   const [errors, setErrors] = useState({});
   const [sending, setSending] = useState(false);
 
+  // auto-open popup only in normal (non-inline) mode
   useEffect(() => {
-    setOpen(true);
-  }, []);
+    if (!inline) setOpen(true);
+  }, [inline]);
+
+  // listen to global event only for popup mode
+  useEffect(() => {
+    if (inline) return;
+
+    const openListener = () => setOpen(true);
+    window.addEventListener("open-refresh-popup", openListener);
+
+    return () => window.removeEventListener("open-refresh-popup", openListener);
+  }, [inline]);
 
   const validate = () => {
     let temp = {};
@@ -34,7 +47,7 @@ export default function RefreshPopup() {
       temp.email = "Invalid email format";
 
     if (!form.phone) temp.phone = "Phone number is required";
-    else if (form.phone.length < 10)
+    else if (form.phone.replace(/\D/g, "").length < 10)
       temp.phone = "Enter a valid phone number";
 
     if (!form.message.trim()) temp.message = "Message is required";
@@ -45,7 +58,7 @@ export default function RefreshPopup() {
     if (!isValid) {
       messageApi.open({
         type: "error",
-        content: "Please fix the highlighted errors.",
+        content: "Please fill the required field.",
       });
     }
 
@@ -66,8 +79,6 @@ export default function RefreshPopup() {
     setSending(true);
 
     try {
-      console.log("Submitting form with data:", form);
-
       const res = await fetch("/api/send-contact", {
         method: "POST",
         headers: {
@@ -81,22 +92,17 @@ export default function RefreshPopup() {
         }),
       });
 
-      console.log("Response status:", res.status);
-
       const data = await res.json().catch(() => ({}));
-      console.log("Response body:", data);
 
       if (!res.ok) {
         throw new Error(data.error || "Failed to send email");
       }
 
-      // success toast
       messageApi.open({
         type: "success",
         content: "Your details have been submitted successfully!",
       });
 
-      // optional: clear form
       setForm({
         name: "",
         email: "",
@@ -104,10 +110,11 @@ export default function RefreshPopup() {
         message: "",
       });
 
-      // close popup after short delay so toast is visible
-      setTimeout(() => {
-        setOpen(false);
-      }, 800);
+      if (!inline) {
+        setTimeout(() => {
+          setOpen(false);
+        }, 800);
+      }
     } catch (err) {
       console.error("Frontend error:", err);
 
@@ -120,89 +127,106 @@ export default function RefreshPopup() {
     }
   };
 
+  // ✅ shared form JSX for both popup + inline
+  const formContent = (
+    <form onSubmit={handleSubmit} className="form">
+      <div className="form-group">
+        <label>
+          Full Name <span className="text-red-600">*</span>
+        </label>
+        <input
+          type="text"
+          name="name"
+          value={form.name}
+          onChange={handleChange}
+          placeholder="Your full name"
+        />
+        {errors.name && <p className="error">{errors.name}</p>}
+      </div>
+
+      <div className="form-group">
+        <label>
+          Email <span className="text-red-600">*</span>
+        </label>
+        <input
+          type="email"
+          name="email"
+          value={form.email}
+          onChange={handleChange}
+          placeholder="Your email"
+        />
+        {errors.email && <p className="error">{errors.email}</p>}
+      </div>
+
+      <div className="form-group">
+        <label>
+          Phone <span className="text-red-600">*</span>
+        </label>
+
+        <PhoneInput
+          defaultCountry="IN"
+          placeholder="Enter phone number"
+          value={form.phone}
+          onChange={(value) => {
+            setForm((prev) => ({ ...prev, phone: value || "" }));
+            setErrors((prev) => ({ ...prev, phone: "" }));
+          }}
+        />
+        {errors.phone && <p className="error">{errors.phone}</p>}
+      </div>
+
+      <div className="form-group">
+        <label>
+          Message <span className="text-red-600">*</span>
+        </label>
+        <textarea
+          rows="4"
+          name="message"
+          value={form.message}
+          onChange={handleChange}
+          placeholder="Tell us about your project"
+        />
+        {errors.message && <p className="error">{errors.message}</p>}
+      </div>
+
+      <div className="flex justify-center">
+        <button
+          className="common-button refersh-submit cursor-pointer"
+          disabled={sending}
+        >
+          {sending ? "Sending..." : "Submit"}
+        </button>
+      </div>
+    </form>
+  );
+
   return (
     <>
-      {/* AntD message holder (must be high in the tree so it survives popup close) */}
       {contextHolder}
 
-      {open && (
-        <div className="popup-overlay">
-          <div className="popup-card animate-popup">
-            <button className="close-btn" onClick={() => setOpen(false)}>
-              <X size={24} />
-            </button>
-
-            <h2 className="title">Get In Touch!</h2>
-            <p className="subtitle">Please fill your details</p>
-
-            <form onSubmit={handleSubmit} className="form">
-              <div className="form-group">
-                <label>
-                  Full Name <span className="text-red-600">*</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your full name"
-                />
-                {errors.name && <p className="error">{errors.name}</p>}
-              </div>
-
-              <div className="form-group">
-                <label>
-                  Email <span className="text-red-600">*</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Your email"
-                />
-                {errors.email && <p className="error">{errors.email}</p>}
-              </div>
-
-              <div className="form-group">
-                <label>
-                  Phone <span className="text-red-600">*</span>
-                </label>
-
-                <PhoneInput
-                  defaultCountry="IN"
-                  placeholder="Enter phone number"
-                  value={form.phone}
-                  onChange={(value) => {
-                    setForm((prev) => ({ ...prev, phone: value }));
-                    setErrors((prev) => ({ ...prev, phone: "" }));
-                  }}
-                />
-                {errors.phone && <p className="error">{errors.phone}</p>}
-              </div>
-
-              <div className="form-group">
-                <label>
-                  Message <span className="text-red-600">*</span>
-                </label>
-                <textarea
-                  rows="4"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  placeholder="Tell us about your project"
-                />
-                {errors.message && <p className="error">{errors.message}</p>}
-              </div>
-
-              <div className="flex justify-center">
-                <button className="common-button cursor-pointer" disabled={sending}>
-                  {sending ? "Sending..." : "Submit"}
-                </button>
-              </div>
-            </form>
-          </div>
+      {inline ? (
+        // 👉 Inline mode (used on Contact page)
+        <div className="contact-inline-card">
+          <h2 className="title">Get In Touch!</h2>
+          <p className="subtitle">Please fill your details</p>
+          {formContent}
         </div>
+      ) : (
+        // 👉 Popup mode (used globally from Header)
+        open && (
+          <div className="popup-overlay">
+            <div className="popup-card animate-popup">
+              <button className="close-btn" onClick={() => setOpen(false)}>
+                <X size={24} />
+              </button>
+
+              <h2 className="title">Get In Touch!</h2>
+              <p className="subtitle">Please fill your details</p>
+
+              {formContent}
+            </div>
+          </div>
+        )
       )}
     </>
   );

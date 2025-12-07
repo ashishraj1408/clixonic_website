@@ -17,7 +17,7 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 left-0 z-50 bg-[#0d0d0d]/95 backdrop-blur-md text-white w-full py-2">
-      <div className="max-w-[1400px] border-[#676767] border-1 mx-auto h-[80px] rounded-full flex items-center justify-between px-6 mobile-screen-header">
+      <div className="max-w-[1200px] border-[#676767] border-1 mx-auto h-[75px] rounded-full flex items-center justify-between px-6 mobile-screen-header">
         <NavLink to="/" className="flex items-center gap-3">
 
           {/* Desktop Logo */}
@@ -48,9 +48,12 @@ export default function Header() {
           ))}
         </nav>
 
-        <NavLink to="/get-started" className="hidden lg:inline-block px-8 py-3 rounded-full bg-brand-gradient text-black font-semibold">
+        <button
+          onClick={() => window.dispatchEvent(new Event("open-refresh-popup"))}
+          className="hidden lg:inline-block px-8 py-3 rounded-full bg-brand-gradient cursor-pointer font-semibold"
+        >
           Get Started
-        </NavLink>
+        </button>
 
         <button className="md:hidden" onClick={() => setOpen(!open)} aria-label="Toggle Menu">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round">
@@ -71,9 +74,16 @@ export default function Header() {
               {l.name}
             </NavLink>
           ))}
-          <NavLink to="/get-started" className="block mt-4 px-6 py-3 bg-brand-gradient text-black rounded-full text-center font-semibold" onClick={() => setOpen(false)}>
+          <button
+            onClick={() => {
+              window.dispatchEvent(new Event("open-refresh-popup"));
+              setOpen(false);
+            }}
+            className="block mt-4 px-6 py-3 bg-brand-gradient cursor-pointer rounded-full text-center font-semibold"
+          >
             Get Started
-          </NavLink>
+          </button>
+
         </div>
       )}
     </header>

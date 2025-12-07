@@ -7,3 +7,23 @@
   transform: translateY(-8px);
   box-shadow: 0 0 35px 6px rgba(255, 0, 185, 0.35);
 }
+.team-skeleton {
+  background: linear-gradient(
+    90deg,
+    #1f2933 0%,
+    #374151 40%,
+    #1f2933 80%
+  );
+  background-size: 200% 100%;
+  animation: team-skeleton-shimmer 1.2s ease-in-out infinite;
+  border-radius: 0.75rem; /* same feel as card */
+}
+
+@keyframes team-skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

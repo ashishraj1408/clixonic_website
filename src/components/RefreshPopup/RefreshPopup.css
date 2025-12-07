@@ -75,22 +75,6 @@
   margin-top: 3px;
 }
 
-.submit-btn {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(90deg, #ff007a, #00ff88);
-  border: none;
-  color: black;
-  font-weight: bold;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.submit-btn:hover {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
 @media (max-width: 450px) {
   .popup-card {
     width: 90%;
@@ -99,4 +83,14 @@
   .popup-overlay{
     padding: 0 10px;
   }
+}
+.refersh-submit{
+  padding: 12px 20px !important;
+}
+/* in RefreshPopup.css */
+.contact-inline-card {
+  border: 1px solid #2a2a2a;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  background-color: #111111;
 }
