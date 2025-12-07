@@ -91,3 +91,12 @@
   transform: translateY(-2px);
   opacity: 0.9;
 }
+@media (max-width: 450px) {
+  .popup-card {
+    width: 90%;
+    padding: 20px;
+  }
+  ..popup-overlay{
+    padding: 0 10px;
+  }
+}

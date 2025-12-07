@@ -38,7 +38,7 @@ export default function FloatingButtons() {
       {showTop && (
         <button
           onClick={scrollToTop}
-          className="w-14 h-14 flex items-center cursor-pointer justify-center rounded-full bg-brand-green text-black shadow-xl hover:scale-110 transition-all"
+          className="w-14 h-14 border-[#676767] border-1 flex items-center cursor-pointer justify-center rounded-full bg-brand-green text-black shadow-xl hover:scale-110 transition-all"
         >
           <ArrowUp />
         </button>

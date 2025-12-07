@@ -64,7 +64,7 @@ export default function OurTeam() {
               whileInView="show"
               viewport={{ once: false, amount: 0.2 }}
               transition={{ delay: index * 0.15 }}
-              className="bg-[#111] rounded-2xl overflow-hidden shadow-xl border border-[#1b1b1b] team-card transition hover:scale-[1.03]"
+              className="bg-[#111] rounded-2xl overflow-hidden shadow-xl border border-[#1b1b1b] team-card transition hover:scale-[1.03] "
             >
               {/* Image */}
               <div className="relative">

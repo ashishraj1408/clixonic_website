@@ -40,7 +40,7 @@
   height: 64px;
   object-fit: cover;
   border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgb(255 255 255 / 46%);
   box-shadow: 0 6px 18px rgba(0,0,0,0.6);
 }
 
@@ -199,7 +199,5 @@
 .legal-links span { color: #5f748f; }
 
 
-
-/* small helpers */
 .muted-link { color: rgba(255,255,255,0.85); text-decoration: none; }
 .sr-only { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px, 1px, 1px, 1px); white-space: nowrap; }
