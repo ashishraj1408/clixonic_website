@@ -54,7 +54,7 @@ export default function OurProcess() {
   };
 
   return (
-    <section className="bg-[#0b0b0b] text-white py-10">
+    <section className="our-process-section bg-[#0b0b0b] text-white py-10">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* Section Title */}

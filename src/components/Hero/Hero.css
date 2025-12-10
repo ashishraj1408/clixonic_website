@@ -1,15 +1,23 @@
-.view-portfolio-btn{
-    background: #ffff !important;
-    color: #000 !important;
+.view-portfolio-btn {
+  background: #ffff !important;
+  color: #000 !important;
 }
-.expert-container{
-    border: .5px solid var(--Border-Border-II, #26282c);
-    padding: 5px 12px;
-    border-radius: 15px;
+
+.expert-container {
+  border: .5px solid var(--Border-Border-II, #26282c);
+  padding: 5px 12px;
+  border-radius: 15px;
 }
+
 @media (max-width: 500px) {
-  .mobile-screen-padding-hero{
+  .mobile-screen-padding-hero {
     padding-top: 12px !important;
     padding-bottom: 12px !important;
   }
+}
+
+.right-hero-image-shadow {
+  max-width: 90%;
+  box-shadow: 0 30px 80px rgba(75, 75, 75, 0.6);
+  border-radius: 24px;
 }
