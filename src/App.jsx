@@ -1,4 +1,3 @@
-// src/App.js
 import "./App.css";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
@@ -17,8 +16,17 @@ import RefreshPopup from "./components/RefreshPopup/RefreshPopup";
 
 import CookieBanner from "./components/CookieBanner/CookieBanner";
 import useAnalyticsLoader from "./hooks/useAnalyticsLoader";
+import { CookieProvider } from "./context/CookieContext";
 
 function App() {
+  return (
+    <CookieProvider>
+      <InnerApp />
+    </CookieProvider>
+  );
+}
+
+function InnerApp() {
   useAnalyticsLoader();
   return (
     <div className="min-h-screen flex flex-col bg-[#0b0b0b] text-white">
@@ -40,7 +48,6 @@ function App() {
       <FloatingButtons />
       <Footer />
 
-      {/* Cookie banner mounted near the end so it overlays everything */}
       <CookieBanner />
     </div>
   );

@@ -87,6 +87,7 @@ textarea,
   border: .5px solid var(--Border-Border-II, #26282c) !important;
   background: linear-gradient(0deg, #1a1c1e 60.76%, #27292b) !important;
 }
+
 /* Wrapper */
 .custom-phone-input {
   display: flex;
@@ -94,7 +95,7 @@ textarea,
   width: 100%;
   background-color: transparent;
   border: 1px solid #2a2a2a;
-  border-radius: 0.75rem; 
+  border-radius: 0.75rem;
 }
 
 
@@ -113,8 +114,11 @@ textarea,
 
 /* Placeholder color on dark bg */
 .custom-phone-input .PhoneInputInput::placeholder {
-  color: #9ca3af; /* Tailwind gray-400 */
+  color: #9ca3af;
+  /* Tailwind gray-400 */
 }
-.contact-send{
+
+.contact-send {
   max-width: fit-content;
 }
+

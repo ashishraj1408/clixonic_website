@@ -1,71 +1,124 @@
 // src/components/CookieBanner/CookieBanner.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Switch } from "antd";
+import { X } from "lucide-react";
 import { useCookies } from "../../context/CookieContext";
+import "./CookieBanner.css";
 
 export default function CookieBanner() {
-  const { consent, acceptAll, rejectAll, updateCategory } = useCookies();
+  const { consent, acceptAll, rejectAll, savePreferences, updateCategory, closeBanner } = useCookies();
+  const [isCustomizeOpen, setCustomizeOpen] = useState(false);
+  const [draft, setDraft] = useState({ analytics: false, preferences: false, marketing: false });
 
-  // Hide the banner if the user already saw/consented
+  useEffect(() => {
+    setDraft({
+      analytics: !!consent?.analytics,
+      preferences: !!consent?.preferences,
+      marketing: !!consent?.marketing,
+    });
+  }, [isCustomizeOpen, consent]);
+
   if (consent?.seen) return null;
 
+  const onSave = () => {
+    savePreferences(draft);
+    setCustomizeOpen(false);
+  };
+
+  const onAcceptSelected = () => {
+    savePreferences(draft);
+    setCustomizeOpen(false);
+  };
+
+  const options = [
+    { label: "Necessary", desc: "Required for security & core functions.", key: "necessary", fixed: true },
+    { label: "Analytics", desc: "Helps us understand site usage.", key: "analytics" },
+    { label: "Preferences", desc: "Saves theme & language.", key: "preferences" },
+    { label: "Marketing", desc: "Used to personalize ads.", key: "marketing" },
+  ];
+
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-50 max-w-4xl mx-auto rounded-2xl p-4 shadow-lg bg-[#0b0b0b] text-white border border-[#1a1a1a]">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-        <div className="flex-1">
-          <h3 className="fontfamily-title text-lg">We use cookies</h3>
-          <p className="text-sm text-smokey mt-1">
-            We use essential cookies to make the site work. With your permission we (and our partners) may use analytics
-            and marketing cookies to improve and personalize your experience. You can change preferences any time.
-          </p>
-          <a href="/cookie-policy" className="text-sm text-brand-pink underline inline-block mt-2">Read our Cookie Policy</a>
+    <>
+      <div className="cb-banner" role="region" aria-label="Cookie banner">
+        <div className="cb-banner__content">
+          <div className="cb-banner__left">
+            <h3 className="cb-title">We use cookies</h3>
+            <p className="cb-desc">
+              We use essential cookies to make the site work. With your permission we use analytics, preferences and marketing to improve your experience.
+            </p>
+            <a href="/cookie-policy" className="cb-link">Read our Cookie Policy</a>
+          </div>
+
+          <div className="cb-banner__actions" role="group" aria-label="cookie actions">
+            <button className="cb-btn cb-btn--primary cursor-pointer" onClick={acceptAll}>Accept all</button>
+            <button className="cb-btn cb-btn--ghost cursor-pointer" onClick={rejectAll}>Reject all</button>
+            <button className="cb-btn cb-btn--ghost cursor-pointer" onClick={() => setCustomizeOpen(true)}>Customize</button>
+          </div>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center gap-2">
-          <button
-            onClick={acceptAll}
-            className="px-4 py-2 rounded-xl font-semibold bg-brand-gradient text-white shadow-md hover:opacity-90"
-          >
-            Accept all
-          </button>
-
-          <button
-            onClick={rejectAll}
-            className="px-4 py-2 rounded-xl border border-[#2b2b2b] text-smokey hover:bg-[#111] transition"
-          >
-            Reject 
-          </button>
-
-          <details className="text-left">
-            <summary className="cursor-pointer text-sm text-smokey underline ml-1">Manage preferences</summary>
-            <div className="mt-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  checked={!!consent?.analytics}
-                  onChange={(e) => updateCategory("analytics", e.target.checked)}
-                />
-                <span className="text-sm text-smokey">Analytics cookies</span>
-              </label>
-              <label className="flex items-center gap-2 mt-1">
-                <input
-                  type="checkbox"
-                  checked={!!consent?.preferences}
-                  onChange={(e) => updateCategory("preferences", e.target.checked)}
-                />
-                <span className="text-sm text-smokey">Preferences (theme, language)</span>
-              </label>
-              <label className="flex items-center gap-2 mt-1">
-                <input
-                  type="checkbox"
-                  checked={!!consent?.marketing}
-                  onChange={(e) => updateCategory("marketing", e.target.checked)}
-                />
-                <span className="text-sm text-smokey">Marketing cookies</span>
-              </label>
-            </div>
-          </details>
-        </div>
+        <button className="cb-banner__close" onClick={closeBanner} aria-label="Close cookie banner">
+          <X size={20} />
+        </button>
       </div>
-    </div>
+
+      {isCustomizeOpen && (
+        <div className="cb-modal-root" role="dialog" aria-modal="true" aria-label="Customize cookie settings">
+          <div className="cb-backdrop" onClick={() => setCustomizeOpen(false)} />
+
+          <div className="cb-modal" role="document">
+            <button className="cb-modal__close" onClick={() => setCustomizeOpen(false)} aria-label="Close">
+              <X size={20} />
+            </button>
+
+            <div className="cb-modal__header">
+              <div>
+                <h4 className="cb-modal__title">Customize cookie settings</h4>
+                <p className="cb-modal__subtitle cb-desc">Choose which cookies you allow. You can change this anytime.</p>
+              </div>
+            </div>
+
+            <div className="cb-modal__body thin-scrollbar" tabIndex={0}>
+              {options.map((item) => (
+                <div className="cb-option" key={item.key}>
+                  <div className="cb-option__text">
+                    <div className="cb-option__title">{item.label}</div>
+                    <div className="cb-option__desc">{item.desc}</div>
+                  </div>
+
+                  <div>
+                    {item.fixed ? (
+                      <Switch checked size="small" disabled />
+                    ) : (
+                      <Switch
+                        checked={!!draft[item.key]}
+                        onChange={(v) => setDraft((d) => ({ ...d, [item.key]: v }))}
+                        size="small"
+                        aria-label={`${item.label} cookies`}
+                      />
+                    )}
+                  </div>
+                </div>
+              ))}
+
+              <div className="cb-panel">
+                <div className="cb-panel__title">Why we use cookies</div>
+                <ul className="cb-list">
+                  <li>Necessary cookies enable core functionality and security.</li>
+                  <li>Analytics help us understand site usage and improve performance.</li>
+                  <li>Preferences remember your settings for a better experience.</li>
+                  <li>Marketing helps deliver relevant ads and measure campaigns.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="cb-modal__footer">
+              <button className="cb-btn cb-btn--ghost cursor-pointer cancel-cookie-btn" onClick={() => setCustomizeOpen(false)}>Cancel</button>
+              <button className="cb-btn cb-btn--ghost cursor-pointer" onClick={onAcceptSelected}>Accept selected</button>
+              <button className="cb-btn cb-btn--primary cursor-pointer" onClick={onSave}>Save preferences</button>
+            </div>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
