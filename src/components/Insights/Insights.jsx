@@ -8,26 +8,30 @@ export default function Insights() {
   const blogs = [
     {
       id: 1,
-      title: "Creating Compelling Content That Convert",
+      title: "Creating Content That Actually Converts",
       date: "August 11, 2024",
-      img: AfricaAmerican, 
-      desc: "Curabitur dictum dui nisi lacinia; facilisis iaculis. Ipsum tempor class eu integer ridiculus. Class himenaeos nullam lectus sodales purus nunc....",
+      img: AfricaAmerican,
+      desc:
+        "Learn how to craft high-value content that captures attention, builds trust, and turns casual visitors into loyal customers.",
     },
     {
       id: 2,
-      title: "Getting Started with Google Ads",
+      title: "How to Get Started with Google Ads in 2024",
       date: "August 11, 2024",
-      img: BusinessWorking, 
-      desc: "Curabitur dictum dui nisi lacinia; facilisis iaculis. Ipsum tempor class eu integer ridiculus. Class himenaeos nullam lectus sodales purus nunc....",
+      img: BusinessWorking,
+      desc:
+        "A beginner-friendly guide to launching profitable Google Ads campaigns without wasting budget or targeting the wrong audience.",
     },
     {
       id: 3,
-      title: "The Power of Influencer Marketing in 2024",
+      title: "Why Influencer Marketing Is Dominating 2024",
       date: "August 11, 2024",
-      img: KingChess, 
-      desc: "Curabitur dictum dui nisi lacinia; facilisis iaculis. Ipsum tempor class eu integer ridiculus. Class himenaeos nullam lectus sodales purus nunc....",
+      img: KingChess,
+      desc:
+        "Influencers now shape buying decisions more than ever. Here’s how brands can leverage creators to grow faster and smarter.",
     },
   ];
+
 
   return (
     <section className="bg-[#0b0b0b] text-white py-10 ">

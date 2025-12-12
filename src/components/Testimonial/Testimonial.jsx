@@ -5,16 +5,89 @@ import "./Testimonial.css";
 import avatarUrl from "../../assets/team/Team4.webp";
 
 const DATA = [
-  { id: "t-01", name: "Sarah Johnson", role: "Marketing Director", image: avatarUrl, rating: 5, review: "Their strategy grew our organic traffic threefold within months — highly recommended!" },
-  { id: "t-02", name: "Michael Smith", role: "Founder", image: avatarUrl, rating: 5, review: "Hands-on, data-driven and reliable. Delivered ahead of schedule every time." },
-  { id: "t-03", name: "Emily Davis", role: "CEO", image: avatarUrl, rating: 4, review: "Clear communication and measurable improvements. Solid partnership overall." },
-  { id: "t-04", name: "Daniel Roberts", role: "Product Lead", image: avatarUrl, rating: 5, review: "Innovative ideas, fast execution and excellent reporting structure. Loved working with them." },
-  { id: "t-05", name: "Priya Patel", role: "Operations Head", image: avatarUrl, rating: 5, review: "Professional team with deep industry understanding. They optimized our funnels perfectly." },
-  { id: "t-06", name: "Lucas Martin", role: "Head of Growth", image: avatarUrl, rating: 5, review: "Creative and data-backed. Their dashboards saved us weeks of manual work." },
-  { id: "t-07", name: "Anna Lee", role: "E-commerce Manager", image: avatarUrl, rating: 4, review: "Supportive team and good campaign performance. Would work again!" },
-  { id: "t-08", name: "Omar Farouk", role: "CTO", image: avatarUrl, rating: 5, review: "Great synergy with our engineering team. Seamless integration and strong analytics." },
-  { id: "t-09", name: "Sofia Alvarez", role: "Brand Manager", image: avatarUrl, rating: 5, review: "Boosted our brand visibility massively. Strong creative direction." }
+  {
+    id: "t-01",
+    name: "Rohit Sharma",
+    role: "Startup Founder",
+    image: avatarUrl,
+    rating: 5,
+    review:
+      "Clixonic Media helped us build a strong online presence from scratch. Our website traffic and leads improved within the first month."
+  },
+  {
+    id: "t-02",
+    name: "Neha Verma",
+    role: "E-commerce Owner",
+    image: avatarUrl,
+    rating: 5,
+    review:
+      "Their SEO and content strategy boosted our product visibility significantly. Sales increased by nearly 40% organically."
+  },
+  {
+    id: "t-03",
+    name: "Arjun Patel",
+    role: "Marketing Manager",
+    image: avatarUrl,
+    rating: 4,
+    review:
+      "Great coordination and clean execution. The team understands brand goals and delivers well-researched marketing campaigns."
+  },
+  {
+    id: "t-04",
+    name: "Jennifer Lee",
+    role: "Creative Director",
+    image: avatarUrl,
+    rating: 5,
+    review:
+      "The team brought fresh ideas and executed our campaigns with precision. Their reporting and transparency stood out the most."
+  },
+  {
+    id: "t-05",
+    name: "Vikram Singh",
+    role: "Operations Head",
+    image: avatarUrl,
+    rating: 5,
+    review:
+      "Clixonic Media simplified our entire funnel. Their analytics setup helped us make better decisions and save valuable ad spend."
+  },
+  {
+    id: "t-06",
+    name: "Alicia Gomez",
+    role: "Brand Strategist",
+    image: avatarUrl,
+    rating: 5,
+    review:
+      "A highly professional team that balances creativity with data. They delivered fast results and strong brand growth."
+  },
+  {
+    id: "t-07",
+    name: "Harsh Mehta",
+    role: "Digital Store Owner",
+    image: avatarUrl,
+    rating: 4,
+    review:
+      "Their social media marketing helped us reach the right audience. Engagement improved and conversions increased steadily."
+  },
+  {
+    id: "t-08",
+    name: "Lara Thomas",
+    role: "Product Manager",
+    image: avatarUrl,
+    rating: 5,
+    review:
+      "Smooth coordination with our internal team. Their technical understanding and creativity made the process seamless."
+  },
+  {
+    id: "t-09",
+    name: "Kabir Ali",
+    role: "Business Consultant",
+    image: avatarUrl,
+    rating: 5,
+    review:
+      "They understood our goals clearly and delivered a strong content and SEO roadmap. Highly reliable team for growing businesses."
+  }
 ];
+
 
 function shuffleArray(arr) {
   const a = arr.slice();
@@ -43,7 +116,6 @@ function Testimonial() {
 
           <h2 className="text-4xl font-extrabold mt-3 fontfamily-content">What Clients Say About Us</h2>
 
-          <p className="text-gray-300 mt-3 max-w-xl mx-auto text-sm fontfamily-content">Smooth animated zig-zag testimonial layout.</p>
         </div>
 
         <div className="smoke-bg" aria-hidden />

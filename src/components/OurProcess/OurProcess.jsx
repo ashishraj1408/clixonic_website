@@ -9,23 +9,25 @@ export default function OurProcess() {
       id: "01",
       title: "Initial Consultation",
       icon: <Users className="w-12 h-12 text-brand-pink" />,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      desc:
+        "We begin with a discovery session to understand your business, target audience, and growth goals. This helps us identify what’s working, what’s missing, and where the biggest opportunities lie.",
     },
     {
       id: "02",
       title: "Market Research",
       icon: <FileText className="w-12 h-12 text-brand-pink" />,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      desc:
+        "We analyze your competition, industry trends, and customer behavior to uncover insights that guide a powerful and effective marketing strategy tailored to your business.",
     },
     {
       id: "03",
       title: "Strategy Development",
       icon: <Monitor className="w-12 h-12 text-brand-pink" />,
-      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      desc:
+        "Based on research, we create a clear, data-driven plan combining SEO, content, social media, and creative assets to help you attract qualified leads and grow consistently.",
     },
   ];
 
-  // Animation Variants
   const leftVariant = {
     hidden: { opacity: 0, x: -120 },
     show: {
@@ -82,10 +84,10 @@ export default function OurProcess() {
           ))}
         </div>
 
-        {/* Card Section (Animated) */}
+        {/* Card Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6">
 
-          {/* Card 1 – Left Animation */}
+          {/* Card 1 */}
           <motion.div
             variants={leftVariant}
             initial="hidden"
@@ -100,10 +102,9 @@ export default function OurProcess() {
             </p>
           </motion.div>
 
-          {/* Card 2 – Right Animation */}
+          {/* Card 2 */}
           <motion.div
             variants={bottomVariant}
-
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.3 }}
@@ -116,7 +117,7 @@ export default function OurProcess() {
             </p>
           </motion.div>
 
-          {/* Card 3 – Bottom Animation */}
+          {/* Card 3 */}
           <motion.div
             variants={rightVariant}
             initial="hidden"

@@ -37,7 +37,6 @@ export default function About({ showHero = true, showTeam = true }) {
       )}
 
       <div className="max-w-7xl mx-auto px-6 py-10 mobile-screen-padding">
-
         {/* Logos row */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
@@ -47,22 +46,27 @@ export default function About({ showHero = true, showTeam = true }) {
           className="flex items-center justify-between py-6"
         >
           <div className="flex gap-4 items-center fontfamily-content flex-wrap ">
-            {Array(5)
-              .fill("Logoipsum")
-              .map((item, i) => (
-                <div
-                  key={i}
-                  className="logo-placeholder text-[#aaaeb7] font-bold text-lg border p-2 shadow-md rounded-full"
-                >
-                  {item}
-                </div>
-              ))}
+            {[
+              "Creative Expertise",
+              "Result-Driven Approach",
+              "Client-Focused Team",
+              "Innovative Solutions",
+              "Digital Growth Mindset"
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="logo-placeholder text-[#aaaeb7] font-bold text-md border p-2 shadow-md rounded-full"
+              >
+                {item}
+              </div>
+            ))}
           </div>
         </motion.div>
 
+
+
         {/* MAIN CONTENT */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-
           {/* LEFT TEXT */}
           <motion.div
             initial={{ opacity: 0, x: -60 }}
@@ -81,8 +85,12 @@ export default function About({ showHero = true, showTeam = true }) {
             </h1>
 
             <p className="text-gray-300 fontfamily-content mb-6 max-w-xl">
-              Massa habitant accumsan at hendrerit blandit tellus litora euismod justo.
-              Pretium praesent pellentesque enim rhoncus laoreet natoque etiam pharetra.
+              At Clixonic Media, we help brands grow through strategic marketing, intelligent
+              design, and result-driven digital solutions. Our team blends creativity with
+              data analytics to build strong online visibility, boost customer engagement,
+              and drive long-term business growth. Whether you're scaling a startup or
+              elevating an established brand, we craft strategies that deliver measurable
+              impact.
             </p>
 
             <button className="inline-block common-button text-[#aaaeb7] fontfamily-content  font-semibold">
@@ -106,7 +114,6 @@ export default function About({ showHero = true, showTeam = true }) {
               />
             </div>
           </motion.div>
-
         </div>
 
         {/* THREE CARDS */}
@@ -125,7 +132,23 @@ export default function About({ showHero = true, showTeam = true }) {
           }}
           className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          {["Our Philosophy", "Our Vision", "Our Mission"].map((title, i) => (
+          {[
+            {
+              title: "Our Philosophy",
+              desc:
+                "We believe in combining creativity with data-backed decisions to build marketing strategies that actually move businesses forward.",
+            },
+            {
+              title: "Our Vision",
+              desc:
+                "Our vision is to empower brands worldwide with powerful digital presence and scalable marketing systems that deliver long-term growth.",
+            },
+            {
+              title: "Our Mission",
+              desc:
+                "Our mission is to help businesses attract more customers, strengthen their branding, and grow consistently through innovative digital solutions.",
+            },
+          ].map((item, i) => (
             <motion.div
               key={i}
               variants={{
@@ -139,16 +162,13 @@ export default function About({ showHero = true, showTeam = true }) {
                   <Lightbulb />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold fontfamily-content">{title}</h3>
-                  <p className="text-gray-300 text-sm mt-2 fontfamily-content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  </p>
+                  <h3 className="text-xl font-semibold fontfamily-content">{item.title}</h3>
+                  <p className="text-gray-300 text-sm mt-2 fontfamily-content">{item.desc}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
-
       </div>
 
       {/* SHOW TEAM (conditional) */}

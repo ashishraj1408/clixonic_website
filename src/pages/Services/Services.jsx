@@ -5,7 +5,6 @@ import centerPattern from "../../assets/hero/card_background.jpeg";
 import statsBg from "../../assets/hero/card_background.jpeg";
 import BackgroundImg from "../../assets/hero/main-background.png";
 
-
 import {
   FileText,
   Search,
@@ -15,6 +14,7 @@ import {
   ExternalLink,
   ArrowRight,
 } from "lucide-react";
+
 import OurProcess from "../../components/OurProcess/OurProcess";
 import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 import SEO from "../../components/SEO/SEO";
@@ -28,7 +28,7 @@ const services = [
   { id: 6, title: "Influencer Marketing", icon: <Users className="w-6 h-6 text-black" /> },
 ];
 
-// small counter component that animates from 0 to target when visible
+// Counter Animation
 function Counter({ to = 1000, duration = 1200, startWhen = false }) {
   const [value, setValue] = useState(0);
   const rafRef = useRef(null);
@@ -44,7 +44,7 @@ function Counter({ to = 1000, duration = 1200, startWhen = false }) {
       if (progress < duration) {
         rafRef.current = requestAnimationFrame(step);
       } else {
-        setValue(to); // ensure final
+        setValue(to);
       }
     };
     rafRef.current = requestAnimationFrame(step);
@@ -54,10 +54,10 @@ function Counter({ to = 1000, duration = 1200, startWhen = false }) {
 }
 
 export default function Services({ showHero = true }) {
-  // for stats visibility
   const statsRef = useRef(null);
   const [statsVisible, setStatsVisible] = useState(false);
 
+  // Observe Stats Section
   useEffect(() => {
     if (!statsRef.current) return;
     const obs = new IntersectionObserver(
@@ -75,13 +75,10 @@ export default function Services({ showHero = true }) {
     return () => obs.disconnect();
   }, []);
 
-  // framer-motion variants
   const container = {
     hidden: {},
     show: {
-      transition: {
-        staggerChildren: 0.14,
-      },
+      transition: { staggerChildren: 0.14 },
     },
   };
 
@@ -94,18 +91,18 @@ export default function Services({ showHero = true }) {
     <section className="bg-[#0b0b0b] text-white py-10">
       <SEO
         title="SEO, Web Development & Social Media Services | Clixonic Media"
-        description="We offer SEO services, website design & development, content marketing, and social media management."
-        keywords="seo services, web design, content marketing, social media marketing agency"
+        description="Clixonic Media provides SEO, website development, content marketing, and social media marketing services designed to help businesses grow and scale."
+        keywords="seo services, web development, digital marketing, content creation, branding"
       />
+
+      {/* HERO */}
       {showHero && (
         <motion.div
           initial={{ opacity: 0, scale: 0.995 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="w-full max-w-7xl py-4 flex items-center justify-center bg-center bg-cover rounded-xl mx-auto overflow-hidden"
-          style={{
-            backgroundImage: `url(${BackgroundImg})`,
-          }}
+          style={{ backgroundImage: `url(${BackgroundImg})` }}
         >
           <div className="backdrop-blur-xl px-20 py-10 rounded-xl fontfamily-content text-center">
             <h1 className="text-4xl font-bold">Services</h1>
@@ -116,6 +113,7 @@ export default function Services({ showHero = true }) {
         </motion.div>
       )}
 
+      {/* MAIN SECTION */}
       <div className="max-w-6xl mx-auto px-6 py-10">
         <div className="text-center mb-6">
           <span className="inline-flex items-center gap-2 text-2xl text-brand-pink">
@@ -128,9 +126,9 @@ export default function Services({ showHero = true }) {
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="text-3xl md:text-4xl font-extrabold text-center mb-10 fontfamily-content"
+          className="text-3xl md:text-4xl font-bold text-center mb-10 fontfamily-content"
         >
-          Comprehensive Solutions for Your Digital Growth
+          Smart Digital Solutions Designed to Grow Your Business
         </motion.h2>
 
         <motion.div
@@ -145,7 +143,7 @@ export default function Services({ showHero = true }) {
               key={s.id}
               variants={card}
               whileHover={{ scale: 1.02, translateY: -6 }}
-              className="relative overflow-hidden rounded-2xl border  p-10 min-h-[220px] service-feature-card group"
+              className="relative overflow-hidden rounded-2xl border p-10 min-h-[220px] service-feature-card group"
             >
               {s.center && (
                 <div
@@ -168,8 +166,25 @@ export default function Services({ showHero = true }) {
 
                 <h3 className="text-xl font-semibold mb-3 fontfamily-content">{s.title}</h3>
 
+                {/* Updated REAL content for each service */}
                 <p className="text-sm text-gray-300 max-w-[18rem] fontfamily-content">
-                  Rhoncus magna curabitur pretium non arcu magnis vestibulum cursus.
+                  {s.title === "Content Marketing" &&
+                    "We create high-quality content that attracts the right audience, builds trust, and converts visitors into loyal customers."}
+
+                  {s.title === "On-Page SEO" &&
+                    "We optimize your website’s structure, content, and technical elements to improve rankings, visibility, and organic traffic."}
+
+                  {s.title === "Off-Page SEO" &&
+                    "We strengthen your website’s authority with backlinks, reputation-building, and strategic online presence expansion."}
+
+                  {s.title === "Social Media Marketing" &&
+                    "We manage social platforms, create engaging content, and help your brand connect with customers across all channels."}
+
+                  {s.title === "Analytic Reporting" &&
+                    "We monitor performance, track KPIs, and deliver insights that help you make smarter, data-backed decisions."}
+
+                  {s.title === "Influencer Marketing" &&
+                    "We collaborate with authentic influencers to expand reach, build credibility, and boost your brand awareness."}
                 </p>
 
                 <a
@@ -183,6 +198,7 @@ export default function Services({ showHero = true }) {
           ))}
         </motion.div>
 
+        {/* STATS */}
         <motion.div
           ref={statsRef}
           initial={{ opacity: 0, y: 12 }}
@@ -198,31 +214,31 @@ export default function Services({ showHero = true }) {
           <div className="backdrop-overlay rounded-2xl p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center text-white">
             <div>
               <div className="text-3xl md:text-4xl text-smokey font-extrabold">
-                <Counter to={20} startWhen={statsVisible} />
+                <Counter to={2} startWhen={statsVisible} />
                 <span className="ml-1">+</span>
               </div>
-              <div className="text-sm opacity-80 fontfamily-content">Years of Experience</div>
+              <div className="text-sm opacity-80 fontfamily-content">Years in Business</div>
             </div>
 
             <div>
               <div className="text-3xl md:text-4xl font-extrabold">
-                <Counter to={173} startWhen={statsVisible} />
+                <Counter to={120} startWhen={statsVisible} />
                 <span className="ml-1">+</span>
               </div>
-              <div className="text-sm opacity-80 fontfamily-content">Projects Done</div>
+              <div className="text-sm opacity-80 fontfamily-content">Projects Delivered</div>
             </div>
 
             <div>
               <div className="text-3xl md:text-4xl font-extrabold">
-                <Counter to={1500} startWhen={statsVisible} />
+                <Counter to={300} startWhen={statsVisible} />
                 <span className="ml-1">+</span>
               </div>
-              <div className="text-sm opacity-80 fontfamily-content">Trusted Clients</div>
+              <div className="text-sm opacity-80 fontfamily-content">Happy Clients</div>
             </div>
 
             <div>
               <div className="text-3xl md:text-4xl font-extrabold">
-                <Counter to={52} startWhen={statsVisible} />
+                <Counter to={15} startWhen={statsVisible} />
                 <span className="ml-1">+</span>
               </div>
               <div className="text-sm opacity-80 fontfamily-content">Expert Team</div>
@@ -231,6 +247,7 @@ export default function Services({ showHero = true }) {
         </motion.div>
       </div>
 
+      {/* PROCESS + WHY CHOOSE US */}
       <OurProcess />
       <WhyChooseUs />
     </section>

@@ -17,6 +17,9 @@ import RefreshPopup from "./components/RefreshPopup/RefreshPopup";
 import CookieBanner from "./components/CookieBanner/CookieBanner";
 import useAnalyticsLoader from "./hooks/useAnalyticsLoader";
 import { CookieProvider } from "./context/CookieContext";
+import Terms from "./components/PrivacyPage/Terms";
+import Privacy from "./components/PrivacyPage/Privacy";
+
 
 function App() {
   return (
@@ -40,6 +43,9 @@ function InnerApp() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/pages" element={<Pages />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
+          <Route path="/terms-conditions" element={<Terms />} />
+          <Route path="/privacy-policy" element={<Privacy />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -10,25 +10,25 @@ import {
   Youtube,
 } from "lucide-react";
 
-import heroBg from "../../assets/hero/main-background.png";        
-import rightHeroImg from "../../assets/hero/hero-section.jpg";    
+import heroBg from "../../assets/hero/main-background.png";
+import rightHeroImg from "../../assets/hero/hero-section.jpg";
 import ImgAvatar from "../../assets/hero/Team4.webp";
 import "./Hero.css";
 
 function Hero() {
-  // rotating words
+  const [open, setOpen] = useState(false);
   const rotatingText = ["Website", "SEO", "Marketing", "Branding", "Strategy"];
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % rotatingText.length);
-    }, 2000); // change every 2 seconds
+    }, 2000); 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="w-full bg-[#0b0b0b] text-white pt-20 pb-16 overflow-hidden mobile-screen-padding-hero">
+    <section className="w-full bg-[#0b0b0b] text-white pt-20 pb-10 overflow-hidden mobile-screen-padding-hero">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* MAIN ROW: TEXT (left) + IMAGE (right) */}
@@ -57,9 +57,11 @@ function Hero() {
               </h1>
 
               <p className="mt-6 max-w-3xl text-lg text-smokey">
-                Viverra vitae congue eu consequat ac. Tortor condimentum lacinia quis vel eros donec.
-                Faucibus interdum posuere lorem ipsum. Lacus sed turpis tincidunt id aliquet risus.
+                We help businesses grow online with data-driven SEO, targeted digital marketing, and strong brand strategy.
+                From on-page optimization and link building to social campaigns and conversion-focused ads, we turn visitors into
+                customers — backed by transparent analytics and continuous optimization.
               </p>
+
             </div>
 
             {/* AVATARS + client count */}
@@ -107,7 +109,7 @@ function Hero() {
             <div
               className="rounded-2xl overflow-hidden transform-gpu right-hero-image-shadow"
               style={{
-                
+
               }}
             >
               <img
@@ -168,7 +170,10 @@ function Hero() {
               transition={{ duration: 0.8 }}
               className="mt-10"
             >
-              <button className="view-portfolio-btn px-8 py-3 bg-white text-black rounded-full font-semibold shadow hover:shadow-lg transition">
+              <button onClick={() => {
+              window.dispatchEvent(new Event("open-refresh-popup"));
+              setOpen(false);
+            }} className="view-portfolio-btn cursor-pointer px-8 py-3 bg-white text-black rounded-full font-semibold shadow hover:shadow-lg transition">
                 Book Now
               </button>
             </motion.div>

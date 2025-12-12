@@ -11,7 +11,7 @@ const FEATURES = [
     title: "Proven Expertise",
     icon: <Globe className="w-8 h-8 text-brand-pink" />,
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      "Our team brings hands-on experience in SEO, branding, design, and digital marketing to help businesses grow faster and smarter.",
     line: true,
   },
   {
@@ -19,7 +19,7 @@ const FEATURES = [
     title: "Innovation and Adaptability",
     icon: <Lightbulb className="w-8 h-8 text-brand-pink" />,
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      "We stay ahead of trends and technologies, ensuring your business gets modern, creative, and results-driven solutions.",
     line: true,
   },
   {
@@ -27,7 +27,7 @@ const FEATURES = [
     title: "Comprehensive Services",
     icon: <Users className="w-8 h-8 text-brand-pink" />,
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      "From SEO to social media, branding, website development, and marketing strategy—we offer everything you need to scale your business.",
     line: true,
   },
   {
@@ -35,7 +35,7 @@ const FEATURES = [
     title: "Dedicated Support",
     icon: <Headphones className="w-8 h-8 text-brand-pink" />,
     desc:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+      "We work closely with you at every step, offering transparent communication and reliable support whenever you need it.",
     line: false,
   },
 ];
@@ -56,6 +56,7 @@ const slideRight = {
 };
 
 function WhyChooseUs() {
+  const [open, setOpen] = React.useState(false);
   const backgroundStyle = useMemo(
     () => ({
       backgroundImage: `url(${ctaBg})`,
@@ -69,6 +70,8 @@ function WhyChooseUs() {
     <>
       <section className="bg-[#0b0b0b] text-white py-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          {/* LEFT IMAGE */}
           <motion.div
             variants={slideLeft}
             initial="hidden"
@@ -84,6 +87,7 @@ function WhyChooseUs() {
             />
           </motion.div>
 
+          {/* RIGHT CONTENT */}
           <motion.div
             variants={slideRight}
             initial="hidden"
@@ -97,12 +101,13 @@ function WhyChooseUs() {
             </span>
 
             <h2 className="text-4xl font-extrabold mt-3 mb-6 leading-tight fontfamily-content">
-              Empowering Your Business to<br />Thrive
+              Empowering Your Business to <br /> Grow and Stand Out
             </h2>
 
             <p className="text-gray-300 max-w-xl mb-10 fontfamily-content">
-              Scelerisque placerat fames aliquam tortor augue interdum quisque proin.
-              Justo ornare commodo cursus; sodales magnis nam.
+              We are a passionate startup committed to helping businesses grow, build
+              brand authority, and succeed in the digital world with the right strategy
+              and modern marketing solutions.
             </p>
 
             {FEATURES.map((f) => (
@@ -132,6 +137,7 @@ function WhyChooseUs() {
         </div>
       </section>
 
+      {/* CTA SECTION */}
       <motion.section
         variants={fadeUp}
         initial="hidden"
@@ -145,15 +151,20 @@ function WhyChooseUs() {
         >
           <div className="bg-[rgba(0,0,0,0.25)] backdrop-blur-md rounded-3xl px-10 py-12 text-center max-w-2xl">
             <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
-              Unlock Your Potential, Reach Out <br /> and Transform Your Business!
+              Ready to Take Your Business to the Next Level?
             </h2>
 
             <p className="text-gray-100 mb-8 text-sm md:text-[15px] fontfamily-content">
-              Commodo facilisis egestas maximus volutpat iaculis maecenas augue tortor aptent.
-              Efficitur interdum laoreet ullamcorper dis velit purus praesent conubia magna.
+              Whether you need SEO, social media growth, branding, or a complete
+              marketing strategy — we are here to help you scale with confidence.
             </p>
 
-            <button className="bg-black text-white font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 transition fontfamily-content">
+            <button
+              onClick={() => {
+              window.dispatchEvent(new Event("open-refresh-popup"));
+              setOpen(false);
+            }}
+             className="bg-black cursor-pointer text-white font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 hover:text-black transition fontfamily-content">
               Contact Us
             </button>
           </div>

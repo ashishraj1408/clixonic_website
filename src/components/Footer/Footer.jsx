@@ -147,9 +147,9 @@ export default function Footer({
         <div className="footer-bottom">
           <div className="copyright fontfamily-title">© {year} {companyName}. All rights reserved.</div>
           <div className="legal-links">
-            <a href="/privacy">Privacy</a>
+            <a href="/privacy-policy">Privacy</a>
             <span>•</span>
-            <a href="/terms">Terms</a>
+            <a href="/terms-conditions">Terms</a>
           </div>
         </div>
       </div>
