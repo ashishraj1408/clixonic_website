@@ -169,7 +169,7 @@ function Hero() {
               className="mt-10"
             >
               <button className="view-portfolio-btn px-8 py-3 bg-white text-black rounded-full font-semibold shadow hover:shadow-lg transition">
-                View Portfolio
+                Book Now
               </button>
             </motion.div>
           </div>
