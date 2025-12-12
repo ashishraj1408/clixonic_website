@@ -6,12 +6,16 @@ import { HelmetProvider } from "react-helmet-async";
 import App from "./App";
 import "./index.css";
 
+import { CookieProvider } from "./context/CookieContext";
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HelmetProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <CookieProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </CookieProvider>
     </HelmetProvider>
   </React.StrictMode>
 );
