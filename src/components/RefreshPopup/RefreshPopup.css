@@ -11,6 +11,7 @@
 .popup-card {
   width: 400px;
   background: #111;
+  border: .5px solid var(--Border-Border-II, #26282c);
   padding: 28px;
   border-radius: 14px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -29,10 +30,10 @@
   right: 12px;
   top: 12px;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 50%;
   font-size: 22px;
   background: none;
-  border: none;
+  border: .5px solid var(--Border-Border-II, #26282c);
   color: #fff;
   cursor: pointer;
 }

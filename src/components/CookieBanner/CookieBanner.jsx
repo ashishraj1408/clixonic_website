@@ -50,9 +50,9 @@ export default function CookieBanner() {
           </div>
 
           <div className="cb-banner__actions" role="group" aria-label="cookie actions">
-            <button className="cb-btn cb-btn--primary cursor-pointer" onClick={acceptAll}>Accept all</button>
-            <button className="cb-btn cb-btn--ghost cursor-pointer" onClick={rejectAll}>Reject all</button>
-            <button className="cb-btn cb-btn--ghost cursor-pointer" onClick={() => setCustomizeOpen(true)}>Customize</button>
+            <button className="common-button cb-btn--primary cursor-pointer" onClick={acceptAll}>Accept All</button>
+            <button className="common-button cb-btn--ghost cursor-pointer" onClick={rejectAll}>Reject All</button>
+            <button className="common-button cb-btn--ghost cursor-pointer" onClick={() => setCustomizeOpen(true)}>Customize Cookies</button>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ export default function CookieBanner() {
 
             <div className="cb-modal__header">
               <div>
-                <h4 className="cb-modal__title">Customize cookie settings</h4>
+                <h4 className="cb-modal__title">Customize Cookie Settings</h4>
                 <p className="cb-modal__subtitle cb-desc">Choose which cookies you allow. You can change this anytime.</p>
               </div>
             </div>
@@ -113,8 +113,8 @@ export default function CookieBanner() {
 
             <div className="cb-modal__footer">
               <button className="cb-btn cb-btn--ghost cursor-pointer cancel-cookie-btn" onClick={() => setCustomizeOpen(false)}>Cancel</button>
-              <button className="cb-btn cb-btn--ghost cursor-pointer" onClick={onAcceptSelected}>Accept selected</button>
-              <button className="cb-btn cb-btn--primary cursor-pointer" onClick={onSave}>Save preferences</button>
+              <button className="common-button cb-btn--ghost cursor-pointer" onClick={onAcceptSelected}>Accept Selected</button>
+              <button className="common-button cb-btn--primary cursor-pointer text-wrap" onClick={onSave}>Save Preferences</button>
             </div>
           </div>
         </div>

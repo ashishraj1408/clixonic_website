@@ -122,3 +122,9 @@ textarea,
   max-width: fit-content;
 }
 
+.ant-switch.ant-switch-checked {
+  background-color: #2c84db !important;
+}
+.ant-switch{
+  background: #27292b !important;
+}
