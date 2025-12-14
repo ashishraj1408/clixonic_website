@@ -21,8 +21,8 @@ export default function Header() {
         <NavLink to="/" className="flex items-center gap-3">
 
           {/* Desktop Logo */}
-          <div className="hidden md:flex w-[150px] hidden header-logo-div py-2 rounded-full items-center justify-center shadow">
-            <img src={HeaderLogo} alt="logo" className="rounded-full py-2 px-2 hidden header-logo" />
+          <div className="hidden md:flex w-[150px] header-logo-div py-2 rounded-full items-center justify-center shadow">
+            <img src={HeaderLogo} alt="logo" className="rounded-full py-2 px-2 header-logo" />
           </div>
 
           {/* Mobile Logo */}
