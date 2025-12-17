@@ -52,7 +52,7 @@ export default function CookieBanner() {
           <div className="cb-banner__actions" role="group" aria-label="cookie actions">
             <button className="common-button cb-btn--primary cursor-pointer" onClick={acceptAll}>Accept All</button>
             <button className="common-button cb-btn--ghost cursor-pointer" onClick={rejectAll}>Reject All</button>
-            <button className="common-button cb-btn--ghost cursor-pointer" onClick={() => setCustomizeOpen(true)}>Customize Cookies</button>
+            <button className="common-button cb-btn--ghost cursor-pointer" onClick={() => setCustomizeOpen(true)}>Customise </button>
           </div>
         </div>
 
