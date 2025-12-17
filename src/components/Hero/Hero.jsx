@@ -174,7 +174,7 @@ function Hero() {
               window.dispatchEvent(new Event("open-refresh-popup"));
               setOpen(false);
             }} className="view-portfolio-btn cursor-pointer px-8 py-3 bg-white text-black rounded-full font-semibold shadow hover:shadow-lg transition">
-                Book Nows
+                Book Now
               </button>
             </motion.div>
           </div>

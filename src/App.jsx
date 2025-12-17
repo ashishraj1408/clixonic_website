@@ -19,6 +19,7 @@ import useAnalyticsLoader from "./hooks/useAnalyticsLoader";
 import { CookieProvider } from "./context/CookieContext";
 import Terms from "./components/PrivacyPage/Terms";
 import Privacy from "./components/PrivacyPage/Privacy";
+import EdTech from "./pages/EdTech/EdTech";
 
 
 function App() {
@@ -45,6 +46,7 @@ function InnerApp() {
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="/terms-conditions" element={<Terms />} />
           <Route path="/privacy-policy" element={<Privacy />} />
+          <Route path="/edTech-seo" element={<EdTech />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
