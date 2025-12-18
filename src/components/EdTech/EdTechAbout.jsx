@@ -76,11 +76,8 @@ const EdTechAbout = () => {
       behavior: "smooth",
     });
 
-    // Remove this line → it causes re-render conflict during scroll
-    // setActiveId(id);
   }, []);
 
-  // Improved scroll detection to prevent jumping/flickering
   useEffect(() => {
     const container = contentRef.current;
     if (!container) return;
@@ -95,7 +92,7 @@ const EdTechAbout = () => {
         const scrollTop = container.scrollTop;
         const threshold = 150;
 
-        let closestId = "seo101"; // fallback
+        let closestId = "seo101"; 
         let minDistance = Infinity;
 
         Object.entries(sectionRefs.current).forEach(([id, el]) => {
@@ -117,15 +114,13 @@ const EdTechAbout = () => {
     };
 
     container.addEventListener("scroll", handleScroll);
-    handleScroll(); // Initial position
+    handleScroll(); 
 
     return () => container.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <div className="edtech-about-section">
-
-
+    <div className="edtech-about-section bg-gradient-to-br from-slate-900 to-slate-800 ">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
           {/* Sidebar - Table of Contents */}

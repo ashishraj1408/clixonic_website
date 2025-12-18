@@ -183,14 +183,14 @@ export default function RefreshPopup({ inline = false }) {
 
       <div className="form-group">
         <label>
-          Service Interested In <span className="text-red-600">*</span>
+          Service <span className="text-red-600">*</span>
         </label>
         <select
           name="service"
           value={form.service}
           onChange={handleChange}
         >
-          <option value="">Select a service</option>
+          <option value="">Select a Service</option>
           <option value="Website Development">Website Development</option>
           <option value="UI/UX Design">UI/UX Design</option>
           <option value="SEO Optimization">SEO Optimization</option>

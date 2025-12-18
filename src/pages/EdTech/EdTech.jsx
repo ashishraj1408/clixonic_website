@@ -4,6 +4,7 @@ import "./EdTech.css";
 import EdTechAbout from "../../components/EdTech/EdTechAbout";
 import SEO from "../../components/SEO/SEO";
 import EdTechSeoIndia from "../../components/EdTech/EdTechSeoIndia";
+import FAQs from "../../components/EdTech/EdTechFAQs";
 
 const EdTech = () => {
     return (
@@ -18,10 +19,7 @@ const EdTech = () => {
                 <div className="edtech-container">
                     {/* Left Content */}
                     <div className="edtech-content">
-                        <p className="breadcrumb">
-                            HOME <span>›</span> INDUSTRIES <span>›</span> EDUCATION <span>›</span> EDTECH
-                        </p>
-
+                       
                         <h1>
                             SEO for <span>EdTech</span> — Definition, Strategies, and Examples
                         </h1>
@@ -60,6 +58,7 @@ const EdTech = () => {
 
             <EdTechAbout />
             <EdTechSeoIndia   />
+            <FAQs/>
         </>
     );
 };
