@@ -1,10 +1,9 @@
+/* Base styles */
 .edtech-hero {
   /* min-height: 100vh; */
-  background: radial-gradient(
-      circle at top right,
+  background: radial-gradient(circle at top right,
       rgba(0, 255, 204, 0.08),
-      transparent 40%
-    ),
+      transparent 40%),
     #0b0b0b;
   display: flex;
   align-items: center;
@@ -17,11 +16,12 @@
   margin: auto;
   display: grid;
   grid-template-columns: 1.2fr 1fr;
+  /* 2 columns desktop */
   gap: 60px;
   align-items: center;
 }
 
-/* Left */
+/* Left content styles */
 .breadcrumb {
   font-size: 14px;
   color: #7dd3c7;
@@ -64,7 +64,7 @@
 .edtech-service-btn {
   margin-top: 30px;
   background: linear-gradient(135deg, #2dd4bf, #21ad54) !important;
-  border: .5px solid var(--Border-Border-II, #26282c) ;
+  border: 0.5px solid var(--Border-Border-II, #26282c);
   color: #000;
   font-weight: 600;
   padding: 14px 28px;
@@ -78,7 +78,7 @@
   box-shadow: 0 12px 30px rgba(45, 212, 191, 0.35);
 }
 
-/* Right */
+/* Right content (media) */
 .edtech-media {
   display: flex;
   justify-content: center;
@@ -88,8 +88,7 @@
   width: 420px;
   height: 320px;
   border-radius: 28px;
-  background: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f")
-    center/cover no-repeat;
+  background: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f") center/cover no-repeat;
   position: relative;
   box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
 }
@@ -98,11 +97,9 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.1),
-    rgba(0, 0, 0, 0.7)
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.1),
+      rgba(0, 0, 0, 0.7));
   border-radius: inherit;
 }
 
@@ -130,18 +127,174 @@
   color: #000;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+.star-icon {
+  color: #fbbf24;
+}
+
+/* ===== DESKTOP (1441px and above) ===== */
+@media (min-width: 1441px) {
+  .edtech-hero {
+    padding: 20px 60px;
+  }
+
+  .edtech-content h1 {
+    font-size: 44px;
+  }
+
+  .subtitle {
+    font-size: 18px;
+  }
+
+  .video-card {
+    width: 420px;
+    height: 320px;
+  }
+}
+
+/* ===== LAPTOP (1024px to 1440px) ===== */
+@media (min-width: 1024px) and (max-width: 1440px) {
+  .edtech-hero {
+    padding: 40px 50px;
+  }
+
+  .edtech-container {
+    grid-template-columns: 1.2fr 1fr;
+    gap: 50px;
+  }
+
+  .edtech-content h1 {
+    font-size: 40px;
+  }
+
+  .subtitle {
+    font-size: 17px;
+  }
+
+  .video-card {
+    width: 400px;
+    height: 300px;
+  }
+
+  .play-btn {
+    width: 68px;
+    height: 68px;
+  }
+}
+
+/* ===== TABLET (768px to 1023px) ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .edtech-hero {
+    padding: 40px 32px;
+  }
+
   .edtech-container {
     grid-template-columns: 1fr;
+    /* stack columns */
+    gap: 48px;
     text-align: center;
   }
 
+  .edtech-content h1 {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+    margin: 0 auto;
+  }
+
   .experience-box {
-    margin-left: auto;
-    margin-right: auto;
+    margin: 24px auto 0;
+    justify-content: center;
+  }
+
+  .edtech-service-btn {
+    margin: 32px auto 0;
+  }
+
+  .video-card {
+    width: 380px;
+    height: 280px;
+  }
+
+  .play-btn {
+    width: 64px;
+    height: 64px;
   }
 }
-.star-icon {
-  color: #fbbf24; /* Yellow color for the star */
+
+/* ===== MOBILE (480px to 767px) ===== */
+@media (min-width: 480px) and (max-width: 767px) {
+  .edtech-hero {
+    padding: 32px 20px;
+  }
+
+  .edtech-content h1 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .experience-box {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    font-size: 13px;
+    padding: 14px 16px;
+  }
+
+  .edtech-service-btn {
+    width: 100%;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .video-card {
+    width: 100%;
+    max-width: 360px;
+    height: 240px;
+    border-radius: 20px;
+  }
+
+  .play-btn {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* ===== SMALL MOBILE (below 480px) ===== */
+@media (max-width: 479px) {
+  .edtech-content h1 {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .video-card {
+    height: 210px;
+  }
+
+  .play-btn {
+    width: 52px;
+    height: 52px;
+  }
+  .edtech-container {
+    grid-template-columns: 1fr !important;
+    gap: 36px;
+    justify-content: center;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+  }
+  .edtech-content {
+    text-align: center;
+    padding: 0px 40px;
+  }
+  .edtech-hero {
+    padding: 24px 16px;
+  }
 }

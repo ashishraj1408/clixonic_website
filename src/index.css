@@ -128,3 +128,8 @@ textarea,
 .ant-switch{
   background: #27292b !important;
 }
+@media (max-width: 500px) {
+  .mobile-screen-padding {
+    padding-top: 70px !important;
+  }
+}

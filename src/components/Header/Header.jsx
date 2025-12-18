@@ -7,13 +7,6 @@ import "./Header.css";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
-  const navLinks = [
-    { name: "Home", to: "/" },
-    { name: "About Us", to: "/about" },
-    { name: "Services", to: "/services" },
-    { name: "Pages", to: "/pages" },
-    { name: "Contact", to: "/contact" }
-  ];
 
   return (
     <header className="fixed top-0 left-0 z-50 bg-[#0d0d0d]/95 backdrop-blur-md text-white w-full py-2">
@@ -32,20 +25,71 @@ export default function Header() {
 
         </NavLink>
 
-
+        {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-8">
-          {navLinks.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) =>
-                `text-[18px] font-medium ${isActive ? "text-brand-pink" : "hover:text-brand-pink"}`
-              }
-              onClick={() => setOpen(false)}
-            >
-              {l.name}
-            </NavLink>
-          ))}
+
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              `text-[18px] font-medium ${isActive ? "text-brand-pink" : "hover:text-brand-pink"}`
+            }
+          >
+            Home
+          </NavLink>
+
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              `text-[18px] font-medium ${isActive ? "text-brand-pink" : "hover:text-brand-pink"}`
+            }
+          >
+            About Us
+          </NavLink>
+
+          {/* SERVICES DROPDOWN (ADDED) */}
+          <div className="relative group">
+            <span className="text-[18px] font-medium cursor-pointer hover:text-brand-pink">
+              Services
+            </span>
+
+            <div className="absolute left-1/2 -translate-x-1/2 top-full mt-2
+                            bg-[#0d0d0d] border border-white/10 rounded-xl
+                            px-4 py-3 min-w-[200px]
+                            opacity-0 invisible
+                            group-hover:opacity-100 group-hover:visible
+                            transition-all duration-200 z-50">
+
+              <p className="text-sm text-white/70 text-center mb-2">
+                Education
+              </p>
+
+              <NavLink
+                to="/edtech-seo"
+                className="block text-center py-2 text-[16px] hover:text-brand-pink"
+              >
+                EdTech SEO
+              </NavLink>
+            </div>
+          </div>
+
+          <NavLink
+            to="/pages"
+            className={({ isActive }) =>
+              `text-[18px] font-medium ${isActive ? "text-brand-pink" : "hover:text-brand-pink"}`
+            }
+          >
+            Pages
+          </NavLink>
+
+          <NavLink
+            to="/contact"
+            className={({ isActive }) =>
+              `text-[18px] font-medium ${isActive ? "text-brand-pink" : "hover:text-brand-pink"}`
+            }
+          >
+            Contact
+          </NavLink>
+
         </nav>
 
         <button
@@ -62,18 +106,38 @@ export default function Header() {
         </button>
       </div>
 
+      {/* MOBILE MENU */}
       {open && (
         <div className="md:hidden bg-[#0d0d0d] px-6 py-4 border-t border-white/10">
-          {navLinks.map((l) => (
+
+          <NavLink to="/" className="block py-3 text-[18px]" onClick={() => setOpen(false)}>
+            Home
+          </NavLink>
+
+          <NavLink to="/about" className="block py-3 text-[18px]" onClick={() => setOpen(false)}>
+            About Us
+          </NavLink>
+
+          {/* SERVICES MOBILE */}
+          <div className="py-3">
+            <p className="text-[18px] font-medium mb-2">Services</p>
             <NavLink
-              key={l.to}
-              to={l.to}
-              className={({ isActive }) => `block py-3 text-[18px] ${isActive ? "text-brand-pink" : "hover:text-brand-pink"}`}
+              to="/edtech-seo"
+              className="block pl-4 py-2 text-[16px] hover:text-brand-pink border-1 border-white/10"
               onClick={() => setOpen(false)}
             >
-              {l.name}
+              EdTech SEO
             </NavLink>
-          ))}
+          </div>
+
+          <NavLink to="/pages" className="block py-3 text-[18px]" onClick={() => setOpen(false)}>
+            Pages
+          </NavLink>
+
+          <NavLink to="/contact" className="block py-3 text-[18px]" onClick={() => setOpen(false)}>
+            Contact
+          </NavLink>
+
           <button
             onClick={() => {
               window.dispatchEvent(new Event("open-refresh-popup"));

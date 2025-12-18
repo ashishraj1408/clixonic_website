@@ -1,6 +1,7 @@
 import React, { memo, useMemo } from "react";
 import { TrendingUp, Target, BarChart3, Sparkles, FileText, Search, Megaphone, Link, MapPin } from "lucide-react";
 import RefreshPopup from "../RefreshPopup/RefreshPopup";
+import "./EdTechCommon.css";
 
 const FEATURES = [
   {
@@ -83,16 +84,16 @@ const EdTechSeoIndia = memo(() => {
             {features.map((f, idx) => (
               <div key={idx} className="group relative">
                 <div className="absolute inset-0 bg-gradient-to-r rounded-3xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-500" style={{ background: `linear-gradient(to right, var(--tw-gradient-stops))` }}></div>
-                <div className={`relative bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-7 ${f.borderHover} transition-all duration-500`}>
+                <div className={`relative bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl mobile-screen-seo p-7 ${f.borderHover} transition-all duration-500`} >
                   <div className="flex gap-5">
                     <div className="flex-shrink-0">
-                      <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${f.gradient} flex items-center justify-center group-hover:rotate-6 transition-transform duration-500 shadow-lg shadow-blue-500/30`}>
+                      <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br mobile-icon-main ${f.gradient} flex items-center justify-center group-hover:rotate-6 transition-transform duration-500 shadow-lg shadow-blue-500/30`}>
                         <f.icon className="w-10 h-10 text-white" strokeWidth={2.5} />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className={`text-xl font-bold text-white mb-3 ${f.textHover} transition-colors fontfamily-title`}>{f.title}</h3>
-                      <p className="text-gray-400 leading-relaxed text-base fontfamily-content">{f.desc}</p>
+                      <h3 className={`text-xl font-bold text-white mb-3 ${f.textHover} mobile-edtech-title transition-colors fontfamily-title`}>{f.title}</h3>
+                      <p className="text-gray-400 leading-relaxed text-base fontfamily-content mobile-edtech-content">{f.desc}</p>
                     </div>
                   </div>
                 </div>
@@ -103,7 +104,7 @@ const EdTechSeoIndia = memo(() => {
           {/* Right Column - Form */}
           <div className="relative w-full">
             <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/30 to-purple-600/30 rounded-[3rem] blur-3xl"></div>
-            <div className="relative w-full rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-500/20 border border-slate-800 bg-slate-900/50 backdrop-blur-xl flex items-center justify-center p-8">
+            <div className="relative w-full rounded-[3rem] overflow-hidden shadow-2xl shadow-blue-500/20 mobile-edtech-form border border-slate-800 bg-slate-900/50 backdrop-blur-xl flex items-center justify-center p-8">
               <RefreshPopup inline className="w-full" />
             </div>
           </div>
@@ -134,20 +135,20 @@ const EdTechSeoIndia = memo(() => {
                   )}
                   <div className={`flex items-center gap-8 ${item.position === 'right' ? 'flex-row-reverse' : 'flex-row'}`}>
                     <div className="relative flex-shrink-0">
-                      <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-black text-3xl shadow-2xl border-2 border-[rgba(255,255,255,0.31)] relative z-10">
+                      <div className="w-15 h-15 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-black text-3xl shadow-2xl border-2 border-[rgba(255,255,255,0.31)] relative z-10">
                         {idx + 1}
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full blur-xl opacity-50 animate-pulse"></div>
                     </div>
                     <div className="flex-1 group">
-                      <div className="relative bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02]">
+                      <div className="relative bg-slate-900/90 backdrop-blur-xl border border-slate-800 rounded-3xl p-4 hover:border-blue-500/50 transition-all duration-500 hover:scale-[1.02]">
                         <div className={`flex items-center gap-6 ${item.position === 'right' ? 'flex-row-reverse text-right' : 'flex-row'}`}>
-                          <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br ${item.color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${item.shadow} shadow-lg flex-shrink-0`}>
+                          <div className={`relative w-20 h-20 rounded-2xl bg-gradient-to-br mobile-icon-main ${item.color} flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 ${item.shadow} shadow-lg flex-shrink-0`}>
                             <item.icon className="w-10 h-10 text-white" strokeWidth={2.5} />
                           </div>
                           <div className="flex-1">
-                            <h3 className="font-bold text-white text-xl mb-2 group-hover:text-blue-400 transition-colors fontfamily-title">{item.title}</h3>
-                            <p className="text-gray-400 text-sm leading-relaxed fontfamily-content">{item.desc}</p>
+                            <h3 className="font-bold text-white text-xl mb-2 group-hover:text-blue-400 transition-colors fontfamily-title mobile-edtech-title">{item.title}</h3>
+                            <p className="text-gray-400 text-sm leading-relaxed font-calibri mobile-edtech-content">{item.desc}</p>
                           </div>
                         </div>
                       </div>
@@ -162,8 +163,8 @@ const EdTechSeoIndia = memo(() => {
       </div>
 
       {/* EdTech Section */}
-      <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="relative bg-gradient-to-br from-slate-900/90 to-blue-950/50 backdrop-blur-xl border border-slate-800 rounded-[3rem] p-10 lg:p-16 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 py-10 mobile-screen-padding">
+        <div className="relative bg-gradient-to-br from-slate-900/90 to-blue-950/50 backdrop-blur-xl border border-slate-800 rounded-[3rem] p-10 lg:p-16 overflow-hidden mobile-screen-seo">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]"></div>
           <div className="relative space-y-10">
             <div className="text-center space-y-4">
@@ -188,9 +189,9 @@ const EdTechSeoIndia = memo(() => {
                 ))}
               </div>
             </div>
-            <div className="relative bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 border border-blue-500/30 rounded-3xl p-8 backdrop-blur-sm">
-              <h3 className="text-3xl font-bold text-white mb-5 fontfamily-title">Benefits of SEO for EdTech in India</h3>
-              <p className="text-gray-200 leading-relaxed text-lg fontfamily-content">
+            <div className="relative bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 border border-blue-500/30 rounded-3xl p-8 backdrop-blur-sm mt-10 mobile-screen-seo">
+              <h3 className="text-3xl font-bold text-white mb-5 fontfamily-title mobile-edtech-title">Benefits of SEO for EdTech in India</h3>
+              <p className="text-gray-200 leading-relaxed text-lg fontfamily-content mobile-edtech-content">
                 Implementing effective SEO strategies can lead to increased organic traffic, higher conversion rates, and improved brand credibility for EdTech companies in India. By targeting the right audience with relevant content, EdTech platforms can foster long-term growth and establish themselves as leaders in the competitive Indian market.
               </p>
             </div>

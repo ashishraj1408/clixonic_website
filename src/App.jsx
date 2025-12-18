@@ -36,7 +36,7 @@ function InnerApp() {
     <div className="min-h-screen flex flex-col bg-[#0b0b0b] text-white">
       <Header />
       <ScrollToTop />
-      <main className="flex-grow pt-[90px]">
+      <main className="flex-grow pt-[90px] mobile-screen-padding">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

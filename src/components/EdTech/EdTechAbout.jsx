@@ -121,7 +121,7 @@ const EdTechAbout = () => {
 
   return (
     <div className="edtech-about-section bg-gradient-to-br from-slate-900 to-slate-800 ">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-12 mobile-sidebar-edtech">
         <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-8">
           {/* Sidebar - Table of Contents */}
           <aside className="lg:sticky lg:top-32 h-fit">
@@ -227,7 +227,7 @@ const EdTechAbout = () => {
             >
               {/* SEO 101 */}
               <section ref={(el) => (sectionRefs.current.seo101 = el)} className="scroll-mt-8">
-                <div className="bg-gradient-to-br from-teal-500/10 to-emerald-500/10 rounded-2xl p-8 border border-teal-500/20">
+                <div className="bg-gradient-to-br from-teal-500/10 to-emerald-500/10 rounded-2xl p-8 border border-teal-500/20 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-400 to-emerald-500 flex items-center justify-center shadow-lg">
                       <Target size={32} className="text-white" />
@@ -260,7 +260,7 @@ const EdTechAbout = () => {
 
               {/* What is SEO? */}
               <section ref={(el) => (sectionRefs.current["what-is-seo"] = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <Search size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">What is SEO for EdTech?</h2>
@@ -285,7 +285,7 @@ const EdTechAbout = () => {
 
               {/* How SEO Works */}
               <section ref={(el) => (sectionRefs.current["how-works"] = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <Settings size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">How SEO Works</h2>
@@ -317,7 +317,7 @@ const EdTechAbout = () => {
 
               {/* Why SEO Matters */}
               <section ref={(el) => (sectionRefs.current["why-matters"] = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <TrendingUp size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Why SEO Matters</h2>
@@ -343,7 +343,7 @@ const EdTechAbout = () => {
 
               {/* Key Benefits */}
               <section ref={(el) => (sectionRefs.current.benefits = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <Gem size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Key Benefits</h2>
@@ -376,7 +376,7 @@ const EdTechAbout = () => {
 
               {/* On-page SEO */}
               <section ref={(el) => (sectionRefs.current["on-page"] = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <FileText size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">On-page SEO</h2>
@@ -407,7 +407,7 @@ const EdTechAbout = () => {
 
               {/* Off-page SEO */}
               <section ref={(el) => (sectionRefs.current["off-page"] = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <Link2 size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Off-page SEO</h2>
@@ -433,7 +433,7 @@ const EdTechAbout = () => {
 
               {/* Technical SEO */}
               <section ref={(el) => (sectionRefs.current.technical = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <Zap size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Technical SEO</h2>
@@ -463,7 +463,7 @@ const EdTechAbout = () => {
 
               {/* Keyword Research */}
               <section ref={(el) => (sectionRefs.current.keywords = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <FileSearch size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Keyword Research</h2>
@@ -498,7 +498,7 @@ const EdTechAbout = () => {
 
               {/* Content Strategy */}
               <section ref={(el) => (sectionRefs.current.content = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <Gauge size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Content Strategy</h2>
@@ -533,7 +533,7 @@ const EdTechAbout = () => {
 
               {/* Analytics & Tracking */}
               <section ref={(el) => (sectionRefs.current.analytics = el)} className="scroll-mt-8">
-                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30">
+                <div className="bg-slate-800/30 rounded-2xl p-8 border border-slate-700/30 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <BarChart3 size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Analytics & Tracking</h2>
@@ -562,7 +562,7 @@ const EdTechAbout = () => {
 
               {/* Essential Tools */}
               <section ref={(el) => (sectionRefs.current.tools = el)} className="scroll-mt-8">
-                <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/30 rounded-2xl p-8 border border-slate-700/50">
+                <div className="bg-gradient-to-br from-slate-800/50 to-slate-700/30 rounded-2xl p-8 border border-slate-700/50 mobile-screen-seo">
                   <div className="flex items-center gap-3 mb-4">
                     <Wrench size={36} className="text-teal-400" />
                     <h2 className="text-2xl font-bold text-slate-100">Essential Tools</h2>
