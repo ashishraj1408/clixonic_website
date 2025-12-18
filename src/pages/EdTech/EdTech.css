@@ -63,8 +63,8 @@
 
 .edtech-service-btn {
   margin-top: 30px;
-  background: linear-gradient(135deg, #2dd4bf, #22c55e);
-  border: none;
+  background: linear-gradient(135deg, #2dd4bf, #21ad54) !important;
+  border: .5px solid var(--Border-Border-II, #26282c) ;
   color: #000;
   font-weight: 600;
   padding: 14px 28px;
@@ -141,4 +141,7 @@
     margin-left: auto;
     margin-right: auto;
   }
+}
+.star-icon {
+  color: #fbbf24; /* Yellow color for the star */
 }

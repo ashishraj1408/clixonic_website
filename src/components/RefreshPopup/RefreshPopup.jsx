@@ -1,4 +1,3 @@
-// src/components/RefreshPopup/RefreshPopup.jsx
 import React, { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { message } from "antd";
@@ -8,7 +7,7 @@ import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 
 export default function RefreshPopup({ inline = false }) {
-  const [open, setOpen] = useState(!inline); // inline = always visible
+  const [open, setOpen] = useState(!inline);
 
   const [messageApi, contextHolder] = message.useMessage();
 
@@ -16,6 +15,7 @@ export default function RefreshPopup({ inline = false }) {
     name: "",
     email: "",
     phone: "",
+    service: "",
     message: "",
   });
 
@@ -34,7 +34,8 @@ export default function RefreshPopup({ inline = false }) {
     const openListener = () => setOpen(true);
     window.addEventListener("open-refresh-popup", openListener);
 
-    return () => window.removeEventListener("open-refresh-popup", openListener);
+    return () =>
+      window.removeEventListener("open-refresh-popup", openListener);
   }, [inline]);
 
   const validate = () => {
@@ -50,9 +51,12 @@ export default function RefreshPopup({ inline = false }) {
     else if (form.phone.replace(/\D/g, "").length < 10)
       temp.phone = "Enter a valid phone number";
 
+    if (!form.service) temp.service = "Please select a service";
+
     if (!form.message.trim()) temp.message = "Message is required";
 
     setErrors(temp);
+
     const isValid = Object.keys(temp).length === 0;
 
     if (!isValid) {
@@ -88,6 +92,7 @@ export default function RefreshPopup({ inline = false }) {
           name: form.name,
           email: form.email,
           phone: form.phone,
+          service: form.service,
           message: form.message,
         }),
       });
@@ -107,6 +112,7 @@ export default function RefreshPopup({ inline = false }) {
         name: "",
         email: "",
         phone: "",
+        service: "",
         message: "",
       });
 
@@ -127,7 +133,7 @@ export default function RefreshPopup({ inline = false }) {
     }
   };
 
-  // ✅ shared form JSX for both popup + inline
+  // shared form JSX for both popup + inline
   const formContent = (
     <form onSubmit={handleSubmit} className="form">
       <div className="form-group">
@@ -177,6 +183,31 @@ export default function RefreshPopup({ inline = false }) {
 
       <div className="form-group">
         <label>
+          Service Interested In <span className="text-red-600">*</span>
+        </label>
+        <select
+          name="service"
+          value={form.service}
+          onChange={handleChange}
+        >
+          <option value="">Select a service</option>
+          <option value="Website Development">Website Development</option>
+          <option value="UI/UX Design">UI/UX Design</option>
+          <option value="SEO Optimization">SEO Optimization</option>
+          <option value="Digital Marketing">Digital Marketing</option>
+          <option value="Branding">Branding</option>
+          <option value="E-commerce Solutions">
+            E-commerce Solutions
+          </option>
+          <option value="Custom Software Development">
+            Custom Software Development
+          </option>
+        </select>
+        {errors.service && <p className="error">{errors.service}</p>}
+      </div>
+
+      <div className="form-group">
+        <label>
           Message <span className="text-red-600">*</span>
         </label>
         <textarea
@@ -205,14 +236,12 @@ export default function RefreshPopup({ inline = false }) {
       {contextHolder}
 
       {inline ? (
-        // 👉 Inline mode (used on Contact page)
         <div className="contact-inline-card">
           <h2 className="title">Get In Touch!</h2>
           <p className="subtitle">Please fill your details</p>
           {formContent}
         </div>
       ) : (
-        // 👉 Popup mode (used globally from Header)
         open && (
           <div className="popup-overlay">
             <div className="popup-card animate-popup">

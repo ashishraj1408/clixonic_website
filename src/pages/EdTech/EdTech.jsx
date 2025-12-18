@@ -1,18 +1,25 @@
 import React from "react";
-import { Play } from "lucide-react";
+import { Play, Star } from "lucide-react";
 import "./EdTech.css";
 import EdTechAbout from "../../components/EdTech/EdTechAbout";
+import SEO from "../../components/SEO/SEO";
+import EdTechSeoIndia from "../../components/EdTech/EdTechSeoIndia";
 
 const EdTech = () => {
     return (
         <>
+            <SEO
+                title="SEO for EdTech | EdTech Marketing Strategies"
+                description="Learn how SEO helps EdTech increase visibility, drive qualified leads, and scale organic growth with proven strategies and examples."
+                keywords="edtech seo, seo for edtech, education seo, edtech marketing, saas seo"
+            />
+
             <section className="edtech-hero">
                 <div className="edtech-container">
                     {/* Left Content */}
                     <div className="edtech-content">
                         <p className="breadcrumb">
-                            HOME <span>›</span> INDUSTRIES <span>›</span> EDUCATION <span>›</span>{" "}
-                            EDTECH
+                            HOME <span>›</span> INDUSTRIES <span>›</span> EDUCATION <span>›</span> EDTECH
                         </p>
 
                         <h1>
@@ -26,7 +33,9 @@ const EdTech = () => {
                         </p>
 
                         <div className="experience-box">
-                            <span>⭐</span>
+                            <span>
+                                <Star size={20} className="star-icon" /> 
+                            </span>
                             <p>
                                 INSIGHTS FROM <strong>61,900+</strong> HOURS OF TECHNOLOGY
                                 MARKETING EXPERIENCE
@@ -48,7 +57,9 @@ const EdTech = () => {
                     </div>
                 </div>
             </section>
+
             <EdTechAbout />
+            <EdTechSeoIndia   />
         </>
     );
 };
