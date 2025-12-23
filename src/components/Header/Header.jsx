@@ -81,8 +81,6 @@ export default function Header() {
                          group-hover:opacity-100 group-hover:visible
                          transition-all duration-200 z-50"
             >
-              
-
               <NavLink
                 to="/edtech-seo"
                 className="block text-center py-1 text-md hover:text-brand-pink"

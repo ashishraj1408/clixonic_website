@@ -8,6 +8,7 @@ const pathnamesToScroll = [
   "/pages",
   "/contact",
   "/edtech-seo",
+  "/"
   
 ];
 
