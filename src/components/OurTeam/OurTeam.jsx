@@ -1,6 +1,6 @@
 // src/components/OurTeam/OurTeam.jsx
-import React, { useState } from "react";
-import { Linkedin, X, Instagram } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { Linkedin, X, Instagram, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 import team1 from "../../assets/team/Team1.webp";
@@ -29,7 +29,7 @@ const SocialIcon = ({ children }) => (
   </div>
 );
 
-// ⬇️ Single team card with skeleton + lazy image
+// ⬇️ Single team card (UNCHANGED)
 const TeamCard = ({ member, index, cardVariant }) => {
   const [loaded, setLoaded] = useState(false);
 
@@ -42,22 +42,19 @@ const TeamCard = ({ member, index, cardVariant }) => {
       transition={{ delay: index * 0.15 }}
       className="bg-[#111] rounded-2xl overflow-hidden shadow-xl border border-[#1b1b1b] team-card transition hover:scale-[1.03]"
     >
-      {/* Image */}
       <div className="relative">
-        {/* Skeleton overlay while image loads */}
         {!loaded && <div className="team-skeleton absolute inset-0" />}
 
         <img
           src={member.img}
           alt={member.name}
-          loading="lazy"                    
-          onLoad={() => setLoaded(true)}    
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
           className={`w-full h-64 object-cover transition-opacity duration-300 ${
             loaded ? "opacity-100" : "opacity-0"
           }`}
         />
 
-        {/* Social Icons */}
         <div className="absolute top-3 left-3 flex gap-2">
           <SocialIcon>
             <Linkedin size={20} color="#ff00b9" />
@@ -71,9 +68,10 @@ const TeamCard = ({ member, index, cardVariant }) => {
         </div>
       </div>
 
-      {/* Bottom Card */}
       <div className="p-5 text-center bg-[#0f0f0f]/90 backdrop-blur">
-        <h3 className="text-xl font-bold fontfamily-content">{member.name}</h3>
+        <h3 className="text-xl font-bold fontfamily-content">
+          {member.name}
+        </h3>
         <p className="text-sm text-gray-300 mt-1 fontfamily-content">
           {member.role}
         </p>
@@ -83,7 +81,22 @@ const TeamCard = ({ member, index, cardVariant }) => {
 };
 
 export default function OurTeam() {
-  // Animation Variants
+  const [isMobile, setIsMobile] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const next = () =>
+    setActiveIndex((i) => (i + 1) % team.length);
+  const prev = () =>
+    setActiveIndex((i) => (i === 0 ? team.length - 1 : i - 1));
+
+  // Animation Variant (UNCHANGED)
   const cardVariant = {
     hidden: { opacity: 0, y: 40, scale: 0.95 },
     show: {
@@ -108,20 +121,41 @@ export default function OurTeam() {
           </h2>
         </div>
 
-        {/* Team Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-          {team.map((member, index) => (
+        {/* DESKTOP GRID — UNCHANGED */}
+        {!isMobile && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            {team.map((member, index) => (
+              <TeamCard
+                key={member.name + index}
+                member={member}
+                index={index}
+                cardVariant={cardVariant}
+              />
+            ))}
+          </div>
+        )}
+
+        {/* MOBILE — ONLY ADDITION */}
+        {isMobile && (
+          <>
             <TeamCard
-              key={member.name + index}
-              member={member}
-              index={index}
+              member={team[activeIndex]}
+              index={0}
               cardVariant={cardVariant}
             />
-          ))}
-        </div>
+
+            <div className="flex justify-center gap-6 mt-6">
+              <button className="slider-btn" onClick={prev}>
+                <ChevronLeft />
+              </button>
+              <button className="slider-btn" onClick={next}>
+                <ChevronRight />
+              </button>
+            </div>
+          </>
+        )}
       </div>
 
-      {/* Bottom Sections */}
       <WhyChooseUs />
       <OurProcess />
     </section>

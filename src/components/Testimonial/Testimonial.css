@@ -32,6 +32,9 @@
   .testimonial-grid {
     column-width: 100%;
   }
+  .testimonial-card{
+    margin-bottom: 0px !important;
+  }
 }
 
 .testimonial-card {
@@ -109,4 +112,15 @@
   display: block;
   height: 1px;
   clear: both;
+}
+.slider-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff00b9;
 }
