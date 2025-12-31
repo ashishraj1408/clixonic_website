@@ -8,21 +8,21 @@ export default function OurProcess() {
     {
       id: "01",
       title: "Initial Consultation",
-      icon: <Users className="w-12 h-12 text-brand-pink" />,
+      icon: <Users className="w-12 h-12 text-smokey" />,
       desc:
         "We begin with a discovery session to understand your business, target audience, and growth goals. This helps us identify what’s working, what’s missing, and where the biggest opportunities lie.",
     },
     {
       id: "02",
       title: "Market Research",
-      icon: <FileText className="w-12 h-12 text-brand-pink" />,
+      icon: <FileText className="w-12 h-12 text-smokey" />,
       desc:
         "We analyze your competition, industry trends, and customer behavior to uncover insights that guide a powerful and effective marketing strategy tailored to your business.",
     },
     {
       id: "03",
       title: "Strategy Development",
-      icon: <Monitor className="w-12 h-12 text-brand-pink" />,
+      icon: <Monitor className="w-12 h-12 text-smokey" />,
       desc:
         "Based on research, we create a clear, data-driven plan combining SEO, content, social media, and creative assets to help you attract qualified leads and grow consistently.",
     },
@@ -93,7 +93,7 @@ export default function OurProcess() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.3 }}
-            className="process-card p-10 rounded-2xl border border-[rgba(255,255,255,0.08)] text-center"
+            className="process-card p-6 rounded-2xl border border-[rgba(255,255,255,0.08)] text-center"
           >
             <div className="mb-6 flex justify-center">{steps[0].icon}</div>
             <h3 className="text-xl font-semibold mb-3 fontfamily-content">{steps[0].title}</h3>
@@ -108,7 +108,7 @@ export default function OurProcess() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.3 }}
-            className="process-card p-10 rounded-2xl border border-[rgba(255,255,255,0.08)] text-center"
+            className="process-card p-6 rounded-2xl border border-[rgba(255,255,255,0.08)] text-center"
           >
             <div className="mb-6 flex justify-center">{steps[1].icon}</div>
             <h3 className="text-xl font-semibold mb-3 fontfamily-content">{steps[1].title}</h3>
@@ -123,7 +123,7 @@ export default function OurProcess() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: false, amount: 0.3 }}
-            className="process-card p-10 rounded-2xl border border-[rgba(255,255,255,0.08)] text-center"
+            className="process-card p-6 rounded-2xl border border-[rgba(255,255,255,0.08)] text-center"
           >
             <div className="mb-6 flex justify-center">{steps[2].icon}</div>
             <h3 className="text-xl font-semibold mb-3 fontfamily-content">{steps[2].title}</h3>

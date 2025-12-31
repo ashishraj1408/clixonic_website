@@ -14,22 +14,12 @@ body {
   }
 
   .text-gradient {
-    background: linear-gradient(90deg,
-        #ff007a,
-        #ff00b9,
-        #ff4bd8,
-        #ff007abf,
-        #7a00ff94,
-        #3df41ca1,
-        #0077ffab);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    color: #ff00b9b0;
     font-family: "Times New Roman", Times, serif;
   }
 
   .text-brand-pink {
-    color: #ff00b9;
+    color: #ff00b9b0;
     font-family: "Red Hat Text", sans-serif;
   }
 
@@ -125,9 +115,11 @@ textarea,
 .ant-switch.ant-switch-checked {
   background-color: #2c84db !important;
 }
-.ant-switch{
+
+.ant-switch {
   background: #27292b !important;
 }
+
 @media (max-width: 500px) {
   .mobile-screen-padding {
     padding-top: 70px !important;

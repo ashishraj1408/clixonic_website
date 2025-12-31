@@ -158,8 +158,8 @@ export default function About({ showHero = true, showTeam = true }) {
               className="feature-card p-6 rounded-2xl"
             >
               <div className="flex items-start gap-4">
-                <div className="p-2 rounded-full bg-brand-green flex items-center justify-center">
-                  <Lightbulb />
+                <div className="p-2 rounded-full border border-1 flex items-center justify-center">
+                  <Lightbulb className="w-6 h-6 text-smokey" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold fontfamily-content">{item.title}</h3>

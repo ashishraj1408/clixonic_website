@@ -187,7 +187,7 @@ function Testimonial() {
                     <img src={t.image} alt={t.name} className="avatar" />
                     <div>
                       <div className="text-lg font-semibold">{t.name}</div>
-                      <div className="text-brand-pink text-sm">{t.role}</div>
+                      <div className="text-smokey text-sm dff">{t.role}</div>
                     </div>
                   </div>
 
@@ -195,7 +195,7 @@ function Testimonial() {
                     {Array.from({ length: t.rating }).map((_, idx) => (
                       <Star
                         key={idx}
-                        className="w-4 h-4 text-brand-pink fill-pink-400"
+                        className="w-4 h-4 text-brand-pink fill-white-400"
                       />
                     ))}
                   </div>

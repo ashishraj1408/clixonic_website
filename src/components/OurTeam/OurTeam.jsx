@@ -57,13 +57,13 @@ const TeamCard = ({ member, index, cardVariant }) => {
 
         <div className="absolute top-3 left-3 flex gap-2">
           <SocialIcon>
-            <Linkedin size={20} color="#ff00b9" />
+            <Linkedin size={20} color="#ff00b9b0" />
           </SocialIcon>
           <SocialIcon>
-            <X size={20} color="#ff00b9" />
+            <X size={20} color="#ff00b9b0" />
           </SocialIcon>
           <SocialIcon>
-            <Instagram size={20} color="#ff00b9" />
+            <Instagram size={20} color="#ff00b9b0" />
           </SocialIcon>
         </div>
       </div>

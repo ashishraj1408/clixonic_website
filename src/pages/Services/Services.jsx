@@ -22,12 +22,12 @@ import WhyChooseUs from "../../components/WhyChooseUs/WhyChooseUs";
 import SEO from "../../components/SEO/SEO";
 
 const services = [
-  { id: 1, title: "Content Marketing", icon: <FileText className="w-6 h-6 text-black" /> },
-  { id: 2, title: "On-Page SEO", icon: <Search className="w-6 h-6 text-black" />, center: true },
-  { id: 3, title: "Off-Page SEO", icon: <Search className="w-6 h-6 text-black" /> },
-  { id: 4, title: "Social Media Marketing", icon: <Share2 className="w-6 h-6 text-black" /> },
-  { id: 5, title: "Analytic Reporting", icon: <BarChart2 className="w-6 h-6 text-black" /> },
-  { id: 6, title: "Influencer Marketing", icon: <Users className="w-6 h-6 text-black" /> },
+  { id: 1, title: "Content Marketing", icon: <FileText className="w-6 h-6 text-smokey" /> },
+  { id: 2, title: "On-Page SEO", icon: <Search className="w-6 h-6 text-smokey" />, center: true },
+  { id: 3, title: "Off-Page SEO", icon: <Search className="w-6 h-6 text-smokey" /> },
+  { id: 4, title: "Social Media Marketing", icon: <Share2 className="w-6 h-6 text-smokey" /> },
+  { id: 5, title: "Analytic Reporting", icon: <BarChart2 className="w-6 h-6 text-smokey" /> },
+  { id: 6, title: "Influencer Marketing", icon: <Users className="w-6 h-6 text-smokey" /> },
 ];
 
 // Counter Animation
@@ -166,7 +166,7 @@ export default function Services({ showHero = true }) {
                 )}
 
                 <div className="relative z-10 text-center">
-                  <div className="w-14 h-14 rounded-full bg-brand-green flex items-center justify-center mb-6 mx-auto">
+                  <div className="w-14 h-14 rounded-full border border-1 flex items-center justify-center mb-6 mx-auto text-white">
                     {s.icon}
                   </div>
                   <h3 className="text-xl font-semibold mb-3">{s.title}</h3>
@@ -174,7 +174,7 @@ export default function Services({ showHero = true }) {
                     {renderDescription(s.title)}
                   </p>
                   <a className="mt-6 inline-flex items-center gap-2 border p-2 rounded-full learn-more-btn" href="#">
-                    Learn More <ExternalLink className="w-4 h-4" />
+                    Learn More <ExternalLink className="w-4 h-4 text-smokey" />
                   </a>
                 </div>
               </motion.article>
