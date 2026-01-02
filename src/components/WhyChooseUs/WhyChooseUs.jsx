@@ -9,7 +9,7 @@ const FEATURES = [
   {
     key: "proven-expertise",
     title: "Proven Expertise",
-    icon: <Globe className="w-8 h-8 text-brand-pink" />,
+    icon: <Globe className="w-8 h-8 text-smokey" />,
     desc:
       "Our team brings hands-on experience in SEO, branding, design, and digital marketing to help businesses grow faster and smarter.",
     line: true,
@@ -17,7 +17,7 @@ const FEATURES = [
   {
     key: "innovation",
     title: "Innovation and Adaptability",
-    icon: <Lightbulb className="w-8 h-8 text-brand-pink" />,
+    icon: <Lightbulb className="w-8 h-8 text-smokey" />,
     desc:
       "We stay ahead of trends and technologies, ensuring your business gets modern, creative, and results-driven solutions.",
     line: true,
@@ -25,7 +25,7 @@ const FEATURES = [
   {
     key: "comprehensive",
     title: "Comprehensive Services",
-    icon: <Users className="w-8 h-8 text-brand-pink" />,
+    icon: <Users className="w-8 h-8 text-smokey" />,
     desc:
       "From SEO to social media, branding, website development, and marketing strategy—we offer everything you need to scale your business.",
     line: true,
@@ -33,7 +33,7 @@ const FEATURES = [
   {
     key: "support",
     title: "Dedicated Support",
-    icon: <Headphones className="w-8 h-8 text-brand-pink" />,
+    icon: <Headphones className="w-8 h-8 text-smokey" />,
     desc:
       "We work closely with you at every step, offering transparent communication and reliable support whenever you need it.",
     line: false,

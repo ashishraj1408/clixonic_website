@@ -32,3 +32,14 @@
   border: .5px solid var(--Border-Border-II, #26282c);
   background: linear-gradient(0deg, #1a1c1e 60.76%, #27292b);
 }
+.slider-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #111;
+  border: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ff00b9b0;
+}

@@ -34,9 +34,9 @@ export default function Contact() {
         {/* Contact Info Boxes */}
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-6 mt-14 px-6">
           {/* Phone */}
-          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9] transition">
+          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9b0] transition">
             <div className="w-14 h-14 bg-[#2a2a2a] flex items-center justify-center rounded-full mb-4">
-              <Phone size={28} color="#ff00b9" />
+              <Phone size={28} color="#ff00b9b0" />
             </div>
             <p className="text-gray-400 text-sm fontfamily-content">
               Phone Number
@@ -47,9 +47,9 @@ export default function Contact() {
           </div>
 
           {/* Email */}
-          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9] transition">
+          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9b0] transition">
             <div className="w-14 h-14 bg-[#2a2a2a] flex items-center justify-center rounded-full mb-4">
-              <Mail size={28} color="#ff00b9" />
+              <Mail size={28} color="#ff00b9b0" />
             </div>
             <p className="text-gray-400 text-sm fontfamily-content">
               Mail Address
@@ -60,9 +60,9 @@ export default function Contact() {
           </div>
 
           {/* Location */}
-          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9] transition">
+          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9b0] transition">
             <div className="w-14 h-14 bg-[#2a2a2a] flex items-center justify-center rounded-full mb-4">
-              <MapPin size={28} color="#ff00b9" />
+              <MapPin size={28} color="#ff00b9b0" />
             </div>
             <p className="text-gray-400 text-sm fontfamily-content">Delhi</p>
             <h4 className="text-lg mt-1 font-semibold fontfamily-content">
@@ -71,9 +71,9 @@ export default function Contact() {
           </div>
 
           {/* Work Time */}
-          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9] transition">
+          <div className="border border-[#2a2a2a] p-6 rounded-xl flex flex-col items-center text-center hover:border-[#ff00b9b0] transition">
             <div className="w-14 h-14 bg-[#2a2a2a] flex items-center justify-center rounded-full mb-4">
-              <Clock size={28} color="#ff00b9" />
+              <Clock size={28} color="#ff00b9b0" />
             </div>
             <p className="text-gray-400 text-sm fontfamily-content">
               Work Days
@@ -88,8 +88,8 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 mt-16 px-6">
           {/* Left Side */}
           <div>
-            <p className="text-[#ff00b9] font-semibold flex items-center fontfamily-content gap-2">
-              <span className="w-3 h-3 rounded-full border-2 border-[#ff00b9]"></span>{" "}
+            <p className="text-[#ff00b9b0] font-semibold flex items-center fontfamily-content gap-2">
+              <span className="w-3 h-3 rounded-full border-2 border-[#ff00b9b0]"></span>{" "}
               Get In Touch
             </p>
 

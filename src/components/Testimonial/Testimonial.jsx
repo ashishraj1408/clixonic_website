@@ -1,5 +1,5 @@
-import React, { useMemo } from "react";
-import { Star, Quote } from "lucide-react";
+import React, { useMemo, useState, useEffect } from "react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import "./Testimonial.css";
 import avatarUrl from "../../assets/team/Team4.webp";
@@ -88,7 +88,6 @@ const DATA = [
   }
 ];
 
-
 function shuffleArray(arr) {
   const a = arr.slice();
   for (let i = a.length - 1; i > 0; i--) {
@@ -100,63 +99,170 @@ function shuffleArray(arr) {
 
 function Testimonial() {
   const testimonials = useMemo(() => shuffleArray(DATA), []);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
-  const leftVariant = { hidden: { opacity: 0, x: -80, y: 40, scale: 0.96 }, show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.7, ease: "easeOut" } } };
-  const rightVariant = { hidden: { opacity: 0, x: 80, y: -40, scale: 0.96 }, show: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.7, ease: "easeOut" } } };
-  const upVariant = { hidden: { opacity: 0, y: 80, scale: 0.96 }, show: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: "easeOut" } } };
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 640);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
+  const next = () =>
+    setActiveIndex((i) => (i + 1) % testimonials.length);
+
+  const prev = () =>
+    setActiveIndex((i) =>
+      i === 0 ? testimonials.length - 1 : i - 1
+    );
+
+  const leftVariant = {
+    hidden: { opacity: 0, x: -80, y: 40, scale: 0.96 },
+    show: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" }
+    }
+  };
+
+  const rightVariant = {
+    hidden: { opacity: 0, x: 80, y: -40, scale: 0.96 },
+    show: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" }
+    }
+  };
+
+  const upVariant = {
+    hidden: { opacity: 0, y: 80, scale: 0.96 },
+    show: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.7, ease: "easeOut" }
+    }
+  };
 
   return (
     <section className="testimonial-section bg-[#0b0b0b] text-white py-10">
       <div className="max-w-7xl mx-auto px-6 relative">
         <div className="text-center mb-12">
-          <span className="inline-flex items-center text-2xl gap-2 fontfamily-content text-brand-pink">
-            <span className="w-2 h-2 rounded-full bg-pink-500 block"></span>
+          <span className="inline-flex items-center text-2xl gap-2 text-brand-pink">
+            <span className="w-2 h-2 rounded-full bg-pink-500"></span>
             Testimonials
           </span>
-
-          <h2 className="text-4xl font-extrabold mt-3 fontfamily-content">What Clients Say About Us</h2>
-
+          <h2 className="text-4xl font-extrabold mt-3">
+            What Clients Say About Us
+          </h2>
         </div>
 
-        <div className="smoke-bg" aria-hidden />
+        <div className="smoke-bg" />
 
-        <div className="testimonial-grid">
-          {testimonials.map((t, i) => {
-            let variant = upVariant;
-            if (i % 3 === 0) variant = leftVariant;
-            if (i % 3 === 1) variant = rightVariant;
-            if (i % 3 === 2) variant = upVariant;
+        {/* DESKTOP – EXACTLY SAME */}
+        {!isMobile && (
+          <div className="testimonial-grid">
+            {testimonials.map((t, i) => {
+              let variant = upVariant;
+              if (i % 3 === 0) variant = leftVariant;
+              if (i % 3 === 1) variant = rightVariant;
 
-            return (
-              <motion.article
-                key={t.id}
-                variants={variant}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.22 }}
-                className="testimonial-card"
-              >
-                <Quote className="quote-icon" />
+              return (
+                <motion.article
+                  key={t.id}
+                  variants={variant}
+                  initial="hidden"
+                  whileInView="show"
+                  viewport={{ once: true, amount: 0.22 }}
+                  className="testimonial-card"
+                >
+                  <Quote className="quote-icon" />
 
-                <div className="flex items-center gap-4 mb-4">
-                  <img src={t.image} alt={t.name} className="avatar" loading="lazy" />
-                  <div>
-                    <div className="text-lg font-semibold fontfamily-content">{t.name}</div>
-                    <div className="text-brand-pink text-sm fontfamily-content">{t.role}</div>
+                  <div className="flex items-center gap-4 mb-4">
+                    <img src={t.image} alt={t.name} className="avatar" />
+                    <div>
+                      <div className="text-lg font-semibold">{t.name}</div>
+                      <div className="text-smokey text-sm dff">{t.role}</div>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-1 mb-3">
+                    {Array.from({ length: t.rating }).map((_, idx) => (
+                      <Star
+                        key={idx}
+                        className="w-4 h-4 text-brand-pink fill-white-400"
+                      />
+                    ))}
+                  </div>
+
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {t.review}
+                  </p>
+                </motion.article>
+              );
+            })}
+          </div>
+        )}
+
+        {/* MOBILE – ONLY ADDITION */}
+        {isMobile && (
+          <>
+            <motion.article
+              key={testimonials[activeIndex].id}
+              className="testimonial-card"
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.35 }}
+            >
+              <Quote className="quote-icon" />
+
+              <div className="flex items-center gap-4 mb-4">
+                <img
+                  src={testimonials[activeIndex].image}
+                  alt={testimonials[activeIndex].name}
+                  className="avatar"
+                />
+                <div>
+                  <div className="text-lg font-semibold">
+                    {testimonials[activeIndex].name}
+                  </div>
+                  <div className="text-brand-pink text-sm">
+                    {testimonials[activeIndex].role}
                   </div>
                 </div>
+              </div>
 
-                <div className="flex gap-1 mb-3">
-                  {Array.from({ length: t.rating }).map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4 text-brand-pink fontfamily-content fill-pink-400" />
-                  ))}
-                </div>
+              <div className="flex gap-1 mb-3">
+                {Array.from({
+                  length: testimonials[activeIndex].rating
+                }).map((_, idx) => (
+                  <Star
+                    key={idx}
+                    className="w-4 h-4 text-brand-pink fill-pink-400"
+                  />
+                ))}
+              </div>
 
-                <p className="text-gray-300 text-sm fontfamily-content leading-relaxed">{t.review}</p>
-              </motion.article>
-            );
-          })}
-        </div>
+              <p className="text-gray-300 text-sm leading-relaxed">
+                {testimonials[activeIndex].review}
+              </p>
+            </motion.article>
+
+            <div className="flex justify-center gap-6 mt-6">
+              <button className="slider-btn" onClick={prev}>
+                <ChevronLeft />
+              </button>
+              <button className="slider-btn" onClick={next}>
+                <ChevronRight />
+              </button>
+            </div>
+          </>
+        )}
       </div>
     </section>
   );

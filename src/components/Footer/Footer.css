@@ -92,7 +92,7 @@
   align-items: center;
   justify-content: center;
   background: linear-gradient(180deg, rgba(255,0,185,0.06), rgba(255,0,185,0.02));
-  color: #ff00b9;
+  color: #ff00b9b0;
   border: 1px solid rgba(255,0,185,0.12);
   transition: transform .18s ease, filter .18s ease;
 }
@@ -122,7 +122,7 @@
   transition: color .15s ease, transform .15s ease;
 }
 .col ul li a:hover {
-  color: #ff00b9;
+  color: #ff00b9b0;
   transform: translateX(4px);
 }
 
@@ -152,7 +152,7 @@
   color: rgba(222,231,243,0.45);
 }
 .subscribe-btn {
- border: 1px solid #ff00b9;
+ border: 1px solid #ff00b9b0;
   color: #b1b3b5;
   padding: 10px 16px;
   border-radius: 999px;
@@ -173,7 +173,7 @@
 .cta-block .muted { color: #b7c6d9; margin: 0; }
 .contact-cta {
   margin-left: auto;
-  border: 1px solid #ff00b9;
+  border: 1px solid #ff00b9b0;
   color: #b1b3b5;
   padding: 10px 14px;
   border-radius: 999px;

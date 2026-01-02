@@ -9,8 +9,6 @@ import {
   Instagram,
   Youtube,
 } from "lucide-react";
-
-import heroBg from "../../assets/hero/main-background.png";
 import rightHeroImg from "../../assets/hero/hero-section.jpg";
 import ImgAvatar from "../../assets/hero/Team4.webp";
 import "./Hero.css";
@@ -134,9 +132,9 @@ function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: false }}
-          className="mt-14 rounded-3xl p-6 md:p-10 relative overflow-hidden"
+          className="mt-8 rounded-3xl p-6 md:p-10 relative overflow-hidden"
           style={{
-            backgroundImage: `url(${heroBg})`,
+            backgroundColor: "rgba(255, 255, 255, 0.05)",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

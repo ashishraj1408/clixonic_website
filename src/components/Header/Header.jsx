@@ -118,7 +118,7 @@ export default function Header() {
           onClick={() =>
             window.dispatchEvent(new Event("open-refresh-popup"))
           }
-          className="hidden lg:inline-block px-8 py-3 rounded-full bg-brand-gradient cursor-pointer font-semibold"
+          className="hidden lg:inline-block px-8 py-3 rounded-full border-1 border cursor-pointer font-semibold"
         >
           Get Started
         </button>
