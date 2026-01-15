@@ -39,13 +39,13 @@ const Header = () => {
             <img
               src={HeaderLogo}
               alt="Clixonic Logo"
-              className="hidden md:block h-[42px] object-contain"
+              className="hidden md:block h-[60px] object-contain"
             />
             {/* Mobile */}
             <img
               src={MobileLogo}
               alt="Clixonic Logo"
-              className="block md:hidden h-[38px] object-contain"
+              className="block md:hidden h-[60px] object-contain"
             />
           </NavLink>
 

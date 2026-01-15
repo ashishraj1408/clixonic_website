@@ -21,7 +21,7 @@ export default function FloatingButtons() {
     <div className="fixed bottom-19 right-4 flex flex-col gap-2 z-50">
       {/* WhatsApp Button */}
       <a
-        href="https://wa.me/919999999999"
+        href="https://wa.me/917303351343?text=Hello%20I%20am%20interested%20in%20your%20services"
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 flex items-center justify-center rounded-full bg-green-500 text-white shadow-xl hover:scale-110 transition-all"
@@ -32,6 +32,7 @@ export default function FloatingButtons() {
           className="w-8 h-8"
         />
       </a>
+
 
       {/* Back To Top Button */}
       {showTop && (
