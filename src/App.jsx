@@ -20,7 +20,10 @@ import { CookieProvider } from "./context/CookieContext";
 import Terms from "./components/PrivacyPage/Terms";
 import Privacy from "./components/PrivacyPage/Privacy";
 import EdTech from "./pages/EdTech/EdTech";
-
+import ServiceDetail from "./pages/Services/ServiceDetail";
+import Portfolio from "./pages/portfolio/Portfolio";
+import Pricing from "./pages/pricing/Pricing";
+import Blog from "./pages/Blog/Blog";
 
 function App() {
   return (
@@ -33,7 +36,7 @@ function App() {
 function InnerApp() {
   useAnalyticsLoader();
   return (
-    <div className="min-h-screen flex flex-col bg-[#0b0b0b] text-white">
+    <div className="min-h-screen flex flex-col text-black bg-white">
       <Header />
       <ScrollToTop />
       <main className="flex-grow pt-[90px] mobile-screen-padding">
@@ -47,7 +50,10 @@ function InnerApp() {
           <Route path="/terms-conditions" element={<Terms />} />
           <Route path="/privacy-policy" element={<Privacy />} />
           <Route path="/edTech-seo" element={<EdTech />} />
-
+          <Route path="/services/:slug" element={<ServiceDetail />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/pricing" element={<Pricing />} />
+          <Route path="/blog" element={<Blog />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

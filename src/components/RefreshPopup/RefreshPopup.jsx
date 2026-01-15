@@ -222,7 +222,7 @@ export default function RefreshPopup({ inline = false }) {
 
       <div className="flex justify-center">
         <button
-          className="common-button refersh-submit cursor-pointer"
+          className=" refersh-submit cursor-pointer"
           disabled={sending}
         >
           {sending ? "Sending..." : "Submit"}
@@ -238,7 +238,7 @@ export default function RefreshPopup({ inline = false }) {
       {inline ? (
         <div className="contact-inline-card">
           <h2 className="title">Get In Touch!</h2>
-          <p className="subtitle">Please fill your details</p>
+          <p className="subtitle text-gray-800">Please fill your details</p>
           {formContent}
         </div>
       ) : (

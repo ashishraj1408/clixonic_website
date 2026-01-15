@@ -1,271 +1,105 @@
-import React, { useMemo, useState, useEffect } from "react";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import { motion } from "framer-motion";
+import React from "react";
+import { Star } from "lucide-react";
 import "./Testimonial.css";
-import avatarUrl from "../../assets/team/Team4.webp";
+import ServicesLogo from "../../assets/team/services-logo.png";
 
-const DATA = [
+
+/* =======================
+   TESTIMONIAL DATA
+======================= */
+const TESTIMONIALS = [
   {
-    id: "t-01",
-    name: "Rohit Sharma",
-    role: "Startup Founder",
-    image: avatarUrl,
-    rating: 5,
+    name: "Sarah Johnson",
+    role: "CEO, TechStart Inc",
     review:
-      "Clixonic Media helped us build a strong online presence from scratch. Our website traffic and leads improved within the first month."
+      "Clixonic Media transformed our online presence. Our organic traffic increased by 300% in just 6 months!",
   },
   {
-    id: "t-02",
-    name: "Neha Verma",
-    role: "E-commerce Owner",
-    image: avatarUrl,
-    rating: 5,
+    name: "Michael Chen",
+    role: "Marketing Director, GrowthHub",
     review:
-      "Their SEO and content strategy boosted our product visibility significantly. Sales increased by nearly 40% organically."
+      "Best ROI we've ever seen from a marketing agency. Their PPC campaigns are incredibly efficient.",
   },
   {
-    id: "t-03",
-    name: "Arjun Patel",
-    role: "Marketing Manager",
-    image: avatarUrl,
-    rating: 4,
+    name: "Emily Rodriguez",
+    role: "Founder, Bloom Boutique",
     review:
-      "Great coordination and clean execution. The team understands brand goals and delivers well-researched marketing campaigns."
+      "Professional, transparent, and results-driven. They truly care about our success.",
   },
-  {
-    id: "t-04",
-    name: "Jennifer Lee",
-    role: "Creative Director",
-    image: avatarUrl,
-    rating: 5,
-    review:
-      "The team brought fresh ideas and executed our campaigns with precision. Their reporting and transparency stood out the most."
-  },
-  {
-    id: "t-05",
-    name: "Vikram Singh",
-    role: "Operations Head",
-    image: avatarUrl,
-    rating: 5,
-    review:
-      "Clixonic Media simplified our entire funnel. Their analytics setup helped us make better decisions and save valuable ad spend."
-  },
-  {
-    id: "t-06",
-    name: "Alicia Gomez",
-    role: "Brand Strategist",
-    image: avatarUrl,
-    rating: 5,
-    review:
-      "A highly professional team that balances creativity with data. They delivered fast results and strong brand growth."
-  },
-  {
-    id: "t-07",
-    name: "Harsh Mehta",
-    role: "Digital Store Owner",
-    image: avatarUrl,
-    rating: 4,
-    review:
-      "Their social media marketing helped us reach the right audience. Engagement improved and conversions increased steadily."
-  },
-  {
-    id: "t-08",
-    name: "Lara Thomas",
-    role: "Product Manager",
-    image: avatarUrl,
-    rating: 5,
-    review:
-      "Smooth coordination with our internal team. Their technical understanding and creativity made the process seamless."
-  },
-  {
-    id: "t-09",
-    name: "Kabir Ali",
-    role: "Business Consultant",
-    image: avatarUrl,
-    rating: 5,
-    review:
-      "They understood our goals clearly and delivered a strong content and SEO roadmap. Highly reliable team for growing businesses."
-  }
 ];
 
-function shuffleArray(arr) {
-  const a = arr.slice();
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
+/* =======================
+   BRAND LOGOS
+======================= */
+const BRANDS = [
+  ServicesLogo,
+  ServicesLogo,
+  ServicesLogo,
+  ServicesLogo,
+  ServicesLogo,
+  ServicesLogo,
+  ServicesLogo,
+  ServicesLogo,
+];
 
-function Testimonial() {
-  const testimonials = useMemo(() => shuffleArray(DATA), []);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 640);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  const next = () =>
-    setActiveIndex((i) => (i + 1) % testimonials.length);
-
-  const prev = () =>
-    setActiveIndex((i) =>
-      i === 0 ? testimonials.length - 1 : i - 1
-    );
-
-  const leftVariant = {
-    hidden: { opacity: 0, x: -80, y: 40, scale: 0.96 },
-    show: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.7, ease: "easeOut" }
-    }
-  };
-
-  const rightVariant = {
-    hidden: { opacity: 0, x: 80, y: -40, scale: 0.96 },
-    show: {
-      opacity: 1,
-      x: 0,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.7, ease: "easeOut" }
-    }
-  };
-
-  const upVariant = {
-    hidden: { opacity: 0, y: 80, scale: 0.96 },
-    show: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { duration: 0.7, ease: "easeOut" }
-    }
-  };
-
+const Testimonial = () => {
   return (
-    <section className="testimonial-section bg-[#0b0b0b] text-white py-10">
-      <div className="max-w-7xl mx-auto px-6 relative">
-        <div className="text-center mb-12">
-          <span className="inline-flex items-center text-2xl gap-2 text-brand-pink">
-            <span className="w-2 h-2 rounded-full bg-pink-500"></span>
-            Testimonials
-          </span>
-          <h2 className="text-4xl font-extrabold mt-3">
-            What Clients Say About Us
-          </h2>
+    <section className="testimonial-section-light">
+      <div className="container">
+
+        {/* HEADER */}
+        <div className="testimonial-header">
+          <h2>What Our Clients Say</h2>
+          <p>Real results from real businesses.</p>
         </div>
 
-        <div className="smoke-bg" />
-
-        {/* DESKTOP – EXACTLY SAME */}
-        {!isMobile && (
-          <div className="testimonial-grid">
-            {testimonials.map((t, i) => {
-              let variant = upVariant;
-              if (i % 3 === 0) variant = leftVariant;
-              if (i % 3 === 1) variant = rightVariant;
-
-              return (
-                <motion.article
-                  key={t.id}
-                  variants={variant}
-                  initial="hidden"
-                  whileInView="show"
-                  viewport={{ once: true, amount: 0.22 }}
-                  className="testimonial-card"
-                >
-                  <Quote className="quote-icon" />
-
-                  <div className="flex items-center gap-4 mb-4">
-                    <img src={t.image} alt={t.name} className="avatar" />
-                    <div>
-                      <div className="text-lg font-semibold">{t.name}</div>
-                      <div className="text-smokey text-sm dff">{t.role}</div>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-1 mb-3">
-                    {Array.from({ length: t.rating }).map((_, idx) => (
-                      <Star
-                        key={idx}
-                        className="w-4 h-4 text-brand-pink fill-white-400"
-                      />
-                    ))}
-                  </div>
-
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {t.review}
-                  </p>
-                </motion.article>
-              );
-            })}
-          </div>
-        )}
-
-        {/* MOBILE – ONLY ADDITION */}
-        {isMobile && (
-          <>
-            <motion.article
-              key={testimonials[activeIndex].id}
-              className="testimonial-card"
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.35 }}
-            >
-              <Quote className="quote-icon" />
-
-              <div className="flex items-center gap-4 mb-4">
-                <img
-                  src={testimonials[activeIndex].image}
-                  alt={testimonials[activeIndex].name}
-                  className="avatar"
-                />
-                <div>
-                  <div className="text-lg font-semibold">
-                    {testimonials[activeIndex].name}
-                  </div>
-                  <div className="text-brand-pink text-sm">
-                    {testimonials[activeIndex].role}
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-1 mb-3">
-                {Array.from({
-                  length: testimonials[activeIndex].rating
-                }).map((_, idx) => (
+        {/* TESTIMONIAL CARDS */}
+        <div className="testimonial-grid-light">
+          {TESTIMONIALS.map((t, i) => (
+            <div key={i} className="testimonial-card-light">
+              <div className="stars">
+                {Array.from({ length: 5 }).map((_, idx) => (
                   <Star
                     key={idx}
-                    className="w-4 h-4 text-brand-pink fill-pink-400"
+                    size={18}
+                    className="star-icon"
                   />
                 ))}
               </div>
 
-              <p className="text-gray-300 text-sm leading-relaxed">
-                {testimonials[activeIndex].review}
-              </p>
-            </motion.article>
+              <p className="review">“{t.review}”</p>
 
-            <div className="flex justify-center gap-6 mt-6">
-              <button className="slider-btn" onClick={prev}>
-                <ChevronLeft />
-              </button>
-              <button className="slider-btn" onClick={next}>
-                <ChevronRight />
-              </button>
+              <div className="client">
+                <p className="name">{t.name}</p>
+                <p className="role">{t.role}</p>
+              </div>
             </div>
-          </>
-        )}
+          ))}
+        </div>
+
+        {/* TRUSTED BY BRANDS */}
+        <div className="brands-section">
+          <h3>Trusted By Leading Brands</h3>
+
+          <div className="brand-marquee">
+            <div className="brand-track">
+              {[...BRANDS, ...BRANDS].map((logo, i) => (
+                <div className="brand-item" key={i}>
+                  <img
+                    src={logo}
+                    alt={`Brand ${i + 1}`}
+                    className="brand-logo"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );
-}
+};
 
-export default React.memo(Testimonial);
+export default Testimonial;
