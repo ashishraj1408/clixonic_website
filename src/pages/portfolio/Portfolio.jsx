@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 import { ArrowUpRight, Users, TrendingUp, Briefcase } from "lucide-react";
+import ecommerceImg from "../../assets/team/ecommerce.webp";
+import ppcImg from "../../assets/team/ppc-campaign.webp";
+import instagramImg from "../../assets/team/instagram.webp";
+import corporateImg from "../../assets/team/corporate.webp";
+import brandImg from "../../assets/team/brand.webp";
 
 /* ---------------- DATA ---------------- */
 const TABS = ["All Projects", "SEO", "PPC", "SMM", "Web Design", "Branding"];
@@ -9,43 +14,39 @@ const PROJECTS = [
     id: 1,
     title: "E-commerce SEO Success",
     category: "SEO",
-    image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
+    image: ecommerceImg,
     client: "Fashion Retailer",
   },
   {
     id: 2,
     title: "PPC Campaign Optimization",
     category: "PPC",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+    image: ppcImg,
     client: "SaaS Company",
   },
   {
     id: 3,
     title: "Instagram Growth Strategy",
     category: "SMM",
-    image:
-      "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
+    image: instagramImg,
     client: "Lifestyle Brand",
   },
   {
     id: 4,
     title: "Corporate Website Redesign",
     category: "Web Design",
-    image:
-      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
+    image: corporateImg,
     client: "Tech Startup",
   },
   {
     id: 5,
     title: "Brand Identity Revamp",
     category: "Branding",
-    image:
-      "https://images.unsplash.com/photo-1529333166437-7750a6dd5a70",
+    image: brandImg,
     client: "Creative Agency",
   },
 ];
+
 
 /* ---------------- COMPONENT ---------------- */
 export default function Portfolio() {
@@ -74,10 +75,9 @@ export default function Portfolio() {
             key={tab}
             onClick={() => setActiveTab(tab)}
             className={`px-5 py-2 rounded-md text-sm font-semibold border-[#b9b9b94d] border-1 transition
-              ${
-                activeTab === tab
-                  ? "bg-[#00a896] text-white border-[#ffff]-[#00a896]"
-                  : "bg-white border-[#ffff]-gray-300 text-gray-700 hover:border-[#ffff]-[#00a896]"
+              ${activeTab === tab
+                ? "bg-[#00a896] text-white border-[#ffff]-[#00a896]"
+                : "bg-white border-[#ffff]-gray-300 text-gray-700 hover:border-[#ffff]-[#00a896]"
               }`}
           >
             {tab}

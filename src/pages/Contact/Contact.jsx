@@ -32,12 +32,12 @@ export default function Contact() {
             {
               icon: <Phone size={28} className="text-[#00a896]" />,
               label: "Phone Number",
-              value: "+123 123 123",
+              value: "+91 7303351343",
             },
             {
               icon: <Mail size={28} className="text-[#00a896]" />,
               label: "Mail Address",
-              value: "aspire@dummy.com",
+              value: "info@clixonicmedia.com",
             },
             {
               icon: <MapPin size={28} className="text-[#00a896]" />,
@@ -62,7 +62,7 @@ export default function Contact() {
                 {item.icon}
               </div>
 
-              <p className="text-gray-500 text-sm">{item.label}</p>
+              <p className="text-gray-500 text-sm font-medium">{item.label}</p>
               <h4 className="text-lg mt-1 font-semibold">{item.value}</h4>
             </div>
           ))}

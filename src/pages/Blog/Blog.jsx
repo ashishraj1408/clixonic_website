@@ -1,6 +1,8 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Search } from "lucide-react";
-
+import SeoTrends from "../../assets/team/seo-trends.jpg";
+import MaxROI from "../../assets/team/maximizing-roi.jpg";
+import SocialMedia from "../../assets/team/social-media-market.jpg"
 /* -------------------- CONSTANTS -------------------- */
 
 const TABS = [
@@ -21,8 +23,7 @@ const BLOGS = [
     date: "11/01/2025",
     desc:
       "Stay ahead of the curve with emerging SEO strategies that will dominate search rankings.",
-    image:
-      "https://images.unsplash.com/photo-1507206130118-b5907f817163?q=80&w=1200",
+    image: SeoTrends
   },
   {
     id: 2,
@@ -32,8 +33,7 @@ const BLOGS = [
     date: "11/08/2025",
     desc:
       "Learn proven strategies to reduce cost per click while increasing conversions.",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200",
+    image: MaxROI
   },
   {
     id: 3,
@@ -43,9 +43,9 @@ const BLOGS = [
     date: "11/15/2025",
     desc:
       "Master social media marketing with a complete step-by-step growth guide.",
-    image:
-      "https://images.unsplash.com/photo-1611162616475-46b635cb6868?q=80&w=1200",
-  },
+    image: SocialMedia
+  }
+      
 ];
 
 /* -------------------- DEBOUNCE HOOK -------------------- */
