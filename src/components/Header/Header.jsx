@@ -36,7 +36,7 @@ export default function Header() {
         <nav className="hidden md:flex items-center gap-8">
 
           <NavLink
-            to="/home"
+            to="/"
             className={({ isActive }) =>
               `text-[18px] font-medium ${
                 isActive ? "text-brand-pink" : "hover:text-brand-pink"
