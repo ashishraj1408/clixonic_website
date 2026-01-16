@@ -217,7 +217,7 @@ export default function Services({ showHero = true }) {
         <motion.div ref={statsRef} className="mt-12 rounded-2xl p-6 stats-wrapper">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             <div>
-              <div className="text-4xl font-extrabold"><Counter to={2} startWhen={statsVisible} />+</div>
+              <div className="text-4xl font-extrabold"><Counter to={1} startWhen={statsVisible} />+</div>
               <div className="text-sm">Years in Business</div>
             </div>
             <div>

@@ -42,7 +42,7 @@ export default function Contact() {
               Phone Number
             </p>
             <h4 className="text-lg mt-1 font-semibold fontfamily-content">
-              +123 123 123
+              +91 7303351343
             </h4>
           </div>
 
@@ -55,7 +55,7 @@ export default function Contact() {
               Mail Address
             </p>
             <h4 className="text-lg mt-1 font-semibold fontfamily-content">
-              aspire@dummy.com
+             info@clixonicmedia.com
             </h4>
           </div>
 

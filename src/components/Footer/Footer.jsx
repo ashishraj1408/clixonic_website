@@ -38,8 +38,9 @@ export default function Footer({
 
             <ul className="contact-list fontfamily-content" aria-label="company contact information">
               <li><strong>Address:</strong> Delhi, India</li>
-              <li><strong>Email:</strong> <a href="mailto:hello@clixonicmedia.com" className="muted-link">ClixonicMedia@dummy.com</a></li>
-              <li><strong>Phone:</strong> <a href="tel:+123123123" className="muted-link">+123 123 123</a></li>
+              <li><strong>Email:</strong> <a href="mailto:info@clixonicmedia.com" className="muted-link">info@clixonicmedia.com</a></li>
+              <li><strong>Phone:</strong> <a href="tel:+917303351343" className="muted-link"> +91 7303351343</a></li>
+
             </ul>
 
             <div className="social-row" aria-hidden="false">
