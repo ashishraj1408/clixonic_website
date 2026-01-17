@@ -2,7 +2,8 @@ import React, { useMemo, useState, useEffect } from "react";
 import { Search } from "lucide-react";
 import SeoTrends from "../../assets/team/seo-trends.jpg";
 import MaxROI from "../../assets/team/maximizing-roi.jpg";
-import SocialMedia from "../../assets/team/social-media-market.jpg"
+import SocialMedia from "../../assets/team/social-media-market.jpg";
+import SEO from "../../components/SEO/SEO";
 /* -------------------- CONSTANTS -------------------- */
 
 const TABS = [
@@ -21,9 +22,8 @@ const BLOGS = [
     category: "SEO",
     author: "John Doe",
     date: "11/01/2025",
-    desc:
-      "Stay ahead of the curve with emerging SEO strategies that will dominate search rankings.",
-    image: SeoTrends
+    desc: "Stay ahead of the curve with emerging SEO strategies that will dominate search rankings.",
+    image: SeoTrends,
   },
   {
     id: 2,
@@ -31,9 +31,8 @@ const BLOGS = [
     category: "PPC",
     author: "Jane Smith",
     date: "11/08/2025",
-    desc:
-      "Learn proven strategies to reduce cost per click while increasing conversions.",
-    image: MaxROI
+    desc: "Learn proven strategies to reduce cost per click while increasing conversions.",
+    image: MaxROI,
   },
   {
     id: 3,
@@ -41,11 +40,9 @@ const BLOGS = [
     category: "Social Media",
     author: "Mike Johnson",
     date: "11/15/2025",
-    desc:
-      "Master social media marketing with a complete step-by-step growth guide.",
-    image: SocialMedia
-  }
-      
+    desc: "Master social media marketing with a complete step-by-step growth guide.",
+    image: SocialMedia,
+  },
 ];
 
 /* -------------------- DEBOUNCE HOOK -------------------- */
@@ -78,126 +75,138 @@ export default function Blog() {
         ${blog.author}
       `.toLowerCase();
 
-      const matchTab =
-        activeTab === "All" || blog.category === activeTab;
+      const matchTab = activeTab === "All" || blog.category === activeTab;
 
-      const matchSearch =
-        searchableText.includes(debouncedQuery.toLowerCase());
+      const matchSearch = searchableText.includes(debouncedQuery.toLowerCase());
 
       return matchTab && matchSearch;
     });
   }, [activeTab, debouncedQuery]);
 
   return (
-    <section className="bg-white py-14">
-      <div className="max-w-7xl mx-auto px-6">
+    <>
+      <SEO
+        title="Digital Marketing Blog | SEO, PPC & Social Media Tips – Clixonic Media"
+        description="Explore expert insights on SEO, PPC, social media marketing, and web design to grow your business."
+        image="https://clixonicmedia.com/blog/blog-cover.jpg"
+        schema={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          name: "Clixonic Media Blog",
+          description:
+            "Expert SEO, PPC, and digital marketing insights by Clixonic Media",
+          url: "https://clixonicmedia.com/blog",
+        }}
+      />
+      <section className="bg-white py-14">
+        <div className="max-w-7xl mx-auto px-6">
+          {/* HEADER */}
+          <div className="text-center mb-12">
+            <h1 className="text-4xl font-bold text-[#1e3a5f] mb-3">
+              Insights & Guides
+            </h1>
+            <p className="text-gray-600">
+              Stay ahead with the latest digital marketing strategies and tips.
+            </p>
+          </div>
 
-        {/* HEADER */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-[#1e3a5f] mb-3">
-            Insights & Guides
-          </h1>
-          <p className="text-gray-600">
-            Stay ahead with the latest digital marketing strategies and tips.
-          </p>
-        </div>
+          {/* SEARCH */}
+          <div className="max-w-md mx-auto mb-10 relative">
+            <Search
+              className="absolute left-4 top-3.5 text-gray-400"
+              size={18}
+            />
 
-        {/* SEARCH */}
-        <div className="max-w-md mx-auto mb-10 relative">
-          <Search
-            className="absolute left-4 top-3.5 text-gray-400"
-            size={18}
-          />
-
-          <input
-            type="text"
-            placeholder="Search articles..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="w-full pl-12 pr-12 py-3 rounded-lg text-black border-1 border-[#b9b9b94d] 
+            <input
+              type="text"
+              placeholder="Search articles..."
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full pl-12 pr-12 py-3 rounded-lg text-black border-1 border-[#b9b9b94d] 
                        focus:outline-none focus:ring-2
                        focus:ring-[#00a896]"
-          />
+            />
 
-          {query && (
-            <button
-              onClick={() => setQuery("")}
-              className="absolute right-4 top-3 text-sm text-gray-400"
-            >
-              Clear
-            </button>
-          )}
-        </div>
+            {query && (
+              <button
+                onClick={() => setQuery("")}
+                className="absolute right-4 top-3 text-sm text-gray-400"
+              >
+                Clear
+              </button>
+            )}
+          </div>
 
-        {/* TABS */}
-        <div className="flex flex-wrap justify-center gap-3 mb-14">
-          {TABS.map((tab) => (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition
+          {/* TABS */}
+          <div className="flex flex-wrap justify-center gap-3 mb-14">
+            {TABS.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-4 py-2 rounded-md text-sm font-semibold transition
                 ${
                   activeTab === tab
                     ? "bg-[#00a896] text-white"
                     : "border text-gray-600 hover:bg-gray-100"
                 }`}
-            >
-              {tab}
-            </button>
-          ))}
-        </div>
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
 
-        {/* BLOG GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredBlogs.map((blog) => (
-            <article
-              key={blog.id}
-              className="rounded-xl overflow-hidden border-1 border-[#b9b9b94d] shadow-xs
+          {/* BLOG GRID */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredBlogs.map((blog) => (
+              <article
+                key={blog.id}
+                className="rounded-xl overflow-hidden border-1 border-[#b9b9b94d] shadow-xs
                          hover:shadow-lg transition bg-white"
-            >
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="h-48 w-full object-cover"
-              />
+              >
+                <img
+                  src={blog.image}
+                  alt={blog.title}
+                  className="h-48 w-full object-cover"
+                />
 
-              <div className="p-6">
-                <span className="inline-block text-xs font-semibold
-                                 text-[#ff6b35] mb-2">
-                  {blog.category}
-                </span>
+                <div className="p-6">
+                  <span
+                    className="inline-block text-xs font-semibold
+                                 text-[#ff6b35] mb-2"
+                  >
+                    {blog.category}
+                  </span>
 
-                <h3 className="text-lg font-bold text-[#1e3a5f] mb-2">
-                  {blog.title}
-                </h3>
+                  <h3 className="text-lg font-bold text-[#1e3a5f] mb-2">
+                    {blog.title}
+                  </h3>
 
-                <p className="text-sm text-gray-600 mb-4">
-                  {blog.desc}
-                </p>
+                  <p className="text-sm text-gray-600 mb-4">{blog.desc}</p>
 
-                <div className="flex justify-between text-xs text-gray-500">
-                  <span>{blog.author}</span>
-                  <span>{blog.date}</span>
-                </div>
+                  <div className="flex justify-between text-xs text-gray-500">
+                    <span>{blog.author}</span>
+                    <span>{blog.date}</span>
+                  </div>
 
-                <button
-                  className="mt-4 text-sm font-semibold
+                  <button
+                    className="mt-4 text-sm font-semibold
                              text-[#00a896] hover:underline"
-                >
-                  Read More →
-                </button>
-              </div>
-            </article>
-          ))}
-        </div>
+                  >
+                    Read More →
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
 
-        {/* EMPTY STATE */}
-        {filteredBlogs.length === 0 && (
-          <p className="text-center text-gray-500 mt-20">
-            No articles found.
-          </p>
-        )}
-      </div>
-    </section>
+          {/* EMPTY STATE */}
+          {filteredBlogs.length === 0 && (
+            <p className="text-center text-gray-500 mt-20">
+              No articles found.
+            </p>
+          )}
+        </div>
+      </section>
+    </>
   );
 }
