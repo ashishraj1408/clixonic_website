@@ -1,220 +1,133 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import HeaderLogo from "../../assets/logo/header_logo.png";
-import MobileLogo from "../../assets/logo/title_logo.png";
 import "./Header.css";
 
-export default function Header() {
+import HeaderLogo from "../../assets/logo/header_logo.png";
+import MobileLogo from "../../assets/logo/title_logo.png";
+import { Phone, Mail } from "lucide-react";
+
+const Header = () => {
   const [open, setOpen] = useState(false);
 
+  const navClass = ({ isActive }) =>
+    `text-[15px] font-medium transition-colors ${
+      isActive ? "text-[#00a896]" : "text-gray-700 hover:text-[#00a896]"
+    }`;
+
   return (
-    <header className="fixed top-0 left-0 z-50 bg-[#0d0d0d]/95 backdrop-blur-md text-white w-full py-2">
-      <div className="max-w-[1200px] border-[#676767] border mx-auto h-[75px] rounded-full flex items-center justify-between px-6 mobile-screen-header">
-
-        {/* LOGO */}
-        <NavLink to="/" className="flex items-center gap-3">
-          {/* Desktop Logo */}
-          <div className="hidden md:flex w-[150px] header-logo-div py-2 rounded-full items-center justify-center shadow">
-            <img
-              src={HeaderLogo}
-              alt="logo"
-              className="rounded-full py-2 px-2 header-logo"
-            />
-          </div>
-
-          {/* Mobile Logo */}
-          <div className="flex md:hidden w-[120px] py-2 items-center justify-center mobile-header-logo-div">
-            <img
-              src={MobileLogo}
-              alt="mobile-logo"
-              className="w-[60px] object-contain"
-            />
-          </div>
-        </NavLink>
-
-        {/* DESKTOP NAV */}
-        <nav className="hidden md:flex items-center gap-8">
-
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              `text-[18px] font-medium ${
-                isActive ? "text-brand-pink" : "hover:text-brand-pink"
-              }`
-            }
-          >
-            Home
-          </NavLink>
-
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              `text-[18px] font-medium ${
-                isActive ? "text-brand-pink" : "hover:text-brand-pink"
-              }`
-            }
-          >
-            About Us
-          </NavLink>
-
-          {/* SERVICES (CLICK → PAGE | HOVER → DROPDOWN) */}
-          <div className="relative group">
-
-            {/* CLICKABLE SERVICES */}
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                `text-[18px] font-medium ${
-                  isActive ? "text-brand-pink" : "hover:text-brand-pink"
-                }`
-              }
-            >
-              Services
-            </NavLink>
-
-            {/* HOVER DROPDOWN */}
-            <div
-              className="absolute left-1/2 -translate-x-1/2 top-full mt-2
-                         bg-[#0d0d0d] border border-white/10 rounded-xl
-                          min-w-[200px]
-                         opacity-0 invisible
-                         group-hover:opacity-100 group-hover:visible
-                         transition-all duration-200 z-50"
-            >
-              <NavLink
-                to="/edtech-seo"
-                className="block text-center py-1 text-md hover:text-brand-pink"
-              >
-                EdTech SEO
-              </NavLink>
+    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-md">
+        {/* 🔹 TOP BAR */}
+        <div className="bg-[#1e3a5f] text-white text-sm">
+          <div className="max-w-[1200px] mx-auto px-4 py-2 flex justify-between items-center">
+            <div className="flex gap-6">
+          <span className="flex items-center gap-2"><Phone size={16} /> +91 7303351343</span>
+          <span className="flex items-center gap-2"><Mail size={16} /> info@clixonicmedia.com</span>
+            </div>
+            <div className="hidden md:block">
+          Grow Your Business with Data-Driven Marketing
             </div>
           </div>
+        </div>
 
-          <NavLink
-            to="/pages"
-            className={({ isActive }) =>
-              `text-[18px] font-medium ${
-                isActive ? "text-brand-pink" : "hover:text-brand-pink"
-              }`
-            }
-          >
-            Pages
-          </NavLink>
+        {/* 🔹 MAIN HEADER */}
+      <div className="max-w-[1200px] mx-auto px-4">
+        <div className="h-[72px] flex items-center justify-between">
 
-          <NavLink
-            to="/contact"
-            className={({ isActive }) =>
-              `text-[18px] font-medium ${
-                isActive ? "text-brand-pink" : "hover:text-brand-pink"
-              }`
-            }
-          >
-            Contact
-          </NavLink>
-        </nav>
-
-        {/* CTA BUTTON */}
-        <button
-          onClick={() =>
-            window.dispatchEvent(new Event("open-refresh-popup"))
-          }
-          className="hidden lg:inline-block px-8 py-3 rounded-full border-1 border cursor-pointer font-semibold"
-        >
-          Get Started
-        </button>
-
-        {/* MOBILE TOGGLE */}
-        <button
-          className="md:hidden"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle Menu"
-        >
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            strokeWidth="2"
-            strokeLinecap="round"
-          >
-            <path
-              d={
-                open
-                  ? "M6 18L18 6M6 6l12 12"
-                  : "M4 7h16M4 12h16M4 17h16"
-              }
+          {/* LOGO */}
+          <NavLink to="/" className="flex items-center">
+            {/* Desktop */}
+            <img
+              src={HeaderLogo}
+              alt="Clixonic Logo"
+              className="hidden md:block h-[60px] object-contain"
             />
-          </svg>
-        </button>
+            {/* Mobile */}
+            <img
+              src={MobileLogo}
+              alt="Clixonic Logo"
+              className="block md:hidden h-[60px] object-contain"
+            />
+          </NavLink>
+
+          {/* DESKTOP NAV */}
+          <nav className="hidden md:flex items-center gap-8">
+            <NavLink to="/" className={navClass}>Home</NavLink>
+            <NavLink to="/about" className={navClass}>About</NavLink>
+            <NavLink to="/services" className={navClass}>Services</NavLink>
+            <NavLink to="/portfolio" className={navClass}>Portfolio</NavLink>
+            <NavLink to="/pricing" className={navClass}>Pricing</NavLink>
+            <NavLink to="/blog" className={navClass}>Blog</NavLink>
+            <NavLink to="/contact" className={navClass}>Contact</NavLink>
+          </nav>
+
+          {/* CTA BUTTON */}
+          <button
+            onClick={() =>
+              window.dispatchEvent(new Event("open-refresh-popup"))
+            }
+            className="hidden md:inline-block bg-[#ff6b35] cursor-pointer hover:bg-[#ff4d1c]
+                       text-white px-6 py-2 rounded-md font-semibold
+                       transition-all duration-300"
+          >
+            Get Free Consultation
+          </button>
+
+          {/* MOBILE TOGGLE */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden text-gray-800"
+            aria-label="Toggle Menu"
+          >
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path
+                d={
+                  open
+                    ? "M6 18L18 6M6 6l12 12"
+                    : "M4 7h16M4 12h16M4 17h16"
+                }
+              />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      {/* MOBILE MENU */}
+      {/* 🔹 MOBILE MENU */}
       {open && (
-        <div className="md:hidden bg-[#0d0d0d] px-6 py-4 border-t border-white/10">
+        <div className="md:hidden bg-white border-t shadow-lg">
+          <nav className="flex flex-col px-6 py-6 gap-4">
+            {[
+              ["Home", "/"],
+              ["About", "/about"],
+              ["Services", "/services"],
+              ["Portfolio", "/portfolio"],
+              ["Pricing", "/pricing"],
+              ["Blog", "/blog"],
+              ["Contact", "/contact"],
+            ].map(([label, path]) => (
+              <NavLink
+                key={path}
+                to={path}
+                onClick={() => setOpen(false)}
+                className="text-gray-700 text-[16px] font-medium"
+              >
+                {label}
+              </NavLink>
+            ))}
 
-          <NavLink
-            to="/"
-            className="block py-3 text-[18px]"
-            onClick={() => setOpen(false)}
-          >
-            Home
-          </NavLink>
-
-          <NavLink
-            to="/about"
-            className="block py-3 text-[18px]"
-            onClick={() => setOpen(false)}
-          >
-            About Us
-          </NavLink>
-
-          {/* MOBILE SERVICES */}
-          <div className="py-3">
-            <NavLink
-              to="/services"
-              className="text-[18px] font-medium block mb-2"
-              onClick={() => setOpen(false)}
+            <button
+              onClick={() => {
+                window.dispatchEvent(new Event("open-refresh-popup"));
+                setOpen(false);
+              }}
+              className="mt-4 bg-[#ff6b35] get-free-header-btn cursor-pointer text-white py-3 rounded-md font-semibold"
             >
-              Services
-            </NavLink>
-
-            <NavLink
-              to="/edtech-seo"
-              className="block pl-4 py-2 text-[16px] hover:text-brand-pink border border-white/10 rounded-lg"
-              onClick={() => setOpen(false)}
-            >
-              EdTech SEO
-            </NavLink>
-          </div>
-
-          <NavLink
-            to="/pages"
-            className="block py-3 text-[18px]"
-            onClick={() => setOpen(false)}
-          >
-            Pages
-          </NavLink>
-
-          <NavLink
-            to="/contact"
-            className="block py-3 text-[18px]"
-            onClick={() => setOpen(false)}
-          >
-            Contact
-          </NavLink>
-
-          <button
-            onClick={() => {
-              window.dispatchEvent(new Event("open-refresh-popup"));
-              setOpen(false);
-            }}
-            className="block mt-4 px-6 py-3 bg-brand-gradient cursor-pointer rounded-full text-center font-semibold"
-          >
-            Get Started
-          </button>
+              Get Free Consultation
+            </button>
+          </nav>
         </div>
       )}
     </header>
   );
-}
+};
+
+export default Header;

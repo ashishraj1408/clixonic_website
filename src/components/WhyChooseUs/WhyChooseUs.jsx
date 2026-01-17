@@ -1,177 +1,77 @@
-import React, { useMemo } from "react";
-import "./WhyChooseUs.css";
-import { Globe, Lightbulb, Users, Headphones } from "lucide-react";
-import { motion } from "framer-motion";
-import teamImg from "../../assets/hero/employee_images.webp";
-import ctaBg from "../../assets/hero/main-background.png";
+import React from "react";
+import {
+  Users,
+  TrendingUp,
+  Settings,
+  FileText,
+} from "lucide-react";
 
 const FEATURES = [
   {
-    key: "proven-expertise",
-    title: "Proven Expertise",
-    icon: <Globe className="w-8 h-8 text-smokey" />,
-    desc:
-      "Our team brings hands-on experience in SEO, branding, design, and digital marketing to help businesses grow faster and smarter.",
-    line: true,
+    title: "Expert Digital Marketers",
+    desc: "Our team brings years of experience and proven strategies.",
+    Icon: Users,
   },
   {
-    key: "innovation",
-    title: "Innovation and Adaptability",
-    icon: <Lightbulb className="w-8 h-8 text-smokey" />,
-    desc:
-      "We stay ahead of trends and technologies, ensuring your business gets modern, creative, and results-driven solutions.",
-    line: true,
+    title: "Proven ROI-Driven Strategy",
+    desc: "We focus on results that matter: traffic, leads, and revenue.",
+    Icon: TrendingUp,
   },
   {
-    key: "comprehensive",
-    title: "Comprehensive Services",
-    icon: <Users className="w-8 h-8 text-smokey" />,
-    desc:
-      "From SEO to social media, branding, website development, and marketing strategy—we offer everything you need to scale your business.",
-    line: true,
+    title: "Custom Solutions",
+    desc: "Every business is unique. We create tailored strategies for your goals.",
+    Icon: Settings,
   },
   {
-    key: "support",
-    title: "Dedicated Support",
-    icon: <Headphones className="w-8 h-8 text-smokey" />,
-    desc:
-      "We work closely with you at every step, offering transparent communication and reliable support whenever you need it.",
-    line: false,
+    title: "Transparent Reporting",
+    desc: "Clear, honest communication and detailed monthly reports.",
+    Icon: FileText,
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 60 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-};
-
-const slideLeft = {
-  hidden: { opacity: 0, x: -120 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.9, ease: "easeOut" } },
-};
-
-const slideRight = {
-  hidden: { opacity: 0, x: 120 },
-  show: { opacity: 1, x: 0, transition: { duration: 0.9, ease: "easeOut" } },
-};
-
-function WhyChooseUs() {
-  const [open, setOpen] = React.useState(false);
-  const backgroundStyle = useMemo(
-    () => ({
-      backgroundImage: `url(${ctaBg})`,
-      backgroundSize: "cover",
-      backgroundPosition: "center",
-    }),
-    []
-  );
-
+const WhyChooseUs = () => {
   return (
-    <>
-      <section className="bg-[#0b0b0b] text-white py-10">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          
-          {/* LEFT IMAGE */}
-          <motion.div
-            variants={slideLeft}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="relative lg:col-span-5"
-          >
-            <img
-              src={teamImg}
-              alt="Team"
-              className="rounded-2xl w-full h-[500px] object-cover"
-              loading="lazy"
-            />
-          </motion.div>
+    <section className="bg-white py-14">
+      <div className="max-w-7xl mx-auto px-4">
 
-          {/* RIGHT CONTENT */}
-          <motion.div
-            variants={slideRight}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, amount: 0.3 }}
-            className="lg:col-span-7 lg:pl-10 mt-14 lg:mt-0"
-          >
-            <span className="inline-flex items-center gap-2 text-2xl text-brand-pink fontfamily-content">
-              <span className="w-2 h-2 rounded-full bg-pink-500 block" />
-              Why Choose Us
-            </span>
-
-            <h2 className="text-4xl font-extrabold mt-3 mb-6 leading-tight fontfamily-content">
-              Empowering Your Business to <br /> Grow and Stand Out
-            </h2>
-
-            <p className="text-gray-300 max-w-xl mb-10 fontfamily-content">
-              We are a passionate startup committed to helping businesses grow, build
-              brand authority, and succeed in the digital world with the right strategy
-              and modern marketing solutions.
-            </p>
-
-            {FEATURES.map((f) => (
-              <motion.div
-                key={f.key}
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="show"
-                viewport={{ once: true, amount: 0.3 }}
-                className="mb-8"
-              >
-                <div className="flex items-start gap-4">
-                  <div aria-hidden>{f.icon}</div>
-
-                  <div>
-                    <h4 className="font-semibold text-lg fontfamily-content">{f.title}</h4>
-                    <p className="text-gray-300 text-sm mt-1 max-w-lg fontfamily-content">
-                      {f.desc}
-                    </p>
-                  </div>
-                </div>
-
-                {f.line && <div className="h-[1px] bg-[rgba(255,255,255,0.1)] mt-6" />}
-              </motion.div>
-            ))}
-          </motion.div>
+        {/* HEADING */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-[#1e3a5f] mb-4">
+            Why Choose Clixonic Media
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            We're not just another agency. We're your growth partner.
+          </p>
         </div>
-      </section>
 
-      {/* CTA SECTION */}
-      <motion.section
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
-        className="bg-[#0b0b0b] py-4 text-white"
-      >
-        <div
-          className="max-w-6xl max-h-[400px] mx-auto rounded-3xl overflow-hidden relative px-6 py-10 flex justify-center items-center"
-          style={backgroundStyle}
-        >
-          <div className="bg-[rgba(0,0,0,0.25)] backdrop-blur-md rounded-3xl px-10 py-12 text-center max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-extrabold leading-tight mb-4">
-              Ready to Take Your Business to the Next Level?
-            </h2>
+        {/* CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {FEATURES.map(({ title, desc, Icon }, i) => (
+            <div
+              key={i}
+              className="bg-white border border-gray-200 rounded-xl p-8
+                         shadow-sm hover:shadow-md transition"
+            >
+              {/* ICON */}
+              <div className="w-14 h-14 rounded-lg bg-[#00a896]/10
+                              flex items-center justify-center mb-6">
+                <Icon className="text-[#00a896]" size={26} />
+              </div>
 
-            <p className="text-gray-100 mb-8 text-sm md:text-[15px] fontfamily-content">
-              Whether you need SEO, social media growth, branding, or a complete
-              marketing strategy — we are here to help you scale with confidence.
-            </p>
-
-            <button
-              onClick={() => {
-              window.dispatchEvent(new Event("open-refresh-popup"));
-              setOpen(false);
-            }}
-             className="bg-black cursor-pointer text-white font-semibold px-8 py-3 rounded-full shadow-md hover:bg-gray-100 hover:text-black transition fontfamily-content">
-              Contact Us
-            </button>
-          </div>
+              {/* TEXT */}
+              <h3 className="text-lg font-semibold text-[#1e3a5f] mb-3">
+                {title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {desc}
+              </p>
+            </div>
+          ))}
         </div>
-      </motion.section>
-    </>
+
+      </div>
+    </section>
   );
-}
+};
 
-export default React.memo(WhyChooseUs);
+export default WhyChooseUs;

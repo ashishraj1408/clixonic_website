@@ -15,55 +15,61 @@
   }
 }
 
-/* Glass effect card */
+/* Glass effect card – LIGHT MODE */
 .glass-card {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(30, 58, 95, 0.15);
   backdrop-filter: blur(12px) saturate(130%);
   -webkit-backdrop-filter: blur(12px) saturate(130%);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
 }
 
-/* Main button (gradient) */
+/* MAIN BUTTON */
 .btn-main {
-  /* background: linear-gradient(90deg, #ff007a, #00ff88); */
-   border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1e3a5f;
+  border: 1px solid #1e3a5f;
   padding: 12px 24px;
   border-radius: 999px;
   font-weight: 600;
-  color: #000;
+  color: #ffffff;
   transition: 0.25s ease;
 }
+
 .btn-main:hover {
   transform: translateY(-4px) scale(1.03);
-  opacity: 0.9;
+  background: #162c47;
+  box-shadow: 0 12px 30px rgba(30, 58, 95, 0.35);
 }
 
-/* Outline button */
+/* OUTLINE BUTTON */
 .btn-outline {
   padding: 12px 24px;
   border-radius: 999px;
   font-weight: 600;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  border: 2px solid #cbd5e1;
+  color: #1e3a5f;
+  background: transparent;
   transition: 0.25s ease;
 }
+
 .btn-outline:hover {
   transform: translateY(-4px) scale(1.03);
-  background: rgba(255, 255, 255, 0.05);
+  background: #f1f5f9;
 }
 
-/* Secondary button */
+/* SECONDARY BUTTON */
 .btn-secondary {
   padding: 12px 24px;
   border-radius: 999px;
   font-weight: 600;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.09);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  background: #ff6b35;
+  border: 1px solid #ff6b35;
   transition: 0.25s ease;
 }
+
 .btn-secondary:hover {
   transform: translateY(-4px) scale(1.03);
-  background: rgba(255, 255, 255, 0.2);
+  background: #ff5722;
+  box-shadow: 0 12px 30px rgba(255, 107, 53, 0.35);
 }
-

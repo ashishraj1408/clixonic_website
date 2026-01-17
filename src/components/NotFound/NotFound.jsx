@@ -9,7 +9,7 @@ export default function NotFound() {
   const navigate = useNavigate();
 
   return (
-    <section className="min-h-screen bg-[#050505] text-white flex items-center justify-center px-4">
+    <section className="min-h-screen bg-white text-black flex items-center justify-center px-4">
       <SEO
         title="Page Not Found | Clixonic Media"
         description="The page you are looking for does not exist."
@@ -37,18 +37,18 @@ export default function NotFound() {
         </div>
 
         {/* Subtitle Below */}
-        <p className="text-gray-300 text-sm -mt-1">
+        <p className="text-black text-sm -mt-1">
           Page Not Found — Don't worry, you can go back or return home.
         </p>
 
 
         {/* Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center">
-          <button onClick={() => navigate("/")} className="btn-main flex cursor-pointer items-center gap-2">
+          <button onClick={() => navigate("/")} className="btn-main text-black border flex cursor-pointer items-center gap-2">
             <Home size={18} /> Go Home
           </button>
 
-          <button onClick={() => navigate(-1)} className="btn-outline cursor-pointer flex items-center gap-2">
+          <button onClick={() => navigate(-1)} className="btn-outline text-black border cursor-pointer flex items-center gap-2">
             <ArrowLeft size={18} /> Go Back
           </button>
 

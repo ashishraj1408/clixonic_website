@@ -1,178 +1,152 @@
 import React from "react";
+import { ArrowRight, Lightbulb } from "lucide-react";
 import { motion } from "framer-motion";
-import "./About.css";
 
 import heroTeam from "../../assets/hero/employee_images.webp";
-import { Lightbulb, ArrowRight } from "lucide-react";
 import OurTeam from "../../components/OurTeam/OurTeam";
-import BackgroundImg from "../../assets/hero/main-background.png";
 import SEO from "../../components/SEO/SEO";
 
-export default function About({ showHero = true, showTeam = true }) {
+const About = ({ showHero = true, showTeam = true }) => {
   return (
-    <div className="bg-[#0b0b0b] text-white font-sans overflow-hidden">
+    <div className="bg-white text-[#1e3a5f] overflow-hidden">
+
       <SEO
         title="About Clixonic Media | Our Story & Team"
-        description="Learn more about Clixonic Media, a digital marketing & web development agency helping brands grow online."
-        keywords="about clixonic media, digital agency team, marketing experts"
+        description="Learn more about Clixonic Media, a performance-driven digital marketing agency helping businesses grow smarter and faster."
+        keywords="about clixonic media, digital marketing agency, performance marketing team"
       />
 
       {/* HERO */}
       {showHero && (
-        <motion.div
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="w-full max-w-7xl py-4 flex items-center justify-center 
-                     bg-center bg-cover rounded-xl mx-auto mt-10 overflow-hidden"
-          style={{ backgroundImage: `url(${BackgroundImg})` }}
-        >
-          <div className="backdrop-blur-xl px-20 py-10 rounded-xl text-center">
-            <h1 className="text-4xl font-bold">About Us</h1>
-            <p className="mt-2 flex items-center gap-4 justify-center text-gray-200">
+        <div className="w-full py-4">
+          <div className="max-w-6xl mx-auto px-4 text-center bg-white/80 backdrop-blur-md rounded-xl py-6">
+            <h1 className="text-4xl md:text-5xl font-bold">About Us</h1>
+            <p className="mt-3 flex items-center justify-center gap-2 text-gray-600">
               Home <ArrowRight size={16} /> About Us
             </p>
           </div>
-        </motion.div>
+        </div>
       )}
 
-      <div className="max-w-7xl mx-auto px-6 py-10 mobile-screen-padding">
-        {/* Logos row */}
+      {/* TAGS */}
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        <div className="flex flex-wrap justify-center gap-4">
+          {[
+            "Creative Expertise",
+            "Result-Driven Approach",
+            "Client-Focused Team",
+            "Innovative Solutions",
+            "Digital Growth Mindset",
+          ].map((item, i) => (
+            <span
+              key={i}
+              className="px-5 py-2 rounded-full border border-gray-200 text-sm font-medium text-gray-700"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* MAIN CONTENT */}
+      <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+
+        {/* LEFT TEXT */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.85 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: false }}
-          className="flex items-center justify-between py-6"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          <div className="flex gap-4 items-center fontfamily-content flex-wrap ">
-            {[
-              "Creative Expertise",
-              "Result-Driven Approach",
-              "Client-Focused Team",
-              "Innovative Solutions",
-              "Digital Growth Mindset"
-            ].map((item, i) => (
-              <div
-                key={i}
-                className="logo-placeholder text-[#aaaeb7] font-bold text-md border p-2 shadow-md rounded-full"
-              >
-                {item}
-              </div>
-            ))}
-          </div>
+          <span className="text-md font-semibold text-[#00a896]">
+            About Clixonic Media
+          </span>
+
+          <h2 className="text-3xl md:text-4xl font-extrabold mt-3 mb-6">
+            Helping Businesses Grow Smarter, Faster & More Profitably
+          </h2>
+
+          <p className="text-gray-600 mb-5 max-w-xl">
+            <strong>Clixonic Media was founded with a simple goal:</strong> help
+            businesses grow smarter, faster, and more profitably online.
+          </p>
+
+          <p className="text-gray-600 mb-5 max-w-xl">
+            We’re a <strong>performance-driven digital marketing agency</strong>
+            built for businesses that want measurable growth — not vanity
+            metrics.
+          </p>
+
+          <p className="text-gray-600 mb-6 max-w-xl">
+            By combining strategy, creativity, and data, we help brands stand
+            out, attract the right audience, and convert traffic into real
+            revenue.
+          </p>
+
+          <button className="px-7 py-3 rounded-md bg-[#ff6b35] text-white font-semibold hover:bg-[#ff4d1c] transition">
+            Learn More
+          </button>
         </motion.div>
 
-
-
-        {/* MAIN CONTENT */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* LEFT TEXT */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="lg:col-span-6"
-          >
-            <div className="mb-4 flex text-2xl items-center gap-2">
-              <span className="w-3 h-3 rounded-full border-2 border-pink-400 block" />
-              <span className="text-brand-pink text-md">About Us</span>
-            </div>
-
-            <h1 className="text-4xl fontfamily-content md:text-5xl font-extrabold leading-tight mb-6">
-              Transforming Businesses with <br /> Strategic Marketing
-            </h1>
-
-            <p className="text-gray-300 fontfamily-content mb-6 max-w-xl">
-              At Clixonic Media, we help brands grow through strategic marketing, intelligent
-              design, and result-driven digital solutions. Our team blends creativity with
-              data analytics to build strong online visibility, boost customer engagement,
-              and drive long-term business growth. Whether you're scaling a startup or
-              elevating an established brand, we craft strategies that deliver measurable
-              impact.
-            </p>
-
-            <button className="inline-block common-button text-[#aaaeb7] fontfamily-content  font-semibold">
-              Learn More
-            </button>
-          </motion.div>
-
-          {/* RIGHT IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: false }}
-            className="lg:col-span-6 relative"
-          >
-            <div className="relative mx-auto max-w-[720px] rounded-2xl overflow-hidden">
-              <img
-                src={heroTeam}
-                alt="team"
-                className="w-full h-[420px] object-cover rounded-2xl"
-              />
-            </div>
-          </motion.div>
-        </div>
-
-        {/* THREE CARDS */}
+        {/* RIGHT IMAGE */}
         <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: false }}
-          variants={{
-            hidden: { opacity: 0 },
-            show: {
-              opacity: 1,
-              transition: {
-                staggerChildren: 0.25,
-              },
-            },
-          }}
-          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
         >
-          {[
-            {
-              title: "Our Philosophy",
-              desc:
-                "We believe in combining creativity with data-backed decisions to build marketing strategies that actually move businesses forward.",
-            },
-            {
-              title: "Our Vision",
-              desc:
-                "Our vision is to empower brands worldwide with powerful digital presence and scalable marketing systems that deliver long-term growth.",
-            },
-            {
-              title: "Our Mission",
-              desc:
-                "Our mission is to help businesses attract more customers, strengthen their branding, and grow consistently through innovative digital solutions.",
-            },
-          ].map((item, i) => (
-            <motion.div
-              key={i}
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                show: { opacity: 1, y: 0 },
-              }}
-              className="feature-card p-6 rounded-2xl"
-            >
-              <div className="flex items-start gap-4">
-                <div className="p-2 rounded-full border border-1 flex items-center justify-center">
-                  <Lightbulb className="w-6 h-6 text-smokey" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold fontfamily-content">{item.title}</h3>
-                  <p className="text-gray-300 text-sm mt-2 fontfamily-content">{item.desc}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          <img
+            src={heroTeam}
+            alt="Clixonic Media Team"
+            className="w-full h-[420px] object-cover rounded-2xl shadow-lg"
+          />
         </motion.div>
       </div>
 
-      {/* SHOW TEAM (conditional) */}
+      {/* THREE CARDS */}
+      <div className="max-w-6xl mx-auto px-4 pb-20 grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            title: "Who We Are",
+            desc:
+              "A performance-focused digital marketing agency built to deliver real, trackable growth for ambitious businesses.",
+          },
+          {
+            title: "Our Vision",
+            desc:
+              "To help brands scale globally through smart marketing systems powered by strategy, creativity, and data.",
+          },
+          {
+            title: "Our Mission",
+            desc:
+              "To turn traffic into revenue by helping businesses attract the right audience and convert with confidence.",
+          },
+        ].map((item, i) => (
+          <motion.div
+            key={i}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+            className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition"
+          >
+            <div className="flex gap-4">
+              <div className="w-10 h-10 rounded-full bg-[#00a896]/10 flex items-center justify-center">
+                <Lightbulb className="text-[#00a896]" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
+                <p className="text-sm text-gray-600">{item.desc}</p>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+
+      {/* TEAM */}
       {showTeam && <OurTeam />}
     </div>
   );
-}
+};
+
+export default About;
