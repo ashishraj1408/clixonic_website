@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clixonic-website.vercel.app/sitemap.xml
+Sitemap: https://clixonicmedia.com/sitemap.xml
