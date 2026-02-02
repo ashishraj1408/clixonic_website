@@ -20,8 +20,8 @@ function Home() {
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "Clixonic Media",
-          "url": "https://clixonic-website.vercel.app",
-          "logo": "https://clixonic-website.vercel.app/logo.png",
+          "url": "https://clixonicmedia.com",
+          "logo": "https://clixonicmedia.com/logo.png",
           "description": "Digital marketing, SEO, web development & social media services for global brands.",
         }}
       />
