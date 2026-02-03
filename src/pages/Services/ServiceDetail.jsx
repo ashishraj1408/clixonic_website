@@ -71,7 +71,7 @@ export default function ServiceDetail() {
 
             <button
               className="bg-[#ff6b35] text-white px-6 py-3
-                         rounded-md font-semibold
+                         rounded-md font-semibold cursor-pointer
                          hover:bg-[#e65c2e] transition"
             >
               Get Started →
