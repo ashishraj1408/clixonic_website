@@ -32,7 +32,7 @@ export default function Contact() {
             {
               icon: <Phone size={28} className="text-[#00a896]" />,
               label: "Phone Number",
-              value: "+91 7303351343",
+              value: "+19179970239",
             },
             {
               icon: <Mail size={28} className="text-[#00a896]" />,

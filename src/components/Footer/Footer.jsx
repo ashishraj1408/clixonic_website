@@ -46,7 +46,7 @@ export default function Footer({
               </li>
               <li>
                 <strong>Phone:</strong>{" "}
-                <a href="tel:+123123123">+91 7303351343</a>
+                <a href="tel:+123123123">+19179970239</a>
               </li>
             </ul>
 

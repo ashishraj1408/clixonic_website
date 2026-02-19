@@ -20,7 +20,7 @@ const Header = () => {
         <div className="bg-[#1e3a5f] text-white text-sm">
           <div className="max-w-[1200px] mx-auto px-4 py-2 flex justify-between items-center">
             <div className="flex gap-6">
-          <span className="flex items-center gap-2"><Phone size={16} /> +91 7303351343</span>
+          <span className="flex items-center gap-2"><Phone size={16} /> +19179970239</span>
           <span className="flex items-center gap-2"><Mail size={16} /> info@clixonicmedia.com</span>
             </div>
             <div className="hidden md:block">
